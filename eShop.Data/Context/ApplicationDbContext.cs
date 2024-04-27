@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using eShop.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace eShop.Data.Context
         }
 
 		#region DbSets All Tables
-
+		public DbSet<TBL_Brand> TBL_Brands { get; set; }
 		#endregion
 	}
 }
