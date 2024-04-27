@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Folder Include="AddressService\" />
+	  <Folder Include="BrandsService\" />
+	  <Folder Include="CartService\" />
+	  <Folder Include="CategoryService\" />
+	  <Folder Include="ColorService\" />
+	  <Folder Include="Comment-FAQ\" />
+	  <Folder Include="DisCountService\" />
+	  <Folder Include="GalleryService\" />
+	  <Folder Include="GaranteeService\" />
+	  <Folder Include="UserService\" />
+	  <Folder Include="SliderService\" />
+	  <Folder Include="RoleService\" />
+	  <Folder Include="PropertyService\" />
+	  <Folder Include="ProductService\" />
+	</ItemGroup>
+
+</Project>
+
