@@ -8,7 +8,7 @@
 
 	<ItemGroup>
 	  <Folder Include="AddressService\" />
-	  <Folder Include="BrandsService\" />
+	  <Folder Include="BrandsService\BrandsForClient\" />
 	  <Folder Include="CartService\" />
 	  <Folder Include="CategoryService\" />
 	  <Folder Include="ColorService\" />
@@ -21,6 +21,12 @@
 	  <Folder Include="RoleService\" />
 	  <Folder Include="PropertyService\" />
 	  <Folder Include="ProductService\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\eShop.Command\eShop.Common.csproj" />
+	  <ProjectReference Include="..\eShop.Core\eShop.Core.csproj" />
+	  <ProjectReference Include="..\eShop.Data\eShop.Data.csproj" />
 	</ItemGroup>
 
 </Project>

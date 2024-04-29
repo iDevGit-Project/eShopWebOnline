@@ -1,4 +1,5 @@
 ﻿using eShop.Data.Context;
+using eShop.Service.BrandsService.BrandsForServer;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,15 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 });
 #endregion
 
+#region متصل کردن کلیه سرویس های پروژه در سمت سرور
+
+builder.Services.AddTransient<IBrandsServiceForServer, BrandsServiceForServer>();
+#endregion
+
+#region متصل کردن کلیه سرویس های پروژه در سمت کلاینت
+
+#endregion
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,14 +39,12 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "Administrator",
-    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+    name: "area",
+    pattern: "{area:exists}/{controller=AdminDashboard}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",

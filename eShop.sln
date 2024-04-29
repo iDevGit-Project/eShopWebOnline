@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.Command", "eShop.Command\eShop.Command.csproj", "{8325ABD3-2E3E-492B-B53F-42D98AAF87D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.Common", "eShop.Command\eShop.Common.csproj", "{8325ABD3-2E3E-492B-B53F-42D98AAF87D8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.Data", "eShop.Data\eShop.Data.csproj", "{0EB71396-0A83-413C-ACCA-FB2EF5CD200A}"
 EndProject
@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.Service", "eShop.Serv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.Core", "eShop.Core\eShop.Core.csproj", "{5DB41467-FE34-478C-A415-DF93F6D2C7AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.WEB", "eShop.WEB\eShop.WEB.csproj", "{4F175A66-BFC1-4763-B9FD-9A845D1452EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.WEB", "eShop.WEB\eShop.WEB.csproj", "{4F175A66-BFC1-4763-B9FD-9A845D1452EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
