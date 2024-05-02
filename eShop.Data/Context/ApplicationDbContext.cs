@@ -10,13 +10,26 @@ namespace eShop.Data.Context
 {
 	public class ApplicationDbContext : DbContext
 	{
-		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options)
-        {
-            
-        }
+		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+		{
+
+		}
 
 		#region DbSets All Tables
 		public DbSet<TBL_Brand> TBL_Brands { get; set; }
 		#endregion
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<TBL_Brand>().HasQueryFilter(b => b.IsRemove == false);
+
+			var cacade = modelBuilder.Model.GetEntityTypes()
+			.SelectMany(x => x.GetForeignKeys())
+			.Where(x => !x.IsOwnership && x.DeleteBehavior == DeleteBehavior.Cascade);
+
+			foreach (var type in cacade)
+				type.DeleteBehavior = DeleteBehavior.Restrict;
+			base.OnModelCreating(modelBuilder);
+		}
 	}
 }

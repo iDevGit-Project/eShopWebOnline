@@ -80,25 +80,82 @@ namespace eShop.Service.BrandsService.BrandsForServer
 		}
 		#endregion
 
-		public RemoveBrandViewModel FindBrandByIdForRemove(int BrandId)
-		{
-			throw new NotImplementedException();
-		}
-
+		#region جهت عملیات بروزرسانی ID متد جستجوی برند بر اساس 
 		public UpdateBrandViewModel FindBrandByIdForUpdate(int BrandId)
 		{
-			throw new NotImplementedException();
-		}
+			return _context.TBL_Brands
 
-		public OperationResult RemoveBrand(RemoveBrandViewModel RemoveBrand)
-		{
-			throw new NotImplementedException();
+				.Where(x => x.Id == BrandId)
+				.Select(x => new UpdateBrandViewModel
+				{
+					BrandId = x.Id,
+					EnTitle = x.EnTitle,
+					FaTitle = x.FaTitle,
+					DesCripton = x.DesCripton,
+					OldImgName = x.ImgName,
+				})
+				.SingleOrDefault();
 		}
+		#endregion
+
+		#region متد عملیاتی بروزرسانی اطلاعات برند
 
 		public OperationResult UpdateBrand(UpdateBrandViewModel UpdateBrand)
 		{
-			throw new NotImplementedException();
+			var FindBrand = FindBrandById(UpdateBrand.BrandId);
+
+			if (FindBrand == null)
+				return new OperationResult
+				{
+					Code = OperationCode.Failed,
+					IsSuccess = false,
+					Message = OperationResultMessage.Failed,
+				};
+
+			bool existBrand = ExistBrand(UpdateBrand.BrandId, UpdateBrand.FaTitle, UpdateBrand.EnTitle);
+
+			if (existBrand)
+			{
+				return new OperationResult
+				{
+					Code = OperationCode.duplicate,
+					IsSuccess = false,
+					Message = OperationResultMessage.Duplicate,
+				};
+			}
+
+			if (UpdateBrand.ImgName != null)
+			{
+				ImageExtention.RemoveImage(FindBrand.ImgName, ImagePathExtention.PathBrandImageServer);
+				FindBrand.ImgName = UpdateBrand.ImgName.UplodeImage(ImagePathExtention.PathBrandImageServer);
+			}
+
+			FindBrand.FaTitle = UpdateBrand.FaTitle;
+			FindBrand.EnTitle = UpdateBrand.EnTitle;
+			FindBrand.DesCripton = UpdateBrand.DesCripton;
+			FindBrand.LastModified = DateTime.Now;
+
+			_context.TBL_Brands.Update(FindBrand);
+			_context.SaveChanges();
+
+			return new OperationResult
+			{
+				Code = OperationCode.Success,
+				IsSuccess = true,
+				Message = OperationResultMessage.Update,
+			};
 		}
+		#endregion
+
+		#region ID متد جستجوی برند بر اساس مقدار 
+		public TBL_Brand FindBrandById(int BrandId)
+		{
+			return _context.TBL_Brands
+
+				.Where(x => x.Id == BrandId)
+				.FirstOrDefault();
+		}
+		#endregion
 
 		#region متد موجود بودن برند در سمت سرور و عملیات بر روی آن
 		public bool ExistBrand(int BrandId, string FaTitle, string EnTitle)
@@ -108,7 +165,54 @@ namespace eShop.Service.BrandsService.BrandsForServer
 				x.EnTitle == EnTitle.ToLower().Trim()) &&
 				x.Id != BrandId
 				);
+		}
+		#endregion
 
+		#region جهت عملیات حذف اطلاعات ID متد جستجوی برند بر اساس
+
+		public RemoveBrandViewModel FindBrandByIdForRemove(int BrandId)
+		{
+			return _context.TBL_Brands
+
+				.Where(x => x.Id == BrandId)
+				.Select(x => new RemoveBrandViewModel
+				{
+					BrandId = x.Id,
+					EnTitle = x.EnTitle,
+					FaTitle = x.FaTitle,
+					DesCripton = x.DesCripton,
+					OldImgName = x.ImgName,
+				})
+				.SingleOrDefault();
+		}
+		#endregion
+
+		#region متد عملیاتی حذف اطلاعات برند
+
+		public OperationResult RemoveBrand(RemoveBrandViewModel RemoveBrand)
+		{
+			var FindBrand = FindBrandById(RemoveBrand.BrandId);
+
+			if (FindBrand == null)
+				return new OperationResult
+				{
+					Code = OperationCode.Failed,
+					IsSuccess = false,
+					Message = OperationResultMessage.Failed,
+				};
+
+			FindBrand.IsRemove = true;
+			FindBrand.RemoveDate = DateTime.Now;
+
+			_context.TBL_Brands.Update(FindBrand);
+			_context.SaveChanges();
+
+			return new OperationResult
+			{
+				Code = OperationCode.Success,
+				IsSuccess = true,
+				Message = OperationResultMessage.Remove,
+			};
 		}
 		#endregion
 	}

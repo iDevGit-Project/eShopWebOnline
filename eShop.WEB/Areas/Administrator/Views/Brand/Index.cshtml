@@ -1,9 +1,11 @@
-﻿@model IEnumerable<GetBrandsViewModel>
+﻿@using eShop.Core.ExtentionMethods
+@model IEnumerable<GetBrandsViewModel>
     
 @{
 	ViewData["Title:"] = "پنل مدیریت | فراخوانی لیست برندهای سمت مدیر";
 } 
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" asp-append-version="true" />
 <!--begin::content container-->
 <div id="kt_app_content_container" class="app-container container-xxl">
 	<!--begin::row-->
@@ -20,21 +22,54 @@
 								<span class="card-label fw-bold text-dark">لیست برندها</span>
 								<span class="text-muted mt-1 fw-semibold fs-7">لیست برندهای موجود در فروشگاه</span>
 							</h3>
-						<a href="/Administrator/" class="btn btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
-								<i class="ki-duotone ki-home fs-3">
-								</i>
-								بازگشت
-							</a>
+                        <a href="/Administrator/" class="btn btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+                            <i class="ki-duotone ki-home fs-3">
+                            </i>
+                            بازگشت
+                        </a>
 						</div>
+						@await Component.InvokeAsync("ResultComponent")
+					<!--نمایش پیغام موفقیت آمیز بودن ثبت یا خطای درج اطلاعات در برنامه-->
+						@if (TempData["Result"] != null)
+						{
+							if (TempData["Result"].ToString() == "true")
+							{
+								<script>
+									toastr.options = {
+										"closeButton": false,
+										"debug": false,
+										"newestOnTop": false,
+										"progressBar": true,
+										"positionClass": "toastr-top-center",
+										"preventDuplicates": false,
+										"onclick": null,
+										"showDuration": "300",
+										"hideDuration": "350",
+										"timeOut": "1800",
+										"extendedTimeOut": "1000",
+										"showEasing": "swing",
+										"hideEasing": "linear",
+										"showMethod": "fadeIn",
+										"hideMethod": "fadeOut"
+									};
+									toastr.success("برند شما با موفقیت حذف گردید.");
+								</script>
+							}
+						}
 						<!--end::heading-->
 						<!--start::Toolbar-->
 						<div class="card-header border-0 pt-6">
 							<!--begin::کارت title-->
 							<div class="card-title">
+							<a asp-action="Create" asp-controller="Brand" class="btn btn-sm btn-primary me-3" data-bs-toggle="tooltip" title="ثبت اطلاعات برند جدید">
+								<i class="ki-duotone ki-plus fs-2">
+								</i>
+								ثبت برند جدید
+							</a>
 								<!--begin::جستجو-->
 								<div class="d-flex align-items-center position-relative my-1">
 									<i class="ki-outline ki-magnifier fs-2 position-absolute ms-4"></i>
-									<input type="text" id="brandsSearch" class="form-control form-control-solid w-250px ps-12" autocomplete="off" placeholder="جستجو اطلاعات">
+									<input type="text" id="brandsSearch" class="form-control  w-250px ps-12" autocomplete="off" placeholder="جستجو اطلاعات">
 									<div id="autoCompleteDiv"></div>
 									<!--begin::Spinner-->
 									<span class="search-spinner position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-1" data-kt-filter="spinner">
@@ -52,16 +87,21 @@
 							<div class="card-toolbar">
 								<!--begin::Toolbar-->
 								<div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
-									<!--begin::فیلتر-->
-									<button type="button" class="btn btn-sm btn-light-primary me-3" data-bs-toggle="tooltip" title="فیلتر کردن داده ها از سرور">
-										<i class="ki-duotone ki-filter fs-2"><span class="path1"></span><span class="path2"></span></i>
-										فیلتر داده ها
-									</button>
-									<!--begin::Menu 1-->
+								<!--begin::Menu 1-->
+								<button type="button" id="kt_refresh_datatable" class="btn  btn-light-success me-3" data-bs-toggle="tooltip" title="بروزرسانی لیست قیمت کالاها">
+									<!--begin::Indicator label-->
+									<span class="indicator-label">بروزرسانی اطلاعات</span>
+									<!--end::Indicator label-->
+									<!--begin::Indicator progress-->
+									<span class="indicator-progress">
+										در حال انجام ...<span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+									</span>
+									<!--end::Indicator progress-->
+								</button>
 									<!--end::Menu 1-->
 									<!--end::فیلتر-->
 									<!--begin::خروجی-->
-									<button type="button" class="btn btn-sm btn-light-success me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-bs-toggle="tooltip" title="دریافت خروجی از اطلاعات جدول">
+									<button type="button" class="btn  btn-light-success" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-bs-toggle="tooltip" title="دریافت خروجی از اطلاعات جدول">
 										<i class="ki-duotone ki-exit-down fs-2"><span class="path1"></span><span class="path2"></span></i>
 										دریافت خروجی
 									</button>
@@ -79,12 +119,6 @@
 										<div id="kt_datatable_buttons" class="d-none"></div>
 									</div>
 									<!--end::خروجی-->
-									<!--begin::Add customer-->
-									<button type="button" class="btn btn-sm btn-primary" title="اضافه کردن" data-bs-toggle="modal" data-bs-target="#kt_modal_new_country">
-										<i class="ki-duotone ki-plus fs-2"></i>
-										ثبت برند جدید
-									</button>
-									<!--end::Add customer-->
 								</div>
 								<!--end::Toolbar-->
 							</div>
@@ -92,13 +126,13 @@
 						</div>
 						<!--end::Toolbar-->
 						<!--begin::TABELS-->
-						<table id="datatable_brands" class="table table-hover table-rounded table-striped border table-row-bordered gy-5 gs-7">
+						<table id="datatable_brands" class="table table-rounded table-striped border table-row-bordered gy-5 gs-7">
 							<thead>
 								<tr class="fw-semibold fs-6">
 									<th class="fw-semibold fw-bolder text-start fs-6">ردیف</th>
+									<th class="fw-semibold fw-bolder text-start fs-6">نام فارسی</th>
 									<th class="fw-semibold fw-bolder text-start fs-6">تصویر شاخص</th>
-									<th class="fw-semibold fw-bolder text-start fs-6">نام فارسی برند</th>
-									<th class="fw-semibold fw-bolder text-start fs-6">English Name Brand</th>
+									<th class="fw-semibold fw-bolder text-end FEN fs-6">English Name Brand</th>
 									<th class="fw-semibold fw-bolder text-end fs-6">عملیات</th>
 								</tr>
 							</thead>
@@ -107,19 +141,21 @@
 								{
 									<tr>
 										<td class="text-start fs-6">@item.BrandId</td>
-										<td class="text-start fs-6">@item.ImgName</td>
 										<td class="text-start fs-6">@item.FaTitle</td>
-										<td class="text-start fs-6">@item.EnTitle</td>
+										<td class="text-start fs-6">
+										<img src="@ImagePathExtention.PathBrandImageClient/@item.ImgName" style="height: 41px" />
+										</td>
+										<td class="text-end fs-6 FEN">@item.EnTitle</td>
 										<td class="text-end justify-content-start flex-shrink-0">
 											<!--begin::Icon-->
 											<div>
 												<!--begin::ویرایش-->
-												<a href="#" class="bg-hover-light-warning text-hover-warning btn btn-icon btn-color-muted btn-bg-light btn-active-color-primary btn-sm me-3" data-bs-toggle="tooltip" title="ویرایش">
+												<a href="/Administrator/Brand/Update/@item.BrandId" class="bg-hover-light-warning text-hover-warning btn btn-icon btn-color-muted btn-bg-light btn-active-color-primary  me-3" data-bs-toggle="tooltip" title="ویرایش">
 													<i class="ki-outline ki-pencil fs-3"></i>
 												</a>
 												<!--end::ویرایش-->
 												<!--begin::غیرفعال سازی-->
-												<a href="#" class="bg-hover-light-danger text-hover-danger btn btn-icon btn-color-muted btn-bg-light btn-active-color-danger btn-sm me-3" data-bs-toggle="tooltip" title="حذف کردن">
+											<a href="/Administrator/Brand/Remove/@item.BrandId" class="bg-hover-light-danger text-hover-danger btn btn-icon btn-color-muted btn-bg-light btn-active-color-danger  me-3" data-bs-toggle="tooltip" title="حذف کردن">
 													<i class="ki-outline ki-trash fs-3"></i>
 												</a>
 												<!--begin::غیرفعال سازی-->
@@ -213,4 +249,46 @@
 			}
 	</script>
 	<!--==================================================================-->
+	<!-- Refresh Data in Tables -->
+	<script>
+		$('#kt_refresh_datatable').on('click', function () {
+			// نمایش فرم انیمیشن در زمان ثبت اطلاعات
+			const loadingEl = document.createElement("div");
+			document.body.prepend(loadingEl);
+			loadingEl.classList.add("page-loader");
+			loadingEl.classList.add("flex-column");
+			loadingEl.classList.add("bg-dark");
+			loadingEl.classList.add("bg-opacity-75");
+			loadingEl.innerHTML = `
+					<span class="spinner-border text-primary" role="status"></span>
+					<span class="text-gray-100 fs-5 mt-5">سیستم در حال بروزرسانی اطلاعات ...</span>`;
+			KTApp.showPageLoading();
+			setTimeout(function () {
+				KTApp.hidePageLoading();
+				loadingEl.remove();
+				window.location.reload();
+			}, 2200);
+			setTimeout(function () {
+				toastr.options = {
+					"debug": false,
+					"closeButton": false,
+					"newestOnTop": false,
+					"progressBar": false,
+					"positionClass": "toastr-top-center",
+					"preventDuplicates": false,
+					"showDuration": "600",
+					"hideDuration": "2200",
+					"timeOut": "2200",
+					"extendedTimeOut": "2200",
+					"showEasing": "swing",
+					"hideEasing": "linear",
+					"showMethod": "fadeIn",
+					"hideMethod": "fadeOut"
+				};
+				toastr.success("بروزرسانی انجام شد.");
+			}, 800);
+			//$('#frmEditProduct')[0].reset();
+			//document.getElementById("frmEditProduct").reset(); //or $('#form2')[0].reset();
+		})
+	</script>
 }

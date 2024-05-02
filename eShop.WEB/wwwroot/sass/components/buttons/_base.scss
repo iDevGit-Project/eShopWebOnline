@@ -23,7 +23,7 @@
 			padding: calc(#{$btn-padding-y-lg} + #{$btn-border-width}) calc(#{$btn-padding-x-lg} + #{$btn-border-width});
 		}
 
-		&.btn-sm {
+		&. {
 			padding: calc(#{$btn-padding-y-sm} + #{$btn-border-width}) calc(#{$btn-padding-x-sm} + #{$btn-border-width});
 		}
 	}
@@ -114,7 +114,7 @@
 		}
 
 		// Sizes
-		&.btn-sm {
+		&. {
 			height: $input-height-sm;
 			width: $input-height-sm;
 			 

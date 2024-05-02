@@ -1,0 +1,38 @@
+﻿@model eShop.Data.Entities.TBL_Brand
+<!--begin:Form-->
+<div class="modal-header bg-red-thunderbird bg-font-red-thunderbird">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true" data-keyboard="false" data-backdrop="static"></button>
+	<h5 class="modal-title"> حذف اطلاعات برند: <span class="badge bg-blue-ebonyclay bg-font-blue-ebonyclay"> @Model.FaTitle</span></h5>
+</div>
+
+<form asp-action="Remove" method="post" data-ajax="true" data-Success="Refresh" enctype="multipart/form-data">
+	<!--نمایش آی دی زیردسته اول جهت یافتن آی دی دوم-->
+	<input type="hidden" asp-for="Id" />
+	<div class="modal-body">
+		<div class="d-flex flex-column nav-group nav-group-outline mx-auto mb-10 p-10">
+			<div class="row mt-10">
+				<div class="col-lg-12 mb-10 mb-lg-0">
+					<div class="row g-9 mb-5">
+						<div class="col-md-3 fv-row">
+							<input type="text" readonly="readonly" asp-for="FaTitle" class="form-control " autofocus="autofocus">
+						</div>
+						<div class="col-md-3 EN__Font fv-row">
+							<input type="text" readonly="readonly" asp-for="EnTitle" class="form-control ">
+						</div>
+						<div class="col-md-3 EN__Font fv-row">
+							<input type="text" readonly="readonly" asp-for="DesCripton" class="form-control ">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--end::Inputs-->
+	<!--begin::Actions-->
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-outline red-thunderbird"><i class="fa fa-ban"></i><span class="indicator-label">غیرفعال کردن دسته بندی</span></button>
+		<button type="button" class="btn dark btn-outline" data-dismiss="modal">انصراف</button>
+	</div>
+	<!--end::Actions-->
+</form>
+<!--end:Form-->

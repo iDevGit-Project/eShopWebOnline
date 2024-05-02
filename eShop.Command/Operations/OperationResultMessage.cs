@@ -8,12 +8,12 @@ namespace eShop.Common.Operations
 {
 	public static class OperationResultMessage
 	{
-		public static string Create = "با موفقیت ایجاد شد.";
-		public static string Update = "با موفقیت بروزرسانی شد.";
-		public static string Remove = "با موفقیت حذف شد.";
-		public static string Failed = "خطا در انجام عملیات.";
-		public static string Duplicate = "ثبت مقدار تکراری";
-		public static string NotFound = "مقداری یافت نشد...";
+		public static string Create = "ثبت اطلاعات با موفقیت انجام شد.";
+		public static string Update = "اطلاعات با موفقیت بروزرسانی شد.";
+		public static string Remove = "اطلاعات با موفقیت حذف شد.";
+		public static string Failed = "خطا در انجام عملیات. لطفاً دقایقی دیگر تلاش کنید.";
+		public static string Duplicate = "کاربرگرامی: داده های وارد شده تکراریست.";
+		public static string NotFound = "کاربرگرامی: چنین مقداری در برنامه یافت نشد...";
 		public static string DuplicateEmail = "ایمیل وارد شده تکراری است.";
 		public static string Register = "حساب کاربری با موفقیت ایجاد شد/ ایمیل فعال سازی برای شما ارسال شد";
 		public static string NotFoundUser = "کاربری با این مشخصات یافت نشد.";

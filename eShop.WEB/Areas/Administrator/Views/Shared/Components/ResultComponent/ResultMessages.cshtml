@@ -1,0 +1,68 @@
+﻿@model OperationResult
+
+@if (Model.Code == OperationCode.Failed)
+{
+    <!--begin::Alert-->
+    <div class="alert alert-dismissible alert-danger d-flex align-items-center p-5">
+        <!--begin::Icon-->
+        <i class="ki-duotone ki-shield-tick fs-2hx text-danger me-4"><span class="path1"></span><span class="path2"></span></i>
+        <!--end::Icon-->
+        <!--begin::Wrapper-->
+        <div class="d-flex flex-column">
+            <!--begin::Title-->
+            <h4 class="mb-1 text-dark">@Html.Raw(Model.Message)</h4>
+            <!--end::Title-->
+        </div>
+        <!--end::Wrapper-->
+        <!--begin::Close-->
+        <button type="button" class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto" data-bs-dismiss="alert">
+            <i class="ki-duotone ki-cross fs-1 text-danger"><span class="path1"></span><span class="path2"></span></i>
+        </button>
+        <!--end::Close-->
+    </div>
+    <!--end::Alert-->
+}
+else if (Model.Code == OperationCode.Success)
+{
+    <!--begin::Alert-->
+    <div class="alert alert-dismissible alert-primary d-flex align-items-center p-5">
+        <!--begin::Icon-->
+        <i class="ki-duotone ki-shield-tick fs-2hx text-primary me-4"><span class="path1"></span><span class="path2"></span></i>
+        <!--end::Icon-->
+        <!--begin::Wrapper-->
+        <div class="d-flex flex-column">
+            <!--begin::Title-->
+            <h4 class="mb-1 text-dark">@Html.Raw(Model.Message)</h4>
+            <!--end::Title-->
+        </div>
+        <!--end::Wrapper-->
+        <!--begin::Close-->
+        <button type="button" class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto" data-bs-dismiss="alert">
+            <i class="ki-duotone ki-cross fs-1 text-primary"><span class="path1"></span><span class="path2"></span></i>
+        </button>
+        <!--end::Close-->
+    </div>
+    <!--end::Alert-->
+}
+else if (Model.Code == OperationCode.duplicate)
+{
+    <!--begin::Alert-->
+    <div class="alert alert-dismissible alert-warning d-flex align-items-center p-5">
+        <!--begin::Icon-->
+        <i class="ki-duotone ki-shield-tick fs-2hx text-warning me-4"><span class="path1"></span><span class="path2"></span></i>
+        <!--end::Icon-->
+        <!--begin::Wrapper-->
+        <div class="d-flex flex-column">
+            <!--begin::Title-->
+            <h4 class="mb-1 text-dark">@Html.Raw(Model.Message)</h4>
+            <!--end::Title-->
+        </div>
+        <!--end::Wrapper-->
+        <!--begin::Close-->
+        <button type="button" class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto" data-bs-dismiss="alert">
+            <i class="ki-duotone ki-cross fs-1 text-warning"><span class="path1"></span><span class="path2"></span></i>
+        </button>
+        <!--end::Close-->
+    </div>
+    <!--end::Alert-->
+}

@@ -37,7 +37,52 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		public IActionResult Create(CreateBrandViewModel createBrand)
 		{
 			var result = _brandsService.CreateBrand(createBrand);
+
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(result);
+			return RedirectToAction(nameof(Index));
+		}
+		#endregion
+
+		#region متد بروزرسانی اطلاعات برند
+		[HttpGet]
+		public IActionResult Update(int Id)
+		{
+			var FindBrand = _brandsService.FindBrandByIdForUpdate(Id);
+
+			if (FindBrand == null)
+				return NotFound();
+
+			return View(FindBrand);
+		}
+
+		[HttpPost]
+		public IActionResult Update(UpdateBrandViewModel UpdateBrand)
+		{
+			var Result = _brandsService.UpdateBrand(UpdateBrand);
+			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
+			return RedirectToAction(nameof(Index));
+		}
+		#endregion
+
+		#region متد حذف اطلاعات برند 
+		[HttpGet]
+		public IActionResult Remove(int Id)
+		{
+			//return PartialView("_ModalDeleteBrand", _brandsService.FindBrandByIdForRemove(Id));
+
+			var FindBrand = _brandsService.FindBrandByIdForRemove(Id);
+
+			if (FindBrand == null)
+				return NotFound();
+
+			return View(FindBrand);
+		}
+
+		[HttpPost]
+		public IActionResult Remove(RemoveBrandViewModel RemoveBrand)
+		{
+			var Result = _brandsService.RemoveBrand(RemoveBrand);
+			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
 			return RedirectToAction(nameof(Index));
 		}
 		#endregion

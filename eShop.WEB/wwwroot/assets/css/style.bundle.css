@@ -3501,7 +3501,7 @@ textarea.form-control-lg {
   --bs-btn-border-radius: 0.625rem;
 }
 
-.btn-sm, .btn-group-sm > .btn {
+., .btn-group-sm > .btn {
   --bs-btn-padding-y: 0.55rem;
   --bs-btn-padding-x: 1.25rem;
   --bs-btn-font-size: 0.95rem;
@@ -3928,7 +3928,7 @@ textarea.form-control-lg {
   margin-right: 0;
 }
 
-.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split {
+. + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split {
   padding-right: 0.9375rem;
   padding-left: 0.9375rem;
 }
@@ -33918,7 +33918,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 .btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon).btn-lg, .btn-group-lg > .btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon) {
   padding: calc(0.825rem + 1px) calc(1.75rem + 1px);
 }
-.btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon).btn-sm, .btn-group-sm > .btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon) {
+.btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon)., .btn-group-sm > .btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon) {
   padding: calc(0.55rem + 1px) calc(1.25rem + 1px);
 }
 .btn.btn-link {
@@ -33989,7 +33989,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 .btn.btn-icon:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush) {
   border: 0;
 }
-.btn.btn-icon.btn-sm, .btn-group-sm > .btn.btn-icon {
+.btn.btn-icon., .btn-group-sm > .btn.btn-icon {
   height: calc(1.5em + 1.1rem + 2px);
   width: calc(1.5em + 1.1rem + 2px);
 }

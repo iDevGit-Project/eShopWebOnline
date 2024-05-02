@@ -27557,7 +27557,7 @@ var index = (_, tdClasses) => {
         if (this.element.hasClass('dropup'))
             this.drops = 'up';
 
-        this.buttonClasses = 'btn btn-sm';
+        this.buttonClasses = 'btn ';
         this.applyButtonClasses = 'btn-primary';
         this.cancelButtonClasses = 'btn-default';
 

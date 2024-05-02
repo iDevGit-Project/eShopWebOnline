@@ -26,7 +26,7 @@ var KTGeneralToastr = function() {
 
         var getMessageWithClearButton = function (msg) {
             msg = msg ? msg : 'Clear itself?';
-            msg += '<br /><br /><button type="button" class="btn btn-outline-light btn-sm">Yes</button>';
+            msg += '<br /><br /><button type="button" class="btn btn-outline-light ">Yes</button>';
             return msg;
         };
 
