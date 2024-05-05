@@ -15,12 +15,12 @@
 	  <Folder Include="Comment-FAQ\" />
 	  <Folder Include="DisCountService\" />
 	  <Folder Include="GalleryService\" />
-	  <Folder Include="GaranteeService\" />
 	  <Folder Include="UserService\" />
 	  <Folder Include="SliderService\" />
 	  <Folder Include="RoleService\" />
 	  <Folder Include="PropertyService\" />
 	  <Folder Include="ProductService\" />
+	  <Folder Include="WarrantyService\WarrantyForClient\" />
 	</ItemGroup>
 
 	<ItemGroup>

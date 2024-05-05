@@ -17,11 +17,17 @@ namespace eShop.Data.Context
 
 		#region DbSets All Tables
 		public DbSet<TBL_Brand> TBL_Brands { get; set; }
+		public DbSet<TBL_Warranty> TBL_Warranties { get; set; }
 		#endregion
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
+			// عملیات حذف برای جدول برند
 			modelBuilder.Entity<TBL_Brand>().HasQueryFilter(b => b.IsRemove == false);
+			// عملیات حذف برای جدول برند
+			modelBuilder.Entity<TBL_Warranty>().HasQueryFilter(w => w.IsRemove == false);
+
+			//================================================================================
 
 			var cacade = modelBuilder.Model.GetEntityTypes()
 			.SelectMany(x => x.GetForeignKeys())

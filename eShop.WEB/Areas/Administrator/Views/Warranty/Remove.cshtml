@@ -1,7 +1,7 @@
-﻿@model RemoveBrandViewModel
+﻿@model RemoveWarrantyViewModel
 
 @{
-	ViewData["Title:"] = "پنل مدیریت | حذف لیست برندهای سمت مدیر";
+	ViewData["Title:"] = "پنل مدیریت | حذف لیست گارانتی های سمت مدیر";
 }
 
 
@@ -18,23 +18,22 @@
 					<!--begin::heading-->
 					<div class="card-header align-items-start px-0 border-0 pt-50">
 						<h3 class="card-title align-items-start flex-column">
-							<span class="card-label fw-bold text-dark">حذف اطلاعات برند</span>
-							<span class="text-muted mt-1 fw-semibold fs-7">حذف اطلاعات مربوط به برند جاری در فروشگاه</span>
+							<span class="card-label fw-bold text-dark">حذف اطلاعات گارانتی</span>
+							<span class="text-muted mt-1 fw-semibold fs-7">حذف اطلاعات مربوط به گارانتی جاری در فروشگاه</span>
 						</h3>
-						<a asp-action="Index" asp-controller="Brand" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+						<a asp-action="Index" asp-controller="Warranty" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
 							<i class="ki-duotone ki-home fs-3">
 							</i>
-							بازگشت به لیست برندها
+							بازگشت به لیست گارانتی ها
 						</a>
 					</div>
 					<!--begin:Form-->
-					<form asp-controller="Brand" asp-action="Remove"
+					<form asp-controller="Warranty" asp-action="Remove"
 						  method="post"
 						  data-ajax="true"
 						  data-callback=""
-						  data-action="Refresh"
-						  enctype="multipart/form-data">
-						<input type="hidden" asp-for="BrandId" />
+						  data-action="Refresh">
+						<input type="hidden" asp-for="WarrantyId" />
 						<!--begin::details نمایش-->
 						<div class="card mb-5 d-flex flex-column nav-group nav-group-outline mx-auto" id="myForm">
 							<!--begin::کارت body-->
@@ -42,39 +41,12 @@
 								<!--begin::Row-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="FaTitle" class="col-lg-4 fw-semibold fw-bold">نام برند (فارسی)</label>
+									<label asp-for="WarrantyName" class="col-lg-4 fw-semibold fw-bold">نام گارانتی (فارسی)</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
-									<div class="col-lg-8">
-										<input type="text" asp-for="FaTitle" disabled class="form-control  bg-light-danger text-danger fw-semibold fw-bold is-invalid" autocomplete="off" placeholder="نام برند را به فارسی وارد نمایید.">
-										<span asp-validation-for="FaTitle" class="badge bg-red-thunderbird bg-font-red-thunderbird"></span>
-									</div>
-									<!--end::Col-->
-								</div>
-								<!--end::Row-->
-								<!--begin::Input group-->
-								<div class="row mb-7">
-									<!--begin::Tags-->
-									<label asp-for="EnTitle" class="col-lg-4 fw-semibold fw-bold">نام برند (انگلیسی)</label>
-									<!--end::Tags-->
-									<!--begin::Col-->
-									<div class="col-lg-8">
-										<input type="text" asp-for="EnTitle" disabled class="form-control  bg-light-danger text-danger fw-semibold fw-bold FEN text-end is-invalid" autocomplete="off" placeholder="Enter the brand name in English">
-										<span asp-validation-for="EnTitle"></span>
-									</div>
-									<!--end::Col-->
-								</div>
-								<!--end::Input group-->
-								<!--begin::Input group-->
-								<!--begin::Row-->
-								<div class="row mb-7">
-									<!--begin::Tags-->
-									<label asp-for="DesCripton" class="col-lg-4 fw-semibold fw-bold">توضیحات برند</label>
-									<!--end::Tags-->
-									<!--begin::Col-->
-									<div class="col-lg-8">
-										<input type="text" asp-for="DesCripton" disabled class="form-control  bg-light-danger text-danger fw-semibold fw-bold is-invalid" autocomplete="off" placeholder="شما می توانید برای برند خود توضیحاتی را به فارسی وارد نمایید.">
-										<span asp-validation-for="DesCripton"></span>
+									<div class="col-lg-12">
+										<input type="text" asp-for="WarrantyName" disabled class="form-control  bg-light-danger text-danger fw-semibold fw-bold is-invalid" autocomplete="off" placeholder="نام برند را به فارسی وارد نمایید.">
+										<span asp-validation-for="WarrantyName" class="badge bg-red-thunderbird bg-font-red-thunderbird"></span>
 									</div>
 									<!--end::Col-->
 								</div>
@@ -108,15 +80,6 @@
 <!--end::content container-->
 @section AdminScripts {
 
-	<!--اسکریپت تغییر نام عکس انتخاب شده-->
-	<script>
-		document.querySelector("#files").onchange = function () {
-			const fileName = this.files[0]?.name;
-			const label = document.querySelector("label[for=files]");
-			label.innerText = fileName ?? "تصویر برند خود را انتخاب و بارگزاری نمایید ...";
-		};
-	</script>
-	<!--==================================================================-->
 	<!-- Refresh Data in Tables -->
 	<script>
 		$('#kt_refresh_datatable').on('click', function () {
@@ -128,8 +91,8 @@
 			loadingEl.classList.add("bg-dark");
 			loadingEl.classList.add("bg-opacity-75");
 			loadingEl.innerHTML = `
-							<span class="spinner-border text-primary" role="status"></span>
-							<span class="text-gray-100 fs-5 mt-5">سیستم در حال بروزرسانی اطلاعات ...</span>`;
+									<span class="spinner-border text-primary" role="status"></span>
+									<span class="text-gray-100 fs-5 mt-5">سیستم در حال بروزرسانی اطلاعات ...</span>`;
 			KTApp.showPageLoading();
 			setTimeout(function () {
 				KTApp.hidePageLoading();

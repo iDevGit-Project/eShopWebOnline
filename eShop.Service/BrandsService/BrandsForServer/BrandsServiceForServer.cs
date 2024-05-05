@@ -14,7 +14,7 @@ namespace eShop.Service.BrandsService.BrandsForServer
 {
 	public class BrandsServiceForServer : IBrandsServiceForServer
 	{
-		#region متد های پیکربندی پروژه در سمت سرور یا مدیرسایت
+		#region متد های پیکربندی اطلاعات برند در سمت سرور یا مدیرسایت
 
 		private readonly ApplicationDbContext _context;
         public BrandsServiceForServer(ApplicationDbContext context)

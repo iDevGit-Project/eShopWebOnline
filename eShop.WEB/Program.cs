@@ -1,5 +1,6 @@
 ﻿using eShop.Data.Context;
 using eShop.Service.BrandsService.BrandsForServer;
+using eShop.Service.WarrantyService.WarrantyForServer;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 #region متصل کردن کلیه سرویس های پروژه در سمت سرور
 
 builder.Services.AddTransient<IBrandsServiceForServer, BrandsServiceForServer>();
+builder.Services.AddTransient<IWarrantiesServiceForServer, WarrantiesServiceForServer>();
 #endregion
 
 #region متصل کردن کلیه سرویس های پروژه در سمت کلاینت
