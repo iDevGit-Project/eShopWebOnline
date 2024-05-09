@@ -1,0 +1,58 @@
+﻿.ParentListSelected {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item-Parent:hover {
+    /*background-color: #22252f;*/
+    /*border: 0.5px dashed #0b0b0b;*/
+}
+
+.item-Parent {
+    display: inline-flex;
+    background-color: #060D15;
+    align-items: center;
+    padding: .4rem .4rem;
+    display: inline-flex;
+    align-items: center;
+    max-width: calc(var(--tag--max-width) - 10px);
+    margin-inline: 5px 0;
+    margin-block: 5px;
+    position: relative;
+    z-index: 1;
+    outline: 0;
+    line-height: normal;
+    cursor: default;
+    transition: .13s ease-out;
+    color: #fff;
+    border-radius: .475rem;
+}
+
+.Tag-select {
+    display: inline-flex;
+    min-width: 250px;
+    margin-top: 15px;
+    min-height: 50px;
+    background-color: #110500;
+    align-items: center;
+    padding-right: 11px;
+    color: #ccc;
+    border-radius: 10px;
+    border: 0.5px solid gray;
+    margin-right: 7px;
+    margin-left: 6px;
+}
+
+.item-btn-remove:hover {
+    /*    background-color: #2a2a2b;
+    border: 0.5px solid white;*/
+}
+
+.item-btn-remove {
+    min-width: 27px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    margin-left: 13px;
+}

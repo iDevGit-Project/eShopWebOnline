@@ -1,0 +1,161 @@
+﻿@model RemoveCategoryViewModel
+
+@{
+	ViewData["Title:"] = "پنل مدیریت | فراخوانی لیست دسته بندی های سمت مدیر";
+}
+
+<!--begin::content container-->
+<div id="kt_app_content_container" class="app-container container-xxl">
+	<!--begin::row-->
+	<div class="row gy-5 g-xl-10">
+		<!--begin::col-->
+		<div class="col-xl-12 mb-xl-12">
+			<!--begin::engage widget 1-->
+			<div class="card h-md-100" dir="rtl">
+				<!--begin::body-->
+				<div class="card-body align-items-start flex-column">
+					<!--begin::heading-->
+					<div class="card-header align-items-start px-0 border-0 pt-50">
+						<h3 class="card-title align-items-start flex-column">
+							<span class="card-label fw-bold text-dark">حذف دسته بندی جاری</span>
+							<span class="text-muted mt-1 fw-semibold fs-7">حذف اطلاعات مربوط به دسته بندی ها در فروشگاه</span>
+						</h3>
+						<a asp-action="Index" asp-controller="Category" class="btn btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+							<i class="ki-duotone ki-home fs-3">
+							</i>
+							بازگشت به لیست دسته بندی ها
+						</a>
+					</div>
+					<div class="notice d-flex bg-light-danger rounded border-danger border border-dashed min-w-lg-600px flex-shrink-0 p-5 mb-5">
+						<!--begin::Icon-->
+						<i class="ki-outline ki-trash fs-2 text-danger me-4"><span class="path1"></span><span class="path2"></span></i>
+						<!--end::Icon-->
+						<!--begin::Wrapper-->
+						<div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+							<!--begin::Content-->
+							<div class="mb-3 mb-md-0 fw-semibold">
+								<h4 class="text-danger fw-bold">کاربرگرامی</h4>
+								<div class="fs-6 text-gray-700 pe-7">توجه داشته باشید در صورت حذف اطلاعات دسته بندی، کلیه زیردسته های آن نیز  حذف خواهد شد.</div>
+							</div>
+							<!--end::Content-->
+						</div>
+						<!--end::Wrapper-->
+					</div>
+					<!--begin:Form-->
+					<form asp-controller="Category" asp-action="Remove"
+						  method="post"
+						  data-ajax="true"
+						  data-callback=""
+						  data-action="Refresh"
+						  enctype="multipart/form-data">
+						<input readonly type="hidden" asp-for="CategoryId" />
+						<!--begin::details نمایش-->
+						<div class="card mb-5 d-flex flex-column nav-group nav-group-outline mx-auto" id="myForm">
+							<!--begin::کارت body-->
+							<div class="card-body p-9">
+								<!--begin::Row-->
+								<div class="row mb-7">
+									<!--begin::Tags-->
+									<label asp-for="FaTitle" class="col-lg-4 fw-semibold fw-bold">نام دسته بندی (فارسی)</label>
+									<!--end::Tags-->
+									<!--begin::Col-->
+									<div class="col-lg-8">
+										<input type="text" asp-for="FaTitle" disabled id="kt_docs_maxlength_custom_text" maxlength="64 " class="form-control border-danger bg-light-danger text-danger fw-semibold fw-bold" autocomplete="off" placeholder="نام دسته بندی را به فارسی وارد نمایید.">
+										<span asp-validation-for="FaTitle" class="badge bg-red-thunderbird bg-font-red-thunderbird"></span>
+									</div>
+									<!--end::Col-->
+								</div>
+								<!--end::Row-->
+								<!--begin::Input group-->
+								<div class="row mb-7">
+									<!--begin::Tags-->
+									<label asp-for="EnTitle" class="col-lg-4 fw-semibold fw-bold">
+										نام دسته بندی (انگلیسی)
+										<span class="ms-1" data-bs-toggle="tooltip" title="Dear user: The name of the category must be written in Latin.">
+											<i class="ki-outline ki-information fs-7"></i>
+										</span>
+									</label>
+									<!--end::Tags-->
+									<!--begin::Col-->
+									<div class="col-lg-8">
+										<input type="text" asp-for="EnTitle" disabled id="kt_docs_maxlength_custom_Entext" maxlength="64 " class="form-control border-danger bg-light-danger text-danger fw-semibold fw-bold FEN text-end" autocomplete="off" placeholder="Enter the brand name in English">
+										<span asp-validation-for="EnTitle"></span>
+									</div>
+									<!--end::Col-->
+								</div>
+								<!--end::Input group-->
+								<!--begin::Input group-->
+								<!--begin::Row-->
+								<div class="row mb-7">
+									<!--begin::Tags-->
+									<label asp-for="Icon" class="col-lg-4 fw-semibold fw-bold">تصویر یا آیکن دسته بندی</label>
+									<!--end::Tags-->
+									<!--begin::Col-->
+									<div class="col-lg-8">
+										<input type="text" asp-for="Icon" disabled class="form-control border-danger bg-light-danger text-danger fw-semibold fw-bold" autocomplete="off" placeholder="شما می توانید برای دسته بندی خود توضیحاتی را به فارسی وارد نمایید.">
+										<span asp-validation-for="Icon"></span>
+									</div>
+									<!--end::Col-->
+								</div>
+								<!--end::Row-->
+								<!--begin::Row-->
+								<div class="row mb-7">
+									<!--begin::Tags-->
+									<label asp-for="Description" class="col-lg-4 fw-semibold fw-bold">توضیحات دسته بندی</label>
+									<!--end::Tags-->
+									<!--begin::Col-->
+									<div class="col-lg-8">
+										<input type="text" asp-for="Description" disabled class="form-control border-danger bg-light-danger text-danger fw-semibold fw-bold" autocomplete="off" placeholder="شما می توانید برای دسته بندی خود توضیحاتی را به فارسی وارد نمایید.">
+										<span asp-validation-for="Description"></span>
+									</div>
+									<!--end::Col-->
+								</div>
+								<!--end::Row-->
+								<!--begin::Input group-->
+								<div class="overflow-auto pb-5">
+									<div class="d-flex align-items-center border border-dashed border-gray-300 rounded px-7 py-3">
+										<!--begin::آیتم-->
+										<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
+											<div class="form-check form-switch form-check-custom form-check-danger form-check-solid me-10">
+												<input asp-for="IsActive" disabled class="form-check-input h-30px w-50px" type="checkbox" id="flexSwitch30x50" />
+												<label class="form-check-label" for="flexSwitch30x50">
+													فعالسازی دسته بندی.
+												</label>
+											</div>
+											<div class="form-check form-switch form-check-custom form-check-danger form-check-solid me-10">
+												<input asp-for="IsMain" disabled class="form-check-input h-30px w-50px" type="checkbox" id="flexSwitch30x50" />
+												<label class="form-check-label" for="flexSwitch30x50">
+													ثبت در منوی اصلی.
+												</label>
+											</div>
+										</div>
+										<!--end::آیتم-->
+									</div>
+									<!--begin::Col-->
+								</div>
+							</div>
+							<!--end::کارت body-->
+						</div>
+						<!--end::details نمایش-->
+						<!--begin::Actions-->
+						<div class="text-start">
+							<button type="submit" class="btn btn-sm btn-danger me-3"><i class="ki-outline ki-trash fs-3"></i><span class="indicator-label">ثبت اطلاعات</span></button>
+							<a asp-action="Index" asp-controller="AdminDashboard" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+								<i class="ki-duotone ki-home fs-3">
+								</i>
+								انصراف و بازگشت
+							</a>
+						</div>
+						<!--end::Actions-->
+					</form>
+					<!--end:Form-->
+				</div>
+				<!--end::body-->
+			</div>
+			<!--end::engage widget 1-->
+		</div>
+		<!--end::col-->
+	</div>
+	<!--end::row-->
+</div>
+<!--end::content container-->

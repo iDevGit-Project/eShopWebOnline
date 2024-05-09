@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eShop.Data.Context;
 
@@ -11,9 +12,11 @@ using eShop.Data.Context;
 namespace eShop.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240505062334_IMG_DbInit_MakeTable3")]
+    partial class IMG_DbInit_MakeTable3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,52 +66,6 @@ namespace eShop.Data.Migrations
                     b.ToTable("TBL_Brands");
                 });
 
-            modelBuilder.Entity("eShop.Data.Entities.TBL_Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EnTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FaTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Icon")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImgName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsMain")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsRemove")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("LastModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("RemoveDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TBL_Categories");
-                });
-
             modelBuilder.Entity("eShop.Data.Entities.TBL_Slider", b =>
                 {
                     b.Property<int>("Id")
@@ -146,41 +103,6 @@ namespace eShop.Data.Migrations
                     b.ToTable("TBL_Sliders");
                 });
 
-            modelBuilder.Entity("eShop.Data.Entities.TBL_SubCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsRemove")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("LastModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ParentId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("RemoveDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("SubId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ParentId");
-
-                    b.HasIndex("SubId");
-
-                    b.ToTable("TBL_SubCategories");
-                });
-
             modelBuilder.Entity("eShop.Data.Entities.TBL_Warranty", b =>
                 {
                     b.Property<int>("Id")
@@ -207,32 +129,6 @@ namespace eShop.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TBL_Warranties");
-                });
-
-            modelBuilder.Entity("eShop.Data.Entities.TBL_SubCategory", b =>
-                {
-                    b.HasOne("eShop.Data.Entities.TBL_Category", "Parent")
-                        .WithMany("PSubCategory")
-                        .HasForeignKey("ParentId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("eShop.Data.Entities.TBL_Category", "Sub")
-                        .WithMany("SSubCategory")
-                        .HasForeignKey("SubId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Parent");
-
-                    b.Navigation("Sub");
-                });
-
-            modelBuilder.Entity("eShop.Data.Entities.TBL_Category", b =>
-                {
-                    b.Navigation("PSubCategory");
-
-                    b.Navigation("SSubCategory");
                 });
 #pragma warning restore 612, 618
         }

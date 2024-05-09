@@ -10,13 +10,13 @@
 	  <Folder Include="AddressService\" />
 	  <Folder Include="BrandsService\BrandsForClient\" />
 	  <Folder Include="CartService\" />
-	  <Folder Include="CategoryService\" />
+	  <Folder Include="CategoryService\CategoryForClient\" />
 	  <Folder Include="ColorService\" />
 	  <Folder Include="Comment-FAQ\" />
 	  <Folder Include="DisCountService\" />
 	  <Folder Include="GalleryService\" />
+	  <Folder Include="SliderService\SliderForClient\" />
 	  <Folder Include="UserService\" />
-	  <Folder Include="SliderService\" />
 	  <Folder Include="RoleService\" />
 	  <Folder Include="PropertyService\" />
 	  <Folder Include="ProductService\" />

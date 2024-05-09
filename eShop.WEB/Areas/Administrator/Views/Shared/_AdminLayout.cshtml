@@ -14,6 +14,8 @@
 	<meta property="og:site_name" content="فروشگاه ای شاپ | خوش آمدید" />
 	<partial name="_SiteReferencesCSS" />
 	@RenderSection("styles", required: false)
+	<!-- فراخوانی کد های استایل شیت جهت صفحه بروزرسانی دسته بندی ها -->
+	@RenderSection("CategoryStyleCSS", required: false)
 </head>
 <body id="kt_app_body" data-kt-app-header-fixed-mobile="true" data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="true" data-kt-app-sidebar-push-header="true" data-kt-app-sidebar-push-toolbar="true" data-kt-app-sidebar-push-footer="true" data-kt-app-sidebar-stacked="true" data-kt-app-sidebar-secondary-enabled="true" data-kt-app-toolbar-enabled="true" class="app-default">
 	<script>var defaultThemeMode = "light"; var themeMode; if (document.documentElement) { if (document.documentElement.hasAttribute("data-bs-theme-mode")) { themeMode = document.documentElement.getAttribute("data-bs-theme-mode"); } else { if (localStorage.getItem("data-bs-theme") !== null) { themeMode = localStorage.getItem("data-bs-theme"); } else { themeMode = defaultThemeMode; } } if (themeMode === "system") { themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } document.documentElement.setAttribute("data-bs-theme", themeMode); }</script>
@@ -59,8 +61,8 @@
 						<!--begin::logo-->
 						<div class="app-sidebar-logo d-none d-md-flex flex-center pt-10 pb-2" id="kt_app_sidebar_logo">
 							<!--begin::Logo image-->
-                            <a href="/AdminArea/">
-								<img src="~/media/logos/warehouselogo.svg" class="h-30px" alt="لوگوی سامانه" />
+                            <a href="/Administrator/">
+								<i class="ki-outline ki-logistic pulse pulse-primary fs-3x"></i>
 							</a>
 							<!--end::Logo image-->
 						</div>
@@ -193,7 +195,8 @@
 	</div>
 	<!--end::اپلیکیشن-->
 	<partial name="_SiteReferencesJS" />
-	@RenderSection("scripts", required: false)
+	@await RenderSectionAsync("scripts", false)
+	@await RenderSectionAsync("js", false)
 	@await RenderSectionAsync("AdminScripts", false)
 </body>
 </html>

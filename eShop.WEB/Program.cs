@@ -1,5 +1,7 @@
 ﻿using eShop.Data.Context;
 using eShop.Service.BrandsService.BrandsForServer;
+using eShop.Service.CategoryService.CategoryForServer;
+using eShop.Service.SliderService.SliderForServer;
 using eShop.Service.WarrantyService.WarrantyForServer;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.CodeAnalysis.Options;
@@ -23,6 +25,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 
 builder.Services.AddTransient<IBrandsServiceForServer, BrandsServiceForServer>();
 builder.Services.AddTransient<IWarrantiesServiceForServer, WarrantiesServiceForServer>();
+builder.Services.AddTransient<ISlidersServiceForServer, SlidersServiceForServer>();
+builder.Services.AddTransient<ICategoriesServiceForServer, CategoriesServiceForServer>();
 #endregion
 
 #region متصل کردن کلیه سرویس های پروژه در سمت کلاینت

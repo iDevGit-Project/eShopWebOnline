@@ -1,5 +1,4 @@
-﻿@using eShop.Core.ExtentionMethods
-@model IEnumerable<GetBrandsViewModel>
+﻿@model IEnumerable<GetBrandsViewModel>
     
 @{
 	ViewData["Title:"] = "پنل مدیریت | فراخوانی لیست برندهای سمت مدیر";
@@ -144,7 +143,7 @@
 										<td class="text-start fs-6">@item.BrandId</td>
 										<td class="text-start fs-6">@item.FaTitle</td>
 										<td class="text-start fs-6">
-										<img src="@ImagePathExtention.PathBrandImageClient/@item.ImgName" style="height: 41px" />
+										<img class="lozad rounded mw-100" src="@ImagePathExtention.PathBrandImageClient/@item.ImgName" style="height: 41px" />
 										</td>
 										<td class="text-end fs-6 FEN">@item.EnTitle</td>
 										<td class="text-end justify-content-start flex-shrink-0">

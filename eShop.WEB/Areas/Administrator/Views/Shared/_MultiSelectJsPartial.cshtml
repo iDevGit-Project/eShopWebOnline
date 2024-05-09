@@ -1,0 +1,41 @@
+﻿<script>
+
+    $(".add-parent").click(function () {
+        var dataname = $(this).data("name");
+
+        if ($("#ParentList").val()) {
+            var value = $("#ParentList").children("option:selected").val();
+            var text = $("#ParentList").children("option:selected").text();
+
+            $(".ParentListSelected").append("<div class='item-Parent'><button  type='button' class='btn-remove item-btn-remove'>×</button>" +
+                "<input type='hidden' value='" + value + "' name='" + dataname + "' /><span>" + text + "</span> </div>");
+
+            $("#ParentList").children("option:selected").remove();
+
+        } else {
+            setTimeout(function () {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'دسته بندی دیگری وجود ندارد!',
+                    showConfirmButton: false,
+                    timer: 1800
+                })
+            }, 50)
+        }
+
+    });
+
+    $('.ParentListSelected').delegate(".btn-remove", 'click', function () {
+        var text = $(this).nextAll($(".subtext")).text();
+        var value = $(this).nextAll($("input [type=hidden]")).val();
+
+        $("#ParentList").append($('<option>', {
+            value: value,
+            text: text
+        }));
+
+        $(this).parent().remove();
+    });
+
+</script>
