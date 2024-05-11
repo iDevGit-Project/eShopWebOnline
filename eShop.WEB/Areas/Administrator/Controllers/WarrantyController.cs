@@ -39,6 +39,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 			var result = _warrantiesService.CreateWarranty(createWarranty);
 
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(result);
+			TempData["SuccessAlert"] = "ثبت گارانتی جدید با موفقیت انجام شد";
 			return RedirectToAction(nameof(Index));
 		}
 		#endregion
