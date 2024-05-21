@@ -47,12 +47,13 @@
 								<!--begin::Row-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="FaTitle" class="col-lg-4 fw-semibold fw-bold">نام برند (فارسی)</label>
+									<label asp-for="FaTitle" class="col-lg-4 fw-semibold fw-bold">نام برند (فارسی)
+										<span asp-validation-for="FaTitle" class="badge badge-light-danger"></span>
+									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-8">
 										<input type="text" asp-for="FaTitle" id="kt_docs_maxlength_custom_text" maxlength="48 " class="form-control border-primary fw-semibold fw-bold" autocomplete="off" placeholder="نام برند را به فارسی وارد نمایید.">
-										<span asp-validation-for="FaTitle" class="badge bg-red-thunderbird bg-font-red-thunderbird"></span>
 									</div>
 									<!--end::Col-->
 								</div>
@@ -62,6 +63,7 @@
 									<!--begin::Tags-->
 									<label asp-for="EnTitle" class="col-lg-4 fw-semibold fw-bold">
 										نام برند (انگلیسی)
+										<span asp-validation-for="EnTitle" class="badge badge-light-danger"></span>
 										<span class="ms-1" data-bs-toggle="tooltip" title="کاربرگرامی: نام برند میبایست به صورت لاتین نوشته شود">
 											<i class="ki-outline ki-information fs-7"></i>
 										</span>
@@ -70,7 +72,6 @@
 									<!--begin::Col-->
 									<div class="col-lg-8">
 										<input type="text" asp-for="EnTitle" id="kt_docs_maxlength_custom_Entext" maxlength="48 " class="form-control  fw-semibold fw-bold FEN text-end" autocomplete="off" placeholder="Enter the brand name in English">
-										<span asp-validation-for="EnTitle"></span>
 									</div>
 									<!--end::Col-->
 								</div>
@@ -79,12 +80,13 @@
 								<!--begin::Row-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="DesCripton" class="col-lg-4 fw-semibold fw-bold">توضیحات برند</label>
+									<label asp-for="DesCripton" class="col-lg-4 fw-semibold fw-bold">توضیحات برند
+										<span asp-validation-for="DesCripton" class="badge badge-light-danger"></span>
+									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-8">
 										<input type="text" asp-for="DesCripton" class="form-control  fw-semibold fw-bold" autocomplete="off" placeholder="شما می توانید برای برند خود توضیحاتی را به فارسی وارد نمایید.">
-										<span asp-validation-for="DesCripton"></span>
 									</div>
 									<!--end::Col-->
 								</div>
@@ -93,7 +95,10 @@
 								<!--begin::Input group-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label class="col-lg-4 fw-semibold fw-bold">بارگزاری تصویر شاخص</label>
+									<label asp-for="ImgName" class="col-lg-4 fw-semibold fw-bold">
+										بارگزاری تصویر شاخص
+										<span asp-validation-for="ImgName" class="badge badge-light-danger"></span>
+									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-8">

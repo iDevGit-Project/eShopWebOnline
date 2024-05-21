@@ -62,54 +62,49 @@
 						<div class="app-sidebar-logo d-none d-md-flex flex-center pt-10 pb-2" id="kt_app_sidebar_logo">
 							<!--begin::Logo image-->
                             <a href="/Administrator/">
-								<i class="ki-outline ki-logistic pulse pulse-primary fs-3x"></i>
+								<i class="ki-outline ki-logistic pulse pulse-primary fs-2tx"></i>
 							</a>
 							<!--end::Logo image-->
 						</div>
 						<!--end::logo-->
 						<!--begin::اصلی menu-->
-						<div class="app-sidebar-menu flex-grow-1 hover-scroll-overlay-y my-5" id="kt_aside_menu_wrapper"
-							 data-kt-scroll="true" data-kt-scroll-height="auto"
-							 data-kt-scroll-dependencies="#kt_app_sidebar_logo, #kt_app_sidebar_footer"
-							 data-kt-scroll-wrappers="#kt_app_sidebar_menu" data-kt-scroll-offset="5px">
-							<!--begin::menu-->
-							<div id="kt_aside_menu"
-								 class="menu menu-column menu-title-gray-600 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-semibold fs-6"
-								 data-kt-menu="true">
-								<!--begin:menu item-->
+						<div class="app-sidebar-menu flex-grow-1 hover-scroll-overlay-y my-5" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_app_sidebar_logo, #kt_app_sidebar_footer" data-kt-scroll-wrappers="#kt_app_sidebar_menu" data-kt-scroll-offset="5px">
+							<!--begin::Menu-->
+							<div id="kt_aside_menu" class="menu menu-column menu-title-gray-600 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-semibold fs-6" data-kt-menu="true">
+								<!--begin:Menu item-->
 								<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="left-start" class="menu-item here show py-2">
-									<!--begin:menu link-->
+									<!--begin:Menu link-->
 									<span class="menu-link menu-center">
 										<span class="menu-icon me-0">
-											<i class="ki-outline ki-basket fs-2x"></i>
+											<i class="ki-outline ki-home-2 fs-2qx"></i>
 										</span>
 									</span>
-									<!--end:menu link-->
-									<!--begin:menu sub-->
+									<!--end:Menu link-->
+									<!--begin:Menu sub-->
 									<div class="menu-sub menu-sub-dropdown px-2 py-4 w-250px mh-75 overflow-auto">
+										@await Component.InvokeAsync("AsideRightMenuDark_Home")
+									</div>
+									<!--end:Menu sub-->
+								</div>
+								<!--end:Menu item-->
+								<!--begin:Menu item-->
+								<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="left-start" class="menu-item py-2">
+									<!--begin:Menu link-->
+									<span class="menu-link menu-center">
+										<span class="menu-icon me-0">
+											<i class="ki-outline ki-basket fs-2qx"></i>
+										</span>
+									</span>
+									<!--end:Menu link-->
+									<!--begin:Menu sub-->
+									<div class="menu-sub menu-sub-dropdown menu-sub-indention px-2 py-4 w-250px mh-75 overflow-auto">
 										@await Component.InvokeAsync("AsideRightMenuDark_ItemA")
 									</div>
-									<!--end:menu sub-->
+									<!--end:Menu sub-->
 								</div>
-								<!--end:menu item-->
-								<!--begin:menu item-->
-								<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="left-start" class="menu-item here show py-2">
-									<!--begin:menu link-->
-									<span class="menu-link menu-center">
-										<span class="menu-icon me-0">
-											<i class="ki-outline ki-logistic fs-2x"></i>
-										</span>
-									</span>
-									<!--end:menu link-->
-									<!--begin:menu sub-->
-									<div class="menu-sub menu-sub-dropdown px-2 py-4 w-250px mh-75 overflow-auto">
-										@await Component.InvokeAsync("AsideRightMenuDark_ItemB")
-									</div>
-									<!--end:menu sub-->
-								</div>
-								<!--end:menu item-->
+								<!--end:Menu item-->
 							</div>
-							<!--end::menu-->
+							<!--end::Menu-->
 						</div>
 						<!--end::اصلی menu-->
 						<!--begin::footer-->
@@ -198,5 +193,6 @@
 	@await RenderSectionAsync("scripts", false)
 	@await RenderSectionAsync("js", false)
 	@await RenderSectionAsync("AdminScripts", false)
+	@await Component.InvokeAsync("NToastNotify")
 </body>
 </html>

@@ -5,6 +5,7 @@ using eShop.Service.BrandsService.BrandsForServer;
 using eShop.Service.WarrantyService.WarrantyForServer;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using NToastNotify;
 
 namespace eShop.WEB.Areas.Administrator.Controllers
 {
@@ -12,10 +13,12 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 	public class WarrantyController : BaseAdminController
 	{
 		#region متد سرویس های گارانتی
+		private readonly IToastNotification _toastNotification;
 		private readonly IWarrantiesServiceForServer _warrantiesService;
-		public WarrantyController(IWarrantiesServiceForServer warrantiesService)
+		public WarrantyController(IWarrantiesServiceForServer warrantiesService, IToastNotification toastNotification)
         {
 			_warrantiesService = warrantiesService;
+			_toastNotification = toastNotification;
         }
 		#endregion
 
@@ -36,10 +39,19 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		[HttpPost]
 		public IActionResult Create(CreateWarrantyViewModel createWarranty)
 		{
-			var result = _warrantiesService.CreateWarranty(createWarranty);
+            var result = _warrantiesService.CreateWarranty(createWarranty);
 
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(result);
-			TempData["SuccessAlert"] = "ثبت گارانتی جدید با موفقیت انجام شد";
+
+			_toastNotification.AddSuccessToastMessage("ثبت اطلاعات با موفقیت انجام شد", new ToastrOptions()
+			{
+				ProgressBar = true,
+				CloseButton = true,
+				NewestOnTop = true,
+				Debug = false,
+				PositionClass = "toast-top-center",
+				Title = "موفق",
+			});
 			return RedirectToAction(nameof(Index));
 		}
 		#endregion
@@ -61,6 +73,15 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		{
 			var Result = _warrantiesService.UpdateWarranty(UpdateWarranty);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
+			_toastNotification.AddInfoToastMessage("ویرایش اطلاعات با موفقیت انجام شد", new ToastrOptions()
+			{
+				ProgressBar = true,
+				CloseButton = true,
+				NewestOnTop = true,
+				Debug = false,
+				PositionClass = "toast-top-center",
+				Title = "ویرایش",
+			});
 			return RedirectToAction(nameof(Index));
 		}
 		#endregion
@@ -82,6 +103,15 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		{
 			var Result = _warrantiesService.RemoveWarranty(RemoveWarranty);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
+			_toastNotification.AddErrorToastMessage("حذف اطلاعات با موفقیت انجام شد", new ToastrOptions()
+			{
+				ProgressBar = true,
+				CloseButton = true,
+				NewestOnTop = true,
+				Debug = false,
+				PositionClass = "toast-top-center",
+				Title = "حذف",
+			});
 			return RedirectToAction(nameof(Index));
 		}
 		#endregion

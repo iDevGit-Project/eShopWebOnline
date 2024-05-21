@@ -45,17 +45,17 @@
 								<!--begin::Row-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="Link" class="col-lg-4 fw-semibold fw-bold">
+									<label asp-for="Link" class="col-lg-8 fw-semibold fw-bold">
 										یک پیوند یا لینک برای اسلایدر خود وارد نمایید
 										<span class="ms-1" data-bs-toggle="tooltip" title="مثال: http://www.mysite.com/slider">
 											<i class="ki-outline ki-information fs-7"></i>
 										</span>
+										<span asp-validation-for="Link" class="badge badge-light-danger mb-1"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-12">
 										<input type="text" asp-for="Link" id="kt_docs_maxlength_custom_text" maxlength="512 " class="form-control border-primary fw-semibold fw-bold" autocomplete="off" placeholder="یک پیوند یا لینک برای اسلایدر خود وارد نمایید.">
-										<span asp-validation-for="Link" class="badge bg-red-thunderbird bg-font-red-thunderbird"></span>
 									</div>
 									<!--end::Col-->
 								</div>
@@ -63,7 +63,10 @@
 								<!--begin::Input group-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label class="col-lg-2 fw-semibold fw-bold">بارگزاری تصویر اسلایدر</label>
+									<label asp-for="ImgName" class="col-lg-2 fw-semibold fw-bold">
+										بارگزاری تصویر اسلایدر
+										<span asp-validation-for="ImgName" class="badge badge-light-danger"></span>
+									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-5">
@@ -81,6 +84,7 @@
 											<input asp-for="IsActive" class="form-check-input h-30px w-50px" type="checkbox" id="flexSwitch30x50" />
 											<label class="form-check-label" for="flexSwitch30x50">
 												فعال یا غیر فعالسازی تصویر اسلایدر
+												<span asp-validation-for="IsActive" class="badge badge-light-danger"></span>
 											</label>
 										</div>
 									</div>

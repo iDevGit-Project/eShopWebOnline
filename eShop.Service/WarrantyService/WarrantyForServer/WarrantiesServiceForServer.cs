@@ -56,6 +56,7 @@ namespace eShop.Service.WarrantyService.WarrantyForServer
 				};
 			}
 
+
 			TBL_Warranty newDataWarranty = new TBL_Warranty()
 			{
 				CreationDate = DateTime.Now,
@@ -187,9 +188,7 @@ namespace eShop.Service.WarrantyService.WarrantyForServer
 		#region متد موجود بودن گارانتی در سمت سرور و عملیات بر روی آن
 		public bool ExistWarranty(string warantyName, int warantyId)
 		{
-			return _context.TBL_Warranties.Any(
-			   x => x.WarrantyName == warantyName.Trim().ToLower()
-			&& x.Id != warantyId
+			return _context.TBL_Warranties.Any(x => x.WarrantyName == warantyName.Trim().ToLower() && x.Id != warantyId
 			);
 		}
 		#endregion

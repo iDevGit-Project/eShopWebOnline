@@ -32,6 +32,16 @@ namespace eShop.WEB.Areas.Administrator.ViewComponents
     }
     #endregion
 
+    #region Home کامپوننت منوهای مشکی سمت راست - آیتم 
+    public class AsideRightMenuDark_HomeViewComponent : ViewComponent
+    {
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            return View("AsideRightMenuDark_Home");
+        }
+    }
+    #endregion
+
     #region A کامپوننت منوهای مشکی سمت راست - آیتم 
     public class AsideRightMenuDark_ItemAViewComponent : ViewComponent
     {

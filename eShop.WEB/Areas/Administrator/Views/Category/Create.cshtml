@@ -48,12 +48,14 @@
 								<!--begin::Row-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="FaTitle" class="col-lg-4 fw-semibold fw-bold">نام دسته بندی (فارسی)</label>
+									<label asp-for="FaTitle" class="col-lg-4 fw-semibold fw-bold">
+										نام دسته بندی (فارسی)
+										<span asp-validation-for="FaTitle" class="badge badge-light-danger mb-1"></span>
+									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-8">
 										<input type="text" asp-for="FaTitle" id="kt_docs_maxlength_custom_text" maxlength="64 " class="form-control border-primary fw-semibold fw-bold" autocomplete="off" placeholder="نام دسته بندی را به فارسی وارد نمایید.">
-										<span asp-validation-for="FaTitle" class="badge bg-red-thunderbird bg-font-red-thunderbird"></span>
 									</div>
 									<!--end::Col-->
 								</div>
@@ -63,6 +65,7 @@
 									<!--begin::Tags-->
 									<label asp-for="EnTitle" class="col-lg-4 fw-semibold fw-bold">
 										نام دسته بندی (انگلیسی)
+										<span asp-validation-for="EnTitle" class="badge badge-light-danger mb-1"></span>
 										<span class="ms-1" data-bs-toggle="tooltip" title="Dear user: The name of the category must be written in Latin.">
 											<i class="ki-outline ki-information fs-7"></i>
 										</span>
@@ -71,7 +74,6 @@
 									<!--begin::Col-->
 									<div class="col-lg-8">
 										<input type="text" asp-for="EnTitle" id="kt_docs_maxlength_custom_Entext" maxlength="64 " class="form-control  fw-semibold fw-bold FEN text-end" autocomplete="off" placeholder="Enter the brand name in English">
-										<span asp-validation-for="EnTitle"></span>
 									</div>
 									<!--end::Col-->
 								</div>
@@ -85,7 +87,6 @@
 									<!--begin::Col-->
 									<div class="col-lg-8">
 										<input type="text" asp-for="Icon" class="form-control  fw-semibold fw-bold" autocomplete="off" placeholder="شما می توانید برای دسته بندی خود توضیحاتی را به فارسی وارد نمایید.">
-										<span asp-validation-for="Icon"></span>
 									</div>
 									<!--end::Col-->
 								</div>
@@ -93,12 +94,13 @@
 								<!--begin::Row-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="Description" class="col-lg-4 fw-semibold fw-bold">توضیحات دسته بندی</label>
+									<label asp-for="Description" class="col-lg-4 fw-semibold fw-bold">توضیحات دسته بندی
+										<span asp-validation-for="Description" class="badge badge-light-danger mb-1"></span>
+									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-8">
 										<input type="text" asp-for="Description" class="form-control  fw-semibold fw-bold" autocomplete="off" placeholder="شما می توانید برای دسته بندی خود توضیحاتی را به فارسی وارد نمایید.">
-										<span asp-validation-for="Description"></span>
 									</div>
 									<!--end::Col-->
 								</div>
@@ -107,7 +109,9 @@
 								<!--begin::Input group-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label class="col-lg-4 fw-semibold fw-bold">بارگزاری تصویر دسته بندی</label>
+									<label class="col-lg-4 fw-semibold fw-bold">بارگزاری تصویر دسته بندی
+										<span asp-validation-for="ImgName" class="badge badge-light-danger mb-1"></span>
+									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-8">
@@ -130,12 +134,14 @@
 												<input asp-for="IsActive" class="form-check-input h-30px w-50px" type="checkbox" id="flexSwitch30x50" />
 												<label class="form-check-label" for="flexSwitch30x50">
 													فعالسازی دسته بندی.
+													<span asp-validation-for="IsActive" class="badge badge-light-danger mb-1"></span>
 												</label>
 											</div>
 											<div class="form-check form-switch form-check-custom form-check-solid me-10">
 												<input asp-for="IsMain" class="form-check-input h-30px w-50px" type="checkbox" id="flexSwitch30x50" />
 												<label class="form-check-label" for="flexSwitch30x50">
 													ثبت در منوی اصلی.
+													<span asp-validation-for="IsMain" class="badge badge-light-danger mb-1"></span>
 												</label>
 											</div>
 										</div>

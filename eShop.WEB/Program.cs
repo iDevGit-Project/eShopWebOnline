@@ -1,11 +1,14 @@
 ﻿using eShop.Data.Context;
 using eShop.Service.BrandsService.BrandsForServer;
 using eShop.Service.CategoryService.CategoryForServer;
+using eShop.Service.ColorService.ColorForServer;
+using eShop.Service.ProductService.ProductForServer;
 using eShop.Service.SliderService.SliderForServer;
 using eShop.Service.WarrantyService.WarrantyForServer;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
+using NToastNotify;
 using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +30,18 @@ builder.Services.AddTransient<IBrandsServiceForServer, BrandsServiceForServer>()
 builder.Services.AddTransient<IWarrantiesServiceForServer, WarrantiesServiceForServer>();
 builder.Services.AddTransient<ISlidersServiceForServer, SlidersServiceForServer>();
 builder.Services.AddTransient<ICategoriesServiceForServer, CategoriesServiceForServer>();
+builder.Services.AddTransient<IColorsServiceForServer, ColorsServiceForServer>();
+builder.Services.AddTransient<IProductServiceForServer, ProductServiceForServer>();
+#endregion
+
+#region عملیات نمایش پیغام های گرافیکی
+builder.Services.AddMvc().AddNToastNotifyToastr(new ToastrOptions
+{
+	ProgressBar = true,
+    CloseButton = true,
+    NewestOnTop = true,
+	PositionClass = ToastPositions.TopFullWidth,
+});
 #endregion
 
 #region متصل کردن کلیه سرویس های پروژه در سمت کلاینت
@@ -47,6 +62,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
+app.UseNToastNotify();
 
 app.MapControllerRoute(
     name: "area",

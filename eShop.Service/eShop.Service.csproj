@@ -11,15 +11,15 @@
 	  <Folder Include="BrandsService\BrandsForClient\" />
 	  <Folder Include="CartService\" />
 	  <Folder Include="CategoryService\CategoryForClient\" />
-	  <Folder Include="ColorService\" />
+	  <Folder Include="ColorService\ColorForClient\" />
 	  <Folder Include="Comment-FAQ\" />
 	  <Folder Include="DisCountService\" />
 	  <Folder Include="GalleryService\" />
+	  <Folder Include="ProductService\ProductForClient\" />
 	  <Folder Include="SliderService\SliderForClient\" />
 	  <Folder Include="UserService\" />
 	  <Folder Include="RoleService\" />
 	  <Folder Include="PropertyService\" />
-	  <Folder Include="ProductService\" />
 	  <Folder Include="WarrantyService\WarrantyForClient\" />
 	</ItemGroup>
 

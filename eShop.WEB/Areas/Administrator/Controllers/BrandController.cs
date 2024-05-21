@@ -3,6 +3,7 @@ using eShop.Data.ViewModels.BrandsViewModels.BrandsVMServer;
 using eShop.Service.BrandsService.BrandsForServer;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using NToastNotify;
 
 namespace eShop.WEB.Areas.Administrator.Controllers
 {
@@ -11,9 +12,11 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 	{
 		#region متد های سرویس برند
 		private readonly IBrandsServiceForServer _brandsService;
-		public BrandController(IBrandsServiceForServer brandsService)
+		private readonly IToastNotification _toastNotification;
+		public BrandController(IBrandsServiceForServer brandsService, IToastNotification toastNotification)
         {
-			this._brandsService = brandsService;
+			_brandsService = brandsService;
+			_toastNotification = toastNotification;
 		}
 		#endregion
 
@@ -39,6 +42,15 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 			var result = _brandsService.CreateBrand(createBrand);
 
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(result);
+			_toastNotification.AddSuccessToastMessage("ثبت اطلاعات با موفقیت انجام شد", new ToastrOptions()
+			{
+				ProgressBar = true,
+				CloseButton = true,
+				NewestOnTop = true,
+				Debug = false,
+				PositionClass = "toast-top-center",
+				Title = "موفق",
+			});
 			return RedirectToAction(nameof(Index));
 		}
 		#endregion
@@ -60,6 +72,15 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		{
 			var Result = _brandsService.UpdateBrand(UpdateBrand);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
+			_toastNotification.AddInfoToastMessage("ویرایش اطلاعات با موفقیت انجام شد", new ToastrOptions()
+			{
+				ProgressBar = true,
+				CloseButton = true,
+				NewestOnTop = true,
+				Debug = false,
+				PositionClass = "toast-top-center",
+				Title = "ویرایش",
+			});
 			return RedirectToAction(nameof(Index));
 		}
 		#endregion
@@ -83,6 +104,15 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		{
 			var Result = _brandsService.RemoveBrand(RemoveBrand);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
+			_toastNotification.AddErrorToastMessage("حذف اطلاعات با موفقیت انجام شد", new ToastrOptions()
+			{
+				ProgressBar = true,
+				CloseButton = true,
+				NewestOnTop = true,
+				Debug = false,
+				PositionClass = "toast-top-center",
+				Title = "حذف",
+			});
 			return RedirectToAction(nameof(Index));
 		}
 		#endregion

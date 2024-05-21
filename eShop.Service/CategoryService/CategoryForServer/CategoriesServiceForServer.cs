@@ -284,27 +284,25 @@ namespace eShop.Service.CategoryService.CategoryForServer
 		#endregion
 
 		#region متد نمایش دسته بندی های لیست پدر
-
 		public List<GetCategoriesForParentListViewModel> GetCategoriesForParentList(int SubId)
 		{
 			return _context.TBL_Categories
 				.Where(x => x.Id != SubId)
-							.Select(x => new GetCategoriesForParentListViewModel
-							{
-								CategoryId = x.Id,
-								EnTitle = x.EnTitle,
-								FaTitle = x.FaTitle,
-								ImgName = x.ImgName,
-								IsActive = x.IsActive,
-								IsMain = x.IsMain
-							})
-							.AsNoTracking()
-							.ToList();
+					.Select(x => new GetCategoriesForParentListViewModel
+					{
+						CategoryId = x.Id,
+						EnTitle = x.EnTitle,
+						FaTitle = x.FaTitle,
+						ImgName = x.ImgName,
+						IsActive = x.IsActive,
+						IsMain = x.IsMain
+					})
+					.AsNoTracking()
+					.ToList();
 		}
 		#endregion
 
 		#region متد لیست نمایش دسته بندی ها جهت اضافه یا حذف رکدن زیردسته ها
-
 		public List<GetParentCategoryForAddOrRemoveSubViewModel> GetParentCategoryForAddOrRemoveSub(int SubId)
 		{
 			var q = (from c in _context.TBL_Categories

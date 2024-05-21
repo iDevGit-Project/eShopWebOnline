@@ -14,6 +14,7 @@ namespace eShop.Common.Operations
 		public static string Failed = "خطا در انجام عملیات. لطفاً دقایقی دیگر تلاش کنید.";
 		public static string Duplicate = "کاربرگرامی: داده های وارد شده تکراریست.";
 		public static string NotFound = "کاربرگرامی: چنین مقداری در برنامه یافت نشد...";
+		public static string NoInputData = "هیچ داده ای وارد نشده است.";
 		public static string DuplicateEmail = "ایمیل وارد شده تکراری است.";
 		public static string Register = "حساب کاربری با موفقیت ایجاد شد/ ایمیل فعال سازی برای شما ارسال شد";
 		public static string NotFoundUser = "کاربری با این مشخصات یافت نشد.";

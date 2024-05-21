@@ -21,6 +21,18 @@ namespace eShop.Data.Context
 		public DbSet<TBL_Slider> TBL_Sliders { get; set; }
 		public DbSet<TBL_Category> TBL_Categories { get; set; }
 		public DbSet<TBL_SubCategory> TBL_SubCategories { get; set; }
+		public DbSet<TBL_Color> TBL_Colors { get; set; }
+
+		//START - TBL Products
+		public DbSet<TBL_Product> TBL_Products { get; set; }
+		public DbSet<TBL_ProductGallery> TBL_ProductGalleries { get; set; }
+		public DbSet<TBL_ProductPrice> TBL_ProductPrices { get; set; }
+		public DbSet<TBL_ProductProperty> ProductProperties { get; set; }
+		public DbSet<TBL_ProductQuestion> TBL_ProductQuestions { get; set; }
+		public DbSet<TBL_ProductReview> TBL_ProductReviews { get; set; }
+		//END - TBL Products
+
+		public DbSet<TBL_FAQAnswer> TBL_FAQAnswers { get; set; }
 		#endregion
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)

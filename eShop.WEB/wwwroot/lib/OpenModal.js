@@ -112,7 +112,6 @@ function message(final) {
             }, 50)
             setTimeout(function () { window.location.reload() }, 1890)
             break;
-
         case 3:
             setTimeout(function () {
                 Swal.fire({
@@ -153,5 +152,4 @@ function message(final) {
             setTimeout(function () { window.location.reload() }, 1890)
             break;
     }
-
 }

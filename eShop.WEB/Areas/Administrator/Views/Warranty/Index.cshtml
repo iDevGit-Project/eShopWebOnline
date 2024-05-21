@@ -29,33 +29,26 @@
                         </a>
 						</div>
 						@await Component.InvokeAsync("ResultComponent")
-					<!--نمایش پیغام موفقیت آمیز بودن ثبت یا خطای درج اطلاعات در برنامه-->
-						@if (TempData["Result"] != null)
-						{
-							if (TempData["Result"].ToString() == "true")
+							@if (TempData["SuccessAlert"] != null)
 							{
-								<script>
-									toastr.options = {
-										"closeButton": false,
-										"debug": false,
-										"newestOnTop": false,
-										"progressBar": true,
-										"positionClass": "toastr-top-center",
-										"preventDuplicates": false,
-										"onclick": null,
-										"showDuration": "300",
-										"hideDuration": "350",
-										"timeOut": "1800",
-										"extendedTimeOut": "1000",
-										"showEasing": "swing",
-										"hideEasing": "linear",
-										"showMethod": "fadeIn",
-										"hideMethod": "fadeOut"
-									};
-									toastr.success("گارانتی شما با موفقیت حذف گردید.");
-								</script>
+								if (TempData["SuccessAlert"].ToString() == "true")
+								{
+									<script>
+										setTimeout(function () {
+											Swal.fire({
+												icon: 'success',
+												title: "عملیات موفق",
+												text: "ثبت گارانتی جدید با موفقیت انجام شد",
+												confirmButtonText: "ثبت و بازگشت.",
+												position: "top-center",
+												reverseButtons: false,
+												customClass: {
+													confirmButton: "btn btn-primary",
+												}
+											}, 50)
+									</script>
+								}
 							}
-						}
 						<!--end::heading-->
 						<!--start::Toolbar-->
 						<div class="card-header border-0 pt-6">
