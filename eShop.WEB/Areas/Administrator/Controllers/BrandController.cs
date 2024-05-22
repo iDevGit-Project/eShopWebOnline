@@ -42,14 +42,14 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 			var result = _brandsService.CreateBrand(createBrand);
 
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(result);
-			_toastNotification.AddSuccessToastMessage("ثبت اطلاعات با موفقیت انجام شد", new ToastrOptions()
+			_toastNotification.AddSuccessToastMessage("ثبت برند با موفقیت انجام شد.", new ToastrOptions()
 			{
 				ProgressBar = true,
 				CloseButton = true,
 				NewestOnTop = true,
-				Debug = false,
-				PositionClass = "toast-top-center",
-				Title = "موفق",
+				TimeOut = 2000,
+				Title = "ثبت",
+				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));
 		}
@@ -77,9 +77,9 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				ProgressBar = true,
 				CloseButton = true,
 				NewestOnTop = true,
-				Debug = false,
-				PositionClass = "toast-top-center",
+				TimeOut = 2000,
 				Title = "ویرایش",
+				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));
 		}
@@ -109,9 +109,9 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				ProgressBar = true,
 				CloseButton = true,
 				NewestOnTop = true,
-				Debug = false,
-				PositionClass = "toast-top-center",
+				TimeOut = 2000,
 				Title = "حذف",
+				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));
 		}

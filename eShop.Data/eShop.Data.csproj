@@ -10,6 +10,7 @@
 	  <Folder Include="QueryModels\" />
 	  <Folder Include="ViewModels\BrandsViewModels\BrandsVMClient\" />
 	  <Folder Include="ViewModels\CategoriesViewModels\CategoriesVMClient\" />
+	  <Folder Include="ViewModels\ProductGalleriesViewModels\ProductGalleriesVMClient\" />
 	  <Folder Include="ViewModels\SlidersViewModels\SlidersVMClient\" />
 	  <Folder Include="ViewModels\WarrantiesViewModels\WarrantiesVMClient\" />
 	</ItemGroup>

@@ -10,7 +10,7 @@ namespace eShop.Data.ViewModels.WarrantiesViewModels.WarrantiesVMServer
 	public class CreateWarrantyViewModel
 	{
 		[Display(Name = "نام گارانتی")]
-		[Required(ErrorMessage = "وارد کردن {0} اجباری می باشد.")]
+		[Required(ErrorMessage = "وارد کردن {0} الزامیست.")]
 		[MinLength(3, ErrorMessage = "{0} نمیتواند کمتر از {1} باشد")]
 		[MaxLength(100, ErrorMessage = "{0} نمیتواند بیشتر از {1} باید")]
 		public string WarrantyName { get; set; }

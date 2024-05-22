@@ -2,6 +2,7 @@
 using eShop.Service.BrandsService.BrandsForServer;
 using eShop.Service.CategoryService.CategoryForServer;
 using eShop.Service.ColorService.ColorForServer;
+using eShop.Service.ProductGalleryService.ProductGalleryForServer;
 using eShop.Service.ProductService.ProductForServer;
 using eShop.Service.SliderService.SliderForServer;
 using eShop.Service.WarrantyService.WarrantyForServer;
@@ -32,6 +33,8 @@ builder.Services.AddTransient<ISlidersServiceForServer, SlidersServiceForServer>
 builder.Services.AddTransient<ICategoriesServiceForServer, CategoriesServiceForServer>();
 builder.Services.AddTransient<IColorsServiceForServer, ColorsServiceForServer>();
 builder.Services.AddTransient<IProductServiceForServer, ProductServiceForServer>();
+builder.Services.AddTransient<IProductGalleryServiceForServer, ProductGalleryServiceForServer>();
+
 #endregion
 
 #region عملیات نمایش پیغام های گرافیکی

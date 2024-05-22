@@ -28,9 +28,9 @@ namespace eShop.Core.ExtentionMethods
 		public static string PathProductImageClient = "/upload/ProductImage/";
 		#endregion
 
-		#region متد بارگزاری تصاویر مربوط به گالری تصاویر
-		public static string PathGalleryImageServer = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/upload/GalleryImage/");
-		public static string PathGalleryImageClient = "/upload/GalleryImage/";
+		#region متد بارگزاری تصاویر مربوط به گالری محصولات
+		public static string PathProductGalleryImageServer = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/upload/ProductGalleryImage/");
+		public static string PathProductGalleryImageClient = "/upload/ProductGalleryImage/";
 		#endregion
 	}
 }

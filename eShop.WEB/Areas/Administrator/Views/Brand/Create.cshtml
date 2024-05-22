@@ -4,8 +4,6 @@
 	ViewData["Title:"] = "پنل مدیریت | فراخوانی لیست برندهای سمت مدیر";
 }
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" asp-append-version="true" />
-
 @section scripts
 {
 	<partial name="_ValidationScriptsPartial" />
@@ -215,24 +213,12 @@
 		})
 	</script>
 	<!--===================================================================-->
-	<!-- اسکریپت آژاکس مربوط به حذف قیمت -->
+	<!-- اسکریپت آژاکس مربوط به بررسی خالی بودن مقدارورودی -->
 	<script>
 		function emptyInputInvalid(brandid) {
 			Swal.fire({
-				showClass: {
-					popup: `
-						animate__animated
-						animate__fadeInUp
-						animate__faster`
-				},
-				hideClass: {
-					popup: `
-						animate__animated
-						animate__fadeOutDown
-						animate__faster`
-				},
 				icon: 'warning',
-				title: "آیا از حذف قیمت انتخاب شده مطمئن هستید ؟",
+				title: "خطای بارگذاری تصویر کالا",
 				text: "حذف قیمت جاری از سیستم",
 				confirmButtonText: "بلی, حذف شود.",
 				cancelButtonText: "خیر, انصراف!",
@@ -246,5 +232,5 @@
 			})
 		}
 	</script>
-	<!-- اسکریپت آژاکس مربوط به حذف قیمت -->
+	<!-- اسکریپت آژاکس مربوط به بررسی خالی بودن مقدارورودی -->
 }
