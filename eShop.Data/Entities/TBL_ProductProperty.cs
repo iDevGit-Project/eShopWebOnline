@@ -13,8 +13,8 @@ namespace eShop.Data.Entities
 		public int ProductId { get; set; }
 
 		#region  و جدول  Product جدول ارتباط با 
-		//[ForeignKey(nameof(PropertyValueId))]
-		//public PropertyValue PropertyValue { get; set; }
+		[ForeignKey(nameof(PropertyValueId))]
+		public TBL_ProductPropertyValue PropertyValue { get; set; }
 
 		[ForeignKey(nameof(ProductId))]
 		public TBL_Product TBLProduct { get; set; }

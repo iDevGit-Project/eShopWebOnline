@@ -48,7 +48,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				CloseButton = true,
 				NewestOnTop = true,
 				TimeOut = 2000,
-				Title = "ثبت",
+				Title = "موفق",
 				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));

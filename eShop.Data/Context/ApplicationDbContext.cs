@@ -23,14 +23,18 @@ namespace eShop.Data.Context
 		public DbSet<TBL_SubCategory> TBL_SubCategories { get; set; }
 		public DbSet<TBL_Color> TBL_Colors { get; set; }
 
-		//START - TBL Products
+		//START - TBL ALL Products
 		public DbSet<TBL_Product> TBL_Products { get; set; }
 		public DbSet<TBL_ProductGallery> TBL_ProductGalleries { get; set; }
 		public DbSet<TBL_ProductPrice> TBL_ProductPrices { get; set; }
-		public DbSet<TBL_ProductProperty> ProductProperties { get; set; }
 		public DbSet<TBL_ProductQuestion> TBL_ProductQuestions { get; set; }
 		public DbSet<TBL_ProductReview> TBL_ProductReviews { get; set; }
-		//END - TBL Products
+		public DbSet<TBL_ProductProperty> ProductProperties { get; set; }
+		public DbSet<TBL_ProductPropertyGroup> TBL_ProductPropertyGroups { get; set; }
+		public DbSet<TBL_ProductPropertyName> TBL_ProductPropertyNames { get; set; }
+		public DbSet<TBL_ProductPropertyNameCategory> TBL_ProductPropertyNameCategories { get; set; }
+		public DbSet<TBL_ProductPropertyValue> TBL_ProductPropertyValues { get; set; }
+		//END - TBL ALL Products
 
 		public DbSet<TBL_FAQAnswer> TBL_FAQAnswers { get; set; }
 		#endregion

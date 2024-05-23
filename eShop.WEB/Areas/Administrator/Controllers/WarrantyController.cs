@@ -42,15 +42,14 @@ namespace eShop.WEB.Areas.Administrator.Controllers
             var result = _warrantiesService.CreateWarranty(createWarranty);
 
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(result);
-
-			_toastNotification.AddSuccessToastMessage("ثبت اطلاعات با موفقیت انجام شد", new ToastrOptions()
+			_toastNotification.AddSuccessToastMessage("ثبت اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{
 				ProgressBar = true,
 				CloseButton = true,
 				NewestOnTop = true,
-				Debug = false,
-				PositionClass = "toast-top-center",
-				Title = "موفق",
+				TimeOut = 2000,
+				Title = "ثبت",
+				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));
 		}
@@ -73,14 +72,14 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		{
 			var Result = _warrantiesService.UpdateWarranty(UpdateWarranty);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
-			_toastNotification.AddInfoToastMessage("ویرایش اطلاعات با موفقیت انجام شد", new ToastrOptions()
+			_toastNotification.AddInfoToastMessage("ویرایش اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{
 				ProgressBar = true,
 				CloseButton = true,
 				NewestOnTop = true,
-				Debug = false,
-				PositionClass = "toast-top-center",
+				TimeOut = 2000,
 				Title = "ویرایش",
+				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));
 		}
@@ -103,14 +102,14 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		{
 			var Result = _warrantiesService.RemoveWarranty(RemoveWarranty);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
-			_toastNotification.AddErrorToastMessage("حذف اطلاعات با موفقیت انجام شد", new ToastrOptions()
+			_toastNotification.AddErrorToastMessage("حذف اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{
 				ProgressBar = true,
 				CloseButton = true,
 				NewestOnTop = true,
-				Debug = false,
-				PositionClass = "toast-top-center",
+				TimeOut = 2000,
 				Title = "حذف",
+				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));
 		}

@@ -15,6 +15,7 @@
 	  <Folder Include="Comment-FAQ\" />
 	  <Folder Include="DisCountService\" />
 	  <Folder Include="ProductGalleryService\ProductGalleryForClient\" />
+	  <Folder Include="ProductPropertyGroupService\ProductPropertyGroupForClient\" />
 	  <Folder Include="ProductService\ProductForClient\" />
 	  <Folder Include="SliderService\SliderForClient\" />
 	  <Folder Include="UserService\" />

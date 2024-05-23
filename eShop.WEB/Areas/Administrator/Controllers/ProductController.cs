@@ -57,7 +57,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 
 			var Result = _productService.CreateProduct(createProduct);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
-			_toastNotification.AddSuccessToastMessage("ثبت محصول با موفقیت انجام شد.", new ToastrOptions()
+			_toastNotification.AddSuccessToastMessage("ثبت اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{
 				ProgressBar = true,
 				CloseButton = true,
@@ -95,7 +95,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 
 			var Result = _productService.UpdateProduct(UpdateProduct);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
-			_toastNotification.AddInfoToastMessage("ویرایش محصول با موفقیت انجام شد.", new ToastrOptions()
+			_toastNotification.AddInfoToastMessage("ویرایش اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{
 				ProgressBar = true,
 				CloseButton = true,

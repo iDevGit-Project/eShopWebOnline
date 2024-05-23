@@ -53,8 +53,9 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				CloseButton = true,
 				NewestOnTop = true,
 				Debug = false,
-				PositionClass = "toast-top-center",
+				TimeOut = 2000,
 				Title = "موفق",
+				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));
 		}
@@ -82,14 +83,15 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 
 			var Result = _colorsServiceForServer.UpdateColor(UpdateColor);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
-			_toastNotification.AddInfoToastMessage("ویرایش اطلاعات با موفقیت انجام شد", new ToastrOptions()
+			_toastNotification.AddInfoToastMessage(".ویرایش اطلاعات با موفقیت انجام شد", new ToastrOptions()
 			{
 				ProgressBar = true,
 				CloseButton = true,
 				NewestOnTop = true,
 				Debug = false,
-				PositionClass = "toast-top-center",
+				TimeOut = 2000,
 				Title = "ویرایش",
+				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));
 		}
@@ -123,8 +125,9 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				CloseButton = true,
 				NewestOnTop = true,
 				Debug = false,
-				PositionClass = ToastPositions.TopFullWidth,
+				TimeOut = 2000,
 				Title = "حذف",
+				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));
 		}
