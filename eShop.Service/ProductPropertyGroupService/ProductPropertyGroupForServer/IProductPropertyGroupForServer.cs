@@ -10,7 +10,7 @@ namespace eShop.Service.ProductPropertyGroupService.ProductPropertyGroupForServe
 {
 	public interface IProductPropertyGroupForServer
 	{
-		List<GetPropertyGroupsViewModel> GetPropertyGroups();
-		OperationResult CreatePropertyGroup(CreatePropertyGroupViewModel propertyGroups);
+		List<GetPropertyGroupsViewModel> GetProductPropertyGroups();
+		OperationResult CreateProductPropertyGroups(CreatePropertyGroupViewModel propertyGroups);
 	}
 }

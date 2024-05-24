@@ -3,6 +3,7 @@ using eShop.Service.BrandsService.BrandsForServer;
 using eShop.Service.CategoryService.CategoryForServer;
 using eShop.Service.ColorService.ColorForServer;
 using eShop.Service.ProductGalleryService.ProductGalleryForServer;
+using eShop.Service.ProductPropertyGroupService.ProductPropertyGroupForServer;
 using eShop.Service.ProductService.ProductForServer;
 using eShop.Service.SliderService.SliderForServer;
 using eShop.Service.WarrantyService.WarrantyForServer;
@@ -34,6 +35,7 @@ builder.Services.AddTransient<ICategoriesServiceForServer, CategoriesServiceForS
 builder.Services.AddTransient<IColorsServiceForServer, ColorsServiceForServer>();
 builder.Services.AddTransient<IProductServiceForServer, ProductServiceForServer>();
 builder.Services.AddTransient<IProductGalleryServiceForServer, ProductGalleryServiceForServer>();
+builder.Services.AddTransient<IProductPropertyGroupForServer, ProductPropertyGroupForServer>();
 
 #endregion
 

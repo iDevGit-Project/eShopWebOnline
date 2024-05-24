@@ -46,12 +46,14 @@
 								<!--begin::Row-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="WarrantyName" class="col-lg-4 fw-semibold fw-bold">نام گارانتی (فارسی)</label>
+									<label asp-for="WarrantyName" class="col-lg-4 fw-semibold fw-bold" for="GroupTitle">
+										نام گارانتی (فارسی)
+										<span asp-validation-for="WarrantyName" class="badge badge-light-danger mb-1"></span>
+									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
-									<div class="col-lg-12">
-										<input type="text" asp-for="WarrantyName" class="form-control border-warning bg-light-warning text-warning fw-semibold fw-bold" autocomplete="off" placeholder="نام گارانتی را به فارسی وارد نمایید.">
-										<span asp-validation-for="WarrantyName" class="badge bg-red-thunderbird bg-font-red-thunderbird"></span>
+									<div class="col-lg-8">
+										<input type="text" asp-for="WarrantyName" id="kt_docs_maxlength_custom_text" maxlength="64 " class="form-control border-warning bg-light-warning text-warning fw-semibold fw-bold" autocomplete="off" placeholder="نام گارانتی را به فارسی وارد نمایید.">
 									</div>
 									<!--end::Col-->
 								</div>
