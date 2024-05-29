@@ -1,7 +1,7 @@
 ﻿using eShop.Common.Operations;
 using eShop.Data.Context;
 using eShop.Data.Entities;
-using eShop.Data.ViewModels.ColorsViewModels;
+using eShop.Data.ViewModels.ColorsViewModels.ColorsVMServer;
 using eShop.Data.ViewModels.WarrantiesViewModels.WarrantiesVMServer;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace eShop.Service.ColorService.ColorForServer
 {
-	public class ColorsServiceForServer : IColorsServiceForServer
+    public class ColorsServiceForServer : IColorsServiceForServer
 	{
 		#region در سمت مدیرسایت یا سرور Color متد های پیکربندی اطلاعات
 

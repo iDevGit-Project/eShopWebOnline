@@ -2,7 +2,7 @@
 using eShop.Core.ExtentionMethods;
 using eShop.Data.Context;
 using eShop.Data.Entities;
-using eShop.Data.ViewModels.ProductsViewModels;
+using eShop.Data.ViewModels.ProductsViewModels.ProductsVMServer;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace eShop.Service.ProductService.ProductForServer
 {
-	public class ProductServiceForServer : IProductServiceForServer
+    public class ProductServiceForServer : IProductServiceForServer
 	{
 		#region متد های پیکربندی اطلاعات محصولات در سمت سرور یا مدیرسایت
 
@@ -45,7 +45,7 @@ namespace eShop.Service.ProductService.ProductForServer
 		}
 		#endregion
 
-		#region متد ثبت کالای جدید به همراه دسته بندی های انتخای کاربرسایت
+		#region متد عملیاتی ثبت کالای جدید به همراه دسته بندی های انتخای کاربرسایت
 		public OperationResult<int> CreateProduct(CreateProductViewModel createProduct)
 		{
 			bool exist = ExistProduct(0, createProduct.FaTitle, createProduct.EnTitle);

@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace eShop.Service.ProductPropertyGroupService.ProductPropertyGroupForServer
 {
-	public class ProductPropertyGroupForServer : IProductPropertyGroupForServer
+	public class ProductPropertyGroupServiceForServer : IProductPropertyGroupServiceForServer
 	{
 		#region متد های پیکربندی اطلاعات نام گروه بندی خصوصیات یا ویژه گی های کالاها یا محصولات در سمت سرور یا مدیرسایت
 
 		private readonly ApplicationDbContext _context;
-		public ProductPropertyGroupForServer(ApplicationDbContext context)
+		public ProductPropertyGroupServiceForServer(ApplicationDbContext context)
 		{
 			_context = context;
 		}

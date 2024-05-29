@@ -1,5 +1,5 @@
 ﻿using eShop.Core.ExtentionMethods;
-using eShop.Data.ViewModels.ColorsViewModels;
+using eShop.Data.ViewModels.ColorsViewModels.ColorsVMServer;
 using eShop.Service.ColorService.ColorForServer;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -7,7 +7,7 @@ using NToastNotify;
 
 namespace eShop.WEB.Areas.Administrator.Controllers
 {
-	[Area(nameof(Administrator))]
+    [Area(nameof(Administrator))]
 	public class ColorController : BaseAdminController
 	{
 		#region Color متد سرویس های 
@@ -90,7 +90,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				NewestOnTop = true,
 				Debug = false,
 				TimeOut = 2000,
-				Title = "ویرایش",
+				Title = "بروزرسانی",
 				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));

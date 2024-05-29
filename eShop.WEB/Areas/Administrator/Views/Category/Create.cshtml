@@ -1,11 +1,11 @@
 ﻿@model CreateCategoryViewModel
 @{
+	ViewData["Title:"] = "پنل مدیریت | فراخوانی لیست دسته بندی های سمت مدیر";
+}
+@{
 	var ParentList = ViewBag.ParentList as List<GetCategoriesForParentListViewModel>;
 }
 
-@{
-	ViewData["Title:"] = "پنل مدیریت | فراخوانی لیست دسته بندی های سمت مدیر";
-}
 
 @section scripts
 {
@@ -157,7 +157,7 @@
 										</label>
 										<!--end::Tags-->
 										<!--begin::آیتم-->
-										<div class="d-flex align-items-center min-w-100px">
+										<div class="d-flex align-items-center min-w-200px">
 											<!--begin::Option-->
 											<button type="button" class="btn btn-sm btn-light-primary me-20 add-parent" data-name="addOrUpdateParent.ParentId">
 												<i class="ki-duotone ki-abstract-26 fs-2"><span class="path1"></span><span class="path2"></span></i>انتخاب
@@ -166,7 +166,7 @@
 										</div>
 										<!--end::آیتم-->
 										<!--begin::آیتم-->
-										<div class="d-flex align-items-center min-w-300px">
+										<div class="col-lg-5 d-flex align-items-center">
 											<!--begin::Option-->
 											<select id="ParentList" class="form-select" data-control="select2" data-hide-search="false" data-placeholder="انتخاب دسته بندی ها">
 												@foreach (var item in ParentList)

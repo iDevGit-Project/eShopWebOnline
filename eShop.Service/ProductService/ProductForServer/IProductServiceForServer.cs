@@ -1,6 +1,6 @@
 ﻿using eShop.Common.Operations;
 using eShop.Data.Entities;
-using eShop.Data.ViewModels.ProductsViewModels;
+using eShop.Data.ViewModels.ProductsViewModels.ProductsVMServer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace eShop.Service.ProductService.ProductForServer
 {
-	public interface IProductServiceForServer
+    public interface IProductServiceForServer
 	{
 		List<GetProductsViewModel> GetProducts();
 		OperationResult<int> CreateProduct(CreateProductViewModel createProduct);

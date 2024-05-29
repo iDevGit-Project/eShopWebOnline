@@ -26,7 +26,7 @@
 							بازگشت
 						</a>
 					</div>
-					@await Component.InvokeAsync("ResultComponent")
+					
 					@if (TempData["SuccessAlert"] != null)
 					{
 						if (TempData["SuccessAlert"].ToString() == "true")
@@ -55,7 +55,7 @@
 							<a asp-action="Create" asp-controller="ProductPropertyGroup" class="btn btn-sm btn-primary me-3" data-bs-toggle="tooltip" title="ثبت نام گروه بندی محصولات یا کالا">
 								<i class="ki-duotone ki-plus fs-2">
 								</i>
-								ثبت نام گروه بندی محصولات یا کالا
+								ثبت گروه بندی محصولات یا کالا
 							</a>
 							<!--begin::جستجو-->
 							<div class="d-flex align-items-center position-relative my-1">

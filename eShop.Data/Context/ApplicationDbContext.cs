@@ -29,7 +29,7 @@ namespace eShop.Data.Context
 		public DbSet<TBL_ProductPrice> TBL_ProductPrices { get; set; }
 		public DbSet<TBL_ProductQuestion> TBL_ProductQuestions { get; set; }
 		public DbSet<TBL_ProductReview> TBL_ProductReviews { get; set; }
-		public DbSet<TBL_ProductProperty> ProductProperties { get; set; }
+		public DbSet<TBL_ProductProperty> TBL_ProductProperties { get; set; }
 		public DbSet<TBL_ProductPropertyGroup> TBL_ProductPropertyGroups { get; set; }
 		public DbSet<TBL_ProductPropertyName> TBL_ProductPropertyNames { get; set; }
 		public DbSet<TBL_ProductPropertyNameCategory> TBL_ProductPropertyNameCategories { get; set; }

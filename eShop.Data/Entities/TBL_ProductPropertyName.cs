@@ -11,6 +11,8 @@ namespace eShop.Data.Entities
 	{
 		public string Title { get; set; }
 		public int GroupId { get; set; }
+		
+		// این فیلد به جهت قراردادن مقادیر چند منظوره برای درج مقادیر گروه بندی ها قرارداده شده است
 		public byte type { get; set; }
 
 		#region جدول ارتباطات

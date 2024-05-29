@@ -1,5 +1,5 @@
 ﻿using eShop.Common.Operations;
-using eShop.Data.ViewModels.ColorsViewModels;
+using eShop.Data.ViewModels.ColorsViewModels.ColorsVMServer;
 using eShop.Data.ViewModels.WarrantiesViewModels.WarrantiesVMServer;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace eShop.Service.ColorService.ColorForServer
 {
-	public interface IColorsServiceForServer
+    public interface IColorsServiceForServer
 	{
 		List<GetColorsViewModel> GetColors();
 		OperationResult CreateColor(CreateColorViewModel createColor);

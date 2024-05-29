@@ -14,17 +14,17 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 	public class ProductPropertyGroupController : BaseAdminController
 	{
 		#region متد های سرویس گروه بندی اطلاعات کالا یا محصولات 
-		private readonly IProductPropertyGroupForServer _propertyGroupService;
+		private readonly IProductPropertyGroupServiceForServer _propertyGroupService;
 		private readonly IToastNotification _toastNotification;
 
-		public ProductPropertyGroupController(IProductPropertyGroupForServer propertyGroupService, IToastNotification toastNotification)
+		public ProductPropertyGroupController(IProductPropertyGroupServiceForServer propertyGroupService, IToastNotification toastNotification)
 		{
 			_propertyGroupService = propertyGroupService;
 			_toastNotification = toastNotification;
 		}
 		#endregion
 
-		#region متد های نمایش کلیه اطلاعات گروه بندی اطلاعات کالا یا محصولات
+		#region متد های نمایش کلیه اطلاعات گروه بندی کالا یا محصولات
 		public IActionResult Index()
 		{
 			return View(_propertyGroupService.GetProductPropertyGroups());
@@ -32,7 +32,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 
 		#endregion
 
-		#region متد ثبت اطلاعات گروه بندی اطلاعات کالا یا محصولات
+		#region متد ثبت اطلاعات گروه بندی کالا یا محصولات
 
 		[HttpGet]
 		public IActionResult Create()
@@ -51,7 +51,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				CloseButton = true,
 				NewestOnTop = true,
 				TimeOut = 2000,
-				Title = "ثبت",
+				Title = "موفق",
 				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Create));

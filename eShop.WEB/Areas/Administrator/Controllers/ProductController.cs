@@ -1,5 +1,5 @@
 ﻿using eShop.Core.ExtentionMethods;
-using eShop.Data.ViewModels.ProductsViewModels;
+using eShop.Data.ViewModels.ProductsViewModels.ProductsVMServer;
 using eShop.Service.BrandsService.BrandsForServer;
 using eShop.Service.CategoryService.CategoryForServer;
 using eShop.Service.ProductService.ProductForServer;
@@ -9,7 +9,7 @@ using NToastNotify;
 
 namespace eShop.WEB.Areas.Administrator.Controllers
 {
-	[Area(nameof(Administrator))]
+    [Area(nameof(Administrator))]
 	public class ProductController : BaseAdminController
 	{
 		#region متد های سرویس های کالاها یا محصولات، برندها و دسته بندی ها
@@ -101,7 +101,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				CloseButton = true,
 				NewestOnTop = true,
 				TimeOut = 2000,
-				Title = "ویرایش",
+				Title = "بروزرسانی",
 				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));

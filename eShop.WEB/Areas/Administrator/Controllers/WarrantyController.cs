@@ -13,8 +13,8 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 	public class WarrantyController : BaseAdminController
 	{
 		#region متد سرویس های گارانتی
-		private readonly IToastNotification _toastNotification;
 		private readonly IWarrantiesServiceForServer _warrantiesService;
+		private readonly IToastNotification _toastNotification;
 		public WarrantyController(IWarrantiesServiceForServer warrantiesService, IToastNotification toastNotification)
         {
 			_warrantiesService = warrantiesService;
@@ -48,7 +48,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				CloseButton = true,
 				NewestOnTop = true,
 				TimeOut = 2000,
-				Title = "ثبت",
+				Title = "موفق",
 				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Create));
@@ -78,7 +78,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				CloseButton = true,
 				NewestOnTop = true,
 				TimeOut = 2000,
-				Title = "ویرایش",
+				Title = "بروزرسانی",
 				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));

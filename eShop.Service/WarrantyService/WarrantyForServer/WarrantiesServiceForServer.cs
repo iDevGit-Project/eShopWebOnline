@@ -5,6 +5,7 @@ using eShop.Data.Entities;
 using eShop.Data.ViewModels.BrandsViewModels.BrandsVMServer;
 using eShop.Data.ViewModels.WarrantiesViewModels.WarrantiesVMServer;
 using Microsoft.EntityFrameworkCore;
+using NToastNotify;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace eShop.Service.WarrantyService.WarrantyForServer
 		}
 		#endregion
 
-		#region متد ثبت گارانتی جدید
+		#region متد عملیاتی ثبت گارانتی جدید
 		public OperationResult<int> CreateWarranty(CreateWarrantyViewModel createWarranty)
 		{
 			bool existWarranty = this.ExistWarranty(createWarranty.WarrantyName, 0);

@@ -16,7 +16,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		private readonly IToastNotification _toastNotification;
 		public CategoryController(ICategoriesServiceForServer categoryService, IToastNotification toastNotification)
 		{
-			this._categoryService = categoryService;
+			_categoryService = categoryService;
 			_toastNotification = toastNotification;
 		}
 		#endregion
@@ -107,7 +107,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				NewestOnTop = true,
 				Debug = false,
 				TimeOut = 2000,
-				Title = "ویرایش",
+				Title = "بروزرسانی",
 				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));

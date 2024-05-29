@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace eShop.Service.ProductPropertyGroupService.ProductPropertyGroupForServer
 {
-	public interface IProductPropertyGroupForServer
+	public interface IProductPropertyGroupServiceForServer
 	{
 		List<GetPropertyGroupsViewModel> GetProductPropertyGroups();
 		OperationResult CreateProductPropertyGroups(CreatePropertyGroupViewModel propertyGroups);

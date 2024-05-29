@@ -16,7 +16,6 @@ namespace eShop.Data.Entities
 		#region جدول ارتباطات
 		[ForeignKey(nameof(PropertyNameId))]
 		public TBL_ProductPropertyName PropertyName { get; set; }
-
 		public List<TBL_ProductProperty> PropertyProducts { get; set; }
 		#endregion
 	}

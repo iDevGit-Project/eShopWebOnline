@@ -7,13 +7,20 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Content Remove="C:\Users\iDevLPT\.nuget\packages\ntoastnotify\8.0.0\contentFiles\any\net6.0\wwwroot\noty.js" />
+	  <Content Remove="C:\Users\iDevLPT\.nuget\packages\ntoastnotify\8.0.0\contentFiles\any\net6.0\wwwroot\toastr.js" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Folder Include="QueryModels\" />
 	  <Folder Include="ViewModels\BrandsViewModels\BrandsVMClient\" />
 	  <Folder Include="ViewModels\CategoriesViewModels\CategoriesVMClient\" />
+	  <Folder Include="ViewModels\ColorsViewModels\ColorsVMClient\" />
 	  <Folder Include="ViewModels\ProductPropertyGroupViewModels\ProductPropertyGroupVMClient\" />
-	  <Folder Include="ViewModels\ProductPropertyValueViewModels\" />
-	  <Folder Include="ViewModels\ProductPropertyNameViewModels\" />
+	  <Folder Include="ViewModels\ProductPropertyNameViewModels\ProductPropertyNameVMClient\" />
 	  <Folder Include="ViewModels\ProductGalleriesViewModels\ProductGalleriesVMClient\" />
+	  <Folder Include="ViewModels\ProductPropertyValueViewModels\ProductPropertyValueVMCLient\" />
+	  <Folder Include="ViewModels\ProductsViewModels\ProductsVMClient\" />
 	  <Folder Include="ViewModels\SlidersViewModels\SlidersVMClient\" />
 	  <Folder Include="ViewModels\WarrantiesViewModels\WarrantiesVMClient\" />
 	</ItemGroup>
@@ -35,6 +42,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\eShop.Core\eShop.Core.csproj" />
+	  <PackageReference Include="NToastNotify" Version="8.0.0" />
 	</ItemGroup>
 
 </Project>
