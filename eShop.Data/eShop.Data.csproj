@@ -16,6 +16,7 @@
 	  <Folder Include="ViewModels\BrandsViewModels\BrandsVMClient\" />
 	  <Folder Include="ViewModels\CategoriesViewModels\CategoriesVMClient\" />
 	  <Folder Include="ViewModels\ColorsViewModels\ColorsVMClient\" />
+	  <Folder Include="ViewModels\DisCountsViewModels\DisCountsVMClient\" />
 	  <Folder Include="ViewModels\ProductPropertyGroupViewModels\ProductPropertyGroupVMClient\" />
 	  <Folder Include="ViewModels\ProductPropertyNameViewModels\ProductPropertyNameVMClient\" />
 	  <Folder Include="ViewModels\ProductGalleriesViewModels\ProductGalleriesVMClient\" />

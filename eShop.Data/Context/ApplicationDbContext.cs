@@ -34,6 +34,7 @@ namespace eShop.Data.Context
 		public DbSet<TBL_ProductPropertyName> TBL_ProductPropertyNames { get; set; }
 		public DbSet<TBL_ProductPropertyNameCategory> TBL_ProductPropertyNameCategories { get; set; }
 		public DbSet<TBL_ProductPropertyValue> TBL_ProductPropertyValues { get; set; }
+		public DbSet<TBL_DisCount> TBL_DisCounts { get; set; }
 		//END - TBL ALL Products
 
 		public DbSet<TBL_FAQAnswer> TBL_FAQAnswers { get; set; }
