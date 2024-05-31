@@ -42,25 +42,25 @@ namespace eShop.WEB.Areas.Administrator.ViewComponents
     }
     #endregion
 
-    #region A کامپوننت منوهای مشکی سمت راست - آیتم 
-    public class AsideRightMenuDark_ItemAViewComponent : ViewComponent
+    #region Product کامپوننت منوهای مشکی سمت راست - آیتم 
+    public class AsideRightMenuDark_Item_ProductViewComponent : ViewComponent
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View("AsideRightMenuDark_ItemA");
+            return View("AsideRightMenuDark_Item_Product");
         }
     }
-    #endregion
+	#endregion
 
-    #region B کامپوننت منوهای مشکی سمت راست - آیتم 
-    public class AsideRightMenuDark_ItemBViewComponent : ViewComponent
-    {
-        public async Task<IViewComponentResult> InvokeAsync()
-        {
-            return View("AsideRightMenuDark_ItemB");
-        }
-    }
-    #endregion
+	#region Discount کامپوننت منوهای مشکی سمت راست - آیتم 
+	public class AsideRightMenuDark_Item_DiscountViewComponent : ViewComponent
+	{
+		public async Task<IViewComponentResult> InvokeAsync()
+		{
+			return View("AsideRightMenuDark_Item_Discount");
+		}
+	}
+	#endregion
 
     #region کامپوننت اطلاعات پروفایل کاربر و مدیر سیستم
     public class AsideRightDarkProfileViewComponent : ViewComponent

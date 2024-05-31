@@ -76,7 +76,7 @@
 									<!--begin:Menu link-->
 									<span class="menu-link menu-center">
 										<span class="menu-icon me-0">
-											<i class="ki-outline ki-home-2 fs-2qx"></i>
+											<i class="ki-outline ki-home-2 fs-2hx"></i>
 										</span>
 									</span>
 									<!--end:Menu link-->
@@ -92,13 +92,31 @@
 									<!--begin:Menu link-->
 									<span class="menu-link menu-center">
 										<span class="menu-icon me-0">
-											<i class="ki-outline ki-basket fs-2qx"></i>
+											<i class="ki-outline ki-basket fs-2hx"></i>
 										</span>
 									</span>
 									<!--end:Menu link-->
 									<!--begin:Menu sub-->
 									<div class="menu-sub menu-sub-dropdown menu-sub-indention px-2 py-4 w-250px mh-75 overflow-auto">
-										@await Component.InvokeAsync("AsideRightMenuDark_ItemA")
+										@await Component.InvokeAsync("AsideRightMenuDark_Item_Product")
+									</div>
+									<!--end:Menu sub-->
+								</div>
+								<!--end:Menu item-->
+								<!--begin:Menu item-->
+								<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="left-start" class="menu-item py-2">
+									<!--begin:Menu link-->
+									<span class="menu-link menu-center">
+										<span class="menu-icon me-0">
+											<i class="ki-duotone ki-discount fs-3x">
+												<span class="path1"></span><span class="path2"></span>
+											</i>
+										</span>
+									</span>
+									<!--end:Menu link-->
+									<!--begin:Menu sub-->
+									<div class="menu-sub menu-sub-dropdown menu-sub-indention px-2 py-4 w-250px mh-75 overflow-auto">
+										@await Component.InvokeAsync("AsideRightMenuDark_Item_Discount")
 									</div>
 									<!--end:Menu sub-->
 								</div>

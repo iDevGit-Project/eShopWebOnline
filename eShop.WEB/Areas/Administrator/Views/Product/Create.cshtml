@@ -83,7 +83,7 @@
 									<!--begin::آیتم-->
 									<div class="col-lg-7">
 										<!--begin::Option-->
-										<select asp-for="CategoryId" class="form-select" data-control="select2" data-hide-search="false" placeholder="دسته بندی خود را انتخاب کنید">
+										<select asp-for="CategoryId" class="form-select" data-control="select2" data-hide-search="false" placeholder="دسته بندی خود را انتخاب کنید" style="cursor: pointer;">
 											<option>لیست دسته بندی ها</option>
 											@foreach (var item in Model.GetCategories)
 											{
@@ -106,7 +106,7 @@
 									<!--begin::آیتم-->
 									<div class="col-lg-7">
 										<!--begin::Option-->
-										<select asp-for="BrandId" class="form-select" data-control="select2" data-hide-search="false" placeholder="برند خود را انتخاب کنید">
+										<select asp-for="BrandId" class="form-select" data-control="select2" data-hide-search="false" placeholder="برند خود را انتخاب کنید" style="cursor: pointer;">
 											<option>لیست برندها</option>
 											@foreach (var item in Model.Brands)
 											{
@@ -127,23 +127,11 @@
 									</label>
 									<!--end::Tags-->
 									<!--begin::Dialer-->
+									<!--begin::Col-->
 									<div class="col-lg-7">
-										<div class="position-relative w-md-290px g-9 mb-5" data-kt-dialer="true" data-kt-dialer-min="1" data-kt-dialer-max="999999" data-kt-dialer-step="1">
-											<!--begin::Decrease control-->
-											<button type="button" class="btn btn-icon btn-active-color-gray-400 position-absolute translate-middle-y top-50 start-0" data-kt-dialer-control="decrease">
-												<i class="ki-duotone ki-minus-square fs-2"><span class="path1"></span><span class="path2"></span></i>
-											</button>
-											<!--end::Decrease control-->
-											<!--begin::Input control-->
-											<input type="text" id="CountMinInPacking" name="CountMinInPacking" class="form-control form-control-solid fw-semibold fw-bold text-center" autocomplete="off" placeholder="امتیاز به این کالا" data-kt-dialer-control="input" />
-											<!--end::Input control-->
-											<!--begin::Increase control-->
-											<button type="button" class="btn btn-icon btn-active-color-gray-400 position-absolute translate-middle-y top-50 end-0" data-kt-dialer-control="increase">
-												<i class="ki-duotone ki-plus-square fs-2"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
-											</button>
-											<!--end::Increase control-->
-										</div>
+										<input type="text" asp-for="Score" class="form-control border-primary" autocomplete="off" placeholder="امتیاز به این نحصول را به صورت عدد وارد نمایید.">
 									</div>
+									<!--end::Col-->
 								</div>
 								<!--end::Row-->
 								<div class="row mb-7">
@@ -158,7 +146,7 @@
 											<!--begin::آیتم-->
 											<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 												<div class="form-check form-switch form-check-custom form-check-solid me-10">
-													<input asp-for="IsActive" class="form-check-input h-30px w-50px" type="checkbox" id="flexSwitch30x50" />
+													<input asp-for="IsActive" class="form-check-input h-30px w-50px" type="checkbox" id="flexSwitch30x50" style="cursor: pointer;" />
 													<label class="form-check-label" for="flexSwitch30x50">
 														آیا محصول فعال شود؟
 														<span asp-validation-for="IsActive" class="badge badge-light-danger mb-1"></span>
@@ -228,18 +216,7 @@
 		};
 	</script>
 	<!--==================================================================-->
-	<script>
-		// نمایش حداکثر تعداد کاراکتر وارد شده به فارسی
-		$('#kt_docs_maxlength_custom_text').maxlength({
-			threshold: 128,
-			warningClass: "badge badge-danger",
-			limitReachedClass: "badge badge-primary",
-			separator: ' از ',
-			preText: ' حداکثر ',
-			postText: 'کاراکتر استفاده شده است.',
-			validate: true
-		});
-	</script>
+
 	<!-- Refresh Data in Tables -->
 	<script>
 		$('#kt_refresh_datatable').on('click', function () {
