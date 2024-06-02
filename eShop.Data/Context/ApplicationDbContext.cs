@@ -25,8 +25,11 @@ namespace eShop.Data.Context
 
 		//START - TBL ALL Products
 		public DbSet<TBL_Product> TBL_Products { get; set; }
+		public DbSet<TBL_ProductCart> TBL_ProductCarts { get; set; }
+		public DbSet<TBL_ProductCartDetail> TBL_ProductCartDetails { get; set; }
 		public DbSet<TBL_ProductGallery> TBL_ProductGalleries { get; set; }
 		public DbSet<TBL_ProductPrice> TBL_ProductPrices { get; set; }
+		public DbSet<TBL_ProductSeler> TBL_ProductSelers { get; set; }
 		public DbSet<TBL_ProductQuestion> TBL_ProductQuestions { get; set; }
 		public DbSet<TBL_ProductReview> TBL_ProductReviews { get; set; }
 		public DbSet<TBL_ProductProperty> TBL_ProductProperties { get; set; }
@@ -34,8 +37,10 @@ namespace eShop.Data.Context
 		public DbSet<TBL_ProductPropertyName> TBL_ProductPropertyNames { get; set; }
 		public DbSet<TBL_ProductPropertyNameCategory> TBL_ProductPropertyNameCategories { get; set; }
 		public DbSet<TBL_ProductPropertyValue> TBL_ProductPropertyValues { get; set; }
-		public DbSet<TBL_DisCount> TBL_DisCounts { get; set; }
 		//END - TBL ALL Products
+		public DbSet<TBL_DisCount> TBL_DisCounts { get; set; }
+		public DbSet<TBL_PaymentDetail> TBL_PaymentDetails { get; set; }
+		public DbSet<TBL_User> TBL_Users { get; set; }
 
 		public DbSet<TBL_FAQAnswer> TBL_FAQAnswers { get; set; }
 		#endregion

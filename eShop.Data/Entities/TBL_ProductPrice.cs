@@ -32,10 +32,10 @@ namespace eShop.Data.Entities
 		[ForeignKey(nameof(ColorId))]
 		public TBL_Color TBLColor { get; set; }
 
-		//[ForeignKey(nameof(SellerId))]
-		//public Seller Seller { get; set; }
+		[ForeignKey(nameof(SellerId))]
+		public TBL_ProductSeler TBLProductSeler { get; set; }
 
-		//public List<CartDetail> CartDetails { get; set; }
+		public List<TBL_ProductCartDetail> TBLProductCartDetail { get; set; }
 		#endregion
 	}
 }

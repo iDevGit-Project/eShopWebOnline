@@ -21,7 +21,6 @@
 	  <Folder Include="ViewModels\ProductPropertyNameViewModels\ProductPropertyNameVMClient\" />
 	  <Folder Include="ViewModels\ProductGalleriesViewModels\ProductGalleriesVMClient\" />
 	  <Folder Include="ViewModels\ProductPropertyValueViewModels\ProductPropertyValueVMCLient\" />
-	  <Folder Include="ViewModels\ProductsViewModels\ProductsVMClient\" />
 	  <Folder Include="ViewModels\SlidersViewModels\SlidersVMClient\" />
 	  <Folder Include="ViewModels\WarrantiesViewModels\WarrantiesVMClient\" />
 	</ItemGroup>
