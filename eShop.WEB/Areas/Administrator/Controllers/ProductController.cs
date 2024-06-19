@@ -112,5 +112,34 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		#region متد حذف اطلاعات محصول یا کالا
 
 		#endregion
+
+		#region متد ثبت اطلاعات مربوط به توضیحات کالا یا محصولات
+		[HttpGet]
+		public IActionResult ProductReview(int Id)
+		{
+			var FindProductReview = _productService.FindProductReviewById(Id);
+			if (FindProductReview == null)
+				FindProductReview = FindProductReview ?? new AddOrUpdateProductReviewViewModel() { ProductId = Id };
+
+			return View(FindProductReview);
+		}
+
+		[HttpPost]
+		public IActionResult ProductReview(AddOrUpdateProductReviewViewModel orUpdateProductReview)
+		{
+			var Result = _productService.UpdateProductReview(orUpdateProductReview);
+			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
+			_toastNotification.AddSuccessToastMessage("ثبت توضیحات کالا با موفقیت انجام شد.", new ToastrOptions()
+			{
+				ProgressBar = true,
+				CloseButton = true,
+				NewestOnTop = true,
+				TimeOut = 2000,
+				Title = "موفق",
+				PositionClass = ToastPositions.TopFullWidth,
+			});
+			return RedirectToAction(nameof(Index));
+		}
+		#endregion
 	}
 }

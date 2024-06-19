@@ -1,5 +1,298 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@* @model AddOrUpdateProductPropertyValueForProductViewModel
+
 @{
+    var OldValue = ViewBag.OldValue as List<ProductPropertyOldValueForProductViewModel>;
 }
+@{
+	ViewData["Title:"] = "پنل مدیریت | ثبت مقادیر ویژه گی های کالا یا محصولات سمت مدیر";
+}
+
+@section scripts
+{
+	<partial name="_ValidationScriptsPartial" />
+}
+
+<!--begin::content container-->
+<div id="kt_app_content_container" class="app-container container-xxl">
+	<!--begin::row-->
+	<div class="row gy-5 g-xl-10">
+		<!--begin::col-->
+		<div class="col-xl-12 mb-xl-12">
+			<!--begin::engage widget 1-->
+			<div class="card h-md-100" dir="rtl">
+				<!--begin::body-->
+				<div class="card-body align-items-start flex-column">
+					<!--begin::heading-->
+					<div class="card-header align-items-start px-0 border-0 pt-50">
+						<h3 class="card-title align-items-start flex-column">
+							<span class="card-label fw-bold text-dark">ثبت کالا یا محصول جدید</span>
+							<span class="text-muted mt-1 fw-semibold fs-7">ثبت اطلاعات مربوط به کالا یا محصول جدید در فروشگاه</span>
+						</h3>
+						<a asp-action="Index" asp-controller="Product" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+							<i class="ki-duotone ki-home fs-3">
+							</i>
+							بازگشت به لیست کالا یا محصول ها
+						</a>
+					</div>
+					<!--begin:Form-->
+					<form asp-controller="ProductPropertyValue" asp-action="ProductProperty"
+						  method="post"
+						  data-ajax="true"
+						  data-callback=""
+						  data-action="Refresh"
+						  enctype="multipart/form-data">
+						<input type="hidden" asp-for="ProductId" />
+						<input type="hidden" asp-for="categoryid" />
+						<!--begin::details نمایش-->
+						<div class="card mb-5 d-flex flex-column nav-group nav-group-outline mx-auto" id="myForm">
+							<!--begin::کارت body-->
+							<div class="card-body p-9">
+								<!--begin::Row-->
+								<div class="row mb-7">
+									<!--begin::Tags-->
+									<label asp-for="FaTitle" class="col-lg-5 fw-semibold fw-bold">
+										نام کالا (فارسی)
+										<span asp-validation-for="FaTitle" class="badge badge-light-danger mb-1"></span>
+									</label>
+									<!--end::Tags-->
+									<!--begin::Col-->
+									<div class="col-lg-7">
+										<input type="text" asp-for="FaTitle" id="kt_docs_maxlength_custom_text" maxlength="128 " class="form-control border-primary fw-semibold fw-bold" autocomplete="off" placeholder="نام کالا یا محصول را به فارسی وارد نمایید.">
+									</div>
+									<!--end::Col-->
+								</div>
+								<!--end::Row-->
+								<!--begin::Row-->
+								<div class="row mb-7">
+									<!--begin::Tags-->
+									<label asp-for="EnTitle" class="col-lg-5 fw-semibold fw-bold">
+										نام کالا (انگلیسی)
+										<span asp-validation-for="EnTitle" class="badge badge-light-danger mb-1"></span>
+									</label>
+									<!--end::Tags-->
+									<!--begin::Col-->
+									<div class="col-lg-7">
+										<input type="text" asp-for="EnTitle" id="kt_docs_maxlength_custom_text" maxlength="128 " class="form-control border-primary FEN" autocomplete="off" placeholder="Enter the name of the product in English.">
+									</div>
+									<!--end::Col-->
+								</div>
+								<!--end::Row-->
+								<!--begin::Row-->
+								<div class="row mb-7">
+									<!--begin::Tags-->
+									<label asp-for="CategoryId" class="col-lg-5 fw-semibold fw-bold">
+										دسته بندی را انتخاب کنید
+										<span asp-validation-for="CategoryId" class="badge badge-light-danger mb-1"></span>
+									</label>
+									<!--end::Tags-->
+									<!--begin::آیتم-->
+									<div class="col-lg-7">
+										<!--begin::Option-->
+										<select asp-for="CategoryId" class="form-select" data-control="select2" data-hide-search="false" placeholder="دسته بندی خود را انتخاب کنید" style="cursor: pointer;">
+											<option>لیست دسته بندی ها</option>
+											@foreach (var item in Model.GetCategories)
+											{
+												<option value="@item.CategoryId">@item.FaTitle</option>
+											}
+										</select>
+										<!--end::Option-->
+									</div>
+									<!--end::آیتم-->
+								</div>
+								<!--end::Row-->
+								<!--begin::Row-->
+								<div class="row mb-7">
+									<!--begin::Tags-->
+									<label asp-for="BrandId" class="col-lg-5 fw-semibold fw-bold">
+										برند کالا را انتخاب کنید
+										<span asp-validation-for="BrandId" class="badge badge-light-danger mb-1"></span>
+									</label>
+									<!--end::Tags-->
+									<!--begin::آیتم-->
+									<div class="col-lg-7">
+										<!--begin::Option-->
+										<select asp-for="BrandId" class="form-select" data-control="select2" data-hide-search="false" placeholder="برند خود را انتخاب کنید" style="cursor: pointer;">
+											<option>لیست برندها</option>
+											@foreach (var item in Model.Brands)
+											{
+												<option value="@item.BrandId">@item.FaTitle</option>
+											}
+										</select>
+										<!--end::Option-->
+									</div>
+									<!--end::آیتم-->
+								</div>
+								<!--end::Row-->
+								<!--begin::Row-->
+								<div class="row mb-7">
+									<!--begin::Tags-->
+									<label asp-for="Score" class="col-lg-5 fw-semibold fw-bold">
+										امتیاز محصول
+										<span asp-validation-for="Score" class="badge badge-light-danger mb-1"></span>
+									</label>
+									<!--end::Tags-->
+									<!--begin::Dialer-->
+									<!--begin::Col-->
+									<div class="col-lg-7">
+										<input type="text" asp-for="Score" class="form-control border-primary" autocomplete="off" placeholder="امتیاز به این نحصول را به صورت عدد وارد نمایید.">
+									</div>
+									<!--end::Col-->
+								</div>
+								<!--end::Row-->
+								<div class="row mb-7">
+									<!--begin::Tags-->
+									<label asp-for="IsActive" class="col-lg-5 fw-semibold fw-bold">
+										فعال یا غیرفعاسازی محصول
+										<span asp-validation-for="IsActive" class="badge badge-light-danger"></span>
+									</label>
+									<!--end::Tags-->
+									<div class="col-lg-7">
+										<div class="d-flex align-items-center border border-dashed border-gray-300 rounded px-7 py-3">
+											<!--begin::آیتم-->
+											<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
+												<div class="form-check form-switch form-check-custom form-check-solid me-10">
+													<input asp-for="IsActive" class="form-check-input h-30px w-50px" type="checkbox" id="flexSwitch30x50" style="cursor: pointer;" />
+													<label class="form-check-label" for="flexSwitch30x50">
+														آیا محصول فعال شود؟
+														<span asp-validation-for="IsActive" class="badge badge-light-danger mb-1"></span>
+													</label>
+												</div>
+											</div>
+											<!--end::آیتم-->
+										</div>
+										<!--begin::Col-->
+									</div>
+								</div>
+								<div class="row mb-7">
+									<!--begin::Tags-->
+									<label asp-for="ImgName" class="col-lg-5 fw-semibold fw-bold">
+										بارگزاری تصویر کالا یا محصول
+										<span asp-validation-for="ImgName" class="badge badge-light-danger"></span>
+									</label>
+									<!--end::Tags-->
+									<!--begin::Col-->
+									<div class="col-lg-7">
+										<label for="files" class="btn fw-bold  btn-light-danger">انتخاب تصویر کالا یا محصول ...</label>
+										<input asp-for="ImgName" style="display:none;" type="file" id="files" class="form-control  FEN fw-semibold fw-bold input_container">
+										<!--begin::توضیحات-->
+										<div class="text-muted fs-7">پسوند های مجاز : <span class="fs-7 text-dark fw-bold badge badge-light-danger fw-semibold">png, jpg, jpeg</span></div>
+										<!--end::توضیحات-->
+										<span asp-validation-for="ImgName" class="badge bg-red-thunderbird bg-font-red-thunderbird"></span>
+									</div>
+									<!--end::Col-->
+								</div>
+								<!--end::Input group-->
+							</div>
+							<!--end::کارت body-->
+						</div>
+						<!--end::details نمایش-->
+						<!--begin::Actions-->
+						<div class="text-start">
+							<button type="submit" class="btn  btn-sm btn-primary me-3"><i class="ki-duotone ki-plus fs-2"></i><span class="indicator-label">ثبت اطلاعات</span></button>
+							<a asp-action="Index" asp-controller="AdminDashboard" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+								<i class="ki-duotone ki-home fs-3">
+								</i>
+								انصراف و بازگشت
+							</a>
+						</div>
+						<!--end::Actions-->
+					</form>
+					<!--end:Form-->
+				</div>
+				<!--end::body-->
+			</div>
+			<!--end::engage widget 1-->
+		</div>
+		<!--end::col-->
+	</div>
+	<!--end::row-->
+</div>
+<!--end::content container-->
+@section AdminScripts {
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
+
+	<!--اسکریپت تغییر نام عکس انتخاب شده-->
+	<script>
+		document.querySelector("#files").onchange = function () {
+			const fileName = this.files[0]?.name;
+			const label = document.querySelector("label[for=files]");
+			label.innerText = fileName ?? "تصویر کالای خود را انتخاب و بارگزاری نمایید ...";
+		};
+	</script>
+	<!--==================================================================-->
+	<!-- Refresh Data in Tables -->
+	<script>
+		$('#kt_refresh_datatable').on('click', function () {
+			// نمایش فرم انیمیشن در زمان ثبت اطلاعات
+			const loadingEl = document.createElement("div");
+			document.body.prepend(loadingEl);
+			loadingEl.classList.add("page-loader");
+			loadingEl.classList.add("flex-column");
+			loadingEl.classList.add("bg-dark");
+			loadingEl.classList.add("bg-opacity-75");
+			loadingEl.innerHTML = `
+									<span class="spinner-border text-primary" role="status"></span>
+									<span class="text-gray-100 fs-5 mt-5">سیستم در حال بروزرسانی اطلاعات ...</span>`;
+			KTApp.showPageLoading();
+			setTimeout(function () {
+				KTApp.hidePageLoading();
+				loadingEl.remove();
+				window.location.reload();
+			}, 2200);
+			setTimeout(function () {
+				toastr.options = {
+					"debug": false,
+					"closeButton": false,
+					"newestOnTop": false,
+					"progressBar": false,
+					"positionClass": "toastr-top-center",
+					"preventDuplicates": false,
+					"showDuration": "600",
+					"hideDuration": "2200",
+					"timeOut": "2200",
+					"extendedTimeOut": "2200",
+					"showEasing": "swing",
+					"hideEasing": "linear",
+					"showMethod": "fadeIn",
+					"hideMethod": "fadeOut"
+				};
+				toastr.success("بروزرسانی انجام شد.");
+			}, 800);
+		})
+	</script>
+	<!--===================================================================-->
+	<!-- اسکریپت آژاکس مربوط به حذف قیمت -->
+	<script>
+		function emptyInputInvalid(brandid) {
+			Swal.fire({
+				showClass: {
+					popup: `
+							animate__animated
+							animate__fadeInUp
+							animate__faster`
+				},
+				hideClass: {
+					popup: `
+							animate__animated
+							animate__fadeOutDown
+							animate__faster`
+				},
+				icon: 'warning',
+				title: "آیا از حذف قیمت انتخاب شده مطمئن هستید ؟",
+				text: "حذف قیمت جاری از سیستم",
+				confirmButtonText: "بلی, حذف شود.",
+				cancelButtonText: "خیر, انصراف!",
+				position: "top-center",
+				showCancelButton: true,
+				reverseButtons: false,
+				customClass: {
+					confirmButton: "btn btn-danger",
+					cancelButton: "btn btn-secondary"
+				}
+			})
+		}
+	</script>
+	<!-- اسکریپت آژاکس مربوط به حذف قیمت -->
+}
+ *@

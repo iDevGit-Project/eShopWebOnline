@@ -11,7 +11,6 @@ namespace eShop.Service.ProductService.ProductForClient
 	{
 		GetDetailProductClientViewModel GetDetailProductById(int ProductId);
 		List<GetProductGalleriesViewModel> GetProductGalleries(int ProductId);
-
 		List<GetProductPriceClientViewModel> GetProductPriceClient(int ProductId);
 		List<GetSellerClientViewModel> GetSellerForProductById(List<int> SellerId);
 		GetReviewForClientViewModel GetReviewForClient(int ProductId);

@@ -7,7 +7,9 @@ using eShop.Service.ProductGalleryService.ProductGalleryForServer;
 using eShop.Service.ProductPropertyGroupService.ProductPropertyGroupForServer;
 using eShop.Service.ProductPropertyNameService.ProductPropertyNameForServer;
 using eShop.Service.ProductPropertyValueService.ProductPropertyValueServer;
+using eShop.Service.ProductService.ProductForClient;
 using eShop.Service.ProductService.ProductForServer;
+using eShop.Service.SliderService.SliderForClient;
 using eShop.Service.SliderService.SliderForServer;
 using eShop.Service.WarrantyService.WarrantyForServer;
 using Microsoft.AspNetCore.Authentication;
@@ -45,6 +47,11 @@ builder.Services.AddTransient<IDisCountServiceForServer, DisCountServiceForServe
 
 #endregion
 
+#region متصل کردن کلیه سرویس های پروژه در سمت کلاینت
+builder.Services.AddTransient<ISliderServiceForClient,  SliderServiceForClient>();
+builder.Services.AddTransient<IProductServiceForClient,  ProductServiceForClient>();
+#endregion
+
 #region عملیات نمایش پیغام های گرافیکی
 builder.Services.AddMvc().AddNToastNotifyToastr(new ToastrOptions
 {
@@ -55,9 +62,6 @@ builder.Services.AddMvc().AddNToastNotifyToastr(new ToastrOptions
 });
 #endregion
 
-#region متصل کردن کلیه سرویس های پروژه در سمت کلاینت
-
-#endregion
 
 var app = builder.Build();
 
