@@ -86,5 +86,112 @@ namespace eShop.Service.ProductPropertyGroupService.ProductPropertyGroupForServe
 				.SingleOrDefault();
 		}
 		#endregion
+
+		#region جهت بروزرسانی ID متد جستجوی اطلاعات مربوط به نام گروه بندی خصوصیات یا ویژه گی های کالا بر اساس 
+
+		public UpdateProductPropertyGroupViewModel FindProductPropertyGroupByIdForUpdate(int titleId)
+		{
+			return _context.TBL_ProductPropertyGroups
+				.Where(p => p.Id == titleId)
+				.Select(p => new UpdateProductPropertyGroupViewModel
+				{
+					TitleId = p.Id,
+					Title = p.Title,
+				})
+				.SingleOrDefault();
+		}
+		#endregion
+
+		#region آن ID متد حذف اطلاعات مربوط به نام گروه بندی خصوصیات یا ویژه گی های کالا بر اساس نام گروه بندی و
+		//public RemoveProductPropertyGroupViewModel FindProductPropertyGroupByIdForRemove(int titleId)
+		//{
+		//	return _context.TBL_ProductPropertyGroups
+		//		.Where(p => p.Id == titleId)
+		//		.Select(p => new RemoveProductPropertyGroupViewModel
+		//		{
+		//			TitleId = p.Id,
+		//			Title = p.Title,
+		//		})
+		//		.SingleOrDefault();
+		//}
+		#endregion
+
+		#region متد عملیاتی حذف اطلاعات مربوط به نام گروه بندی خصوصیات یا ویژه گی های کالا
+
+		//public OperationResult RemoveProductPropertyGroup(RemoveProductPropertyGroupViewModel RemoveTitle)
+		//{
+		//	var FindPPG = FindGroupById(RemoveTitle.TitleId);
+
+		//	if (FindPPG == null)
+		//		return new OperationResult
+		//		{
+		//			Code = OperationCode.Failed,
+		//			IsSuccess = false,
+		//			Message = OperationResultMessage.NotFound,
+		//		};
+
+		//	FindPPG.RemoveDate = DateTime.Now;
+		//	FindPPG.IsRemove = true;
+
+		//	_context.TBL_ProductPropertyGroups.Update(FindPPG);
+		//	_context.SaveChanges();
+
+		//	return new OperationResult
+		//	{
+		//		Code = OperationCode.Success,
+		//		IsSuccess = true,
+		//		Message = OperationResultMessage.Remove
+		//	};
+		//}
+		#endregion
+
+		#region متد عملیاتی بروزرسانی اطلاعات مربوط به نام گروه بندی خصوصیات یا ویژه گی های کالا یا محصولات
+
+		public OperationResult UpdateProductPropertyGroup(UpdateProductPropertyGroupViewModel UpdateTitle)
+		{
+			var FindPPG = FindGroupById(UpdateTitle.TitleId);
+
+			if (FindPPG == null)
+				return new OperationResult
+				{
+					Code = OperationCode.Failed,
+					IsSuccess = false,
+					Message = OperationResultMessage.NotFound,
+				};
+
+			bool existPPG = ExistPPG(UpdateTitle.Title, UpdateTitle.TitleId);
+			if (existPPG)
+				return new OperationResult
+				{
+					Code = OperationCode.duplicate,
+					IsSuccess = false,
+					Message = OperationResultMessage.Duplicate,
+				};
+
+			FindPPG.Title = UpdateTitle.Title;
+			FindPPG.LastModified = DateTime.Now;
+
+			_context.TBL_ProductPropertyGroups.Update(FindPPG);
+			_context.SaveChanges();
+
+			return new OperationResult
+			{
+				Code = OperationCode.Success,
+				IsSuccess = true,
+				Message = OperationResultMessage.Create
+			};
+		}
+		#endregion
+
+		#region متد موجود بودن گروه بندی خصوصیات یا ویژه گی های کالا در سمت سرور و عملیات بر روی آن
+		public bool ExistPPG(string titleName, int titleId)
+		{
+			return _context.TBL_ProductPropertyGroups.Any(x => x.Title == titleName.Trim().ToLower() && x.Id != titleId
+			);
+		}
+		#endregion
+
+
+
 	}
 }

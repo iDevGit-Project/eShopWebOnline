@@ -42,34 +42,17 @@
 								<div class="row mb-7">
 									<!--begin::Tags-->
 									<label asp-for="Link" class="col-lg-4 fw-semibold fw-bold">
-										یک پیوند یا لینک برای اسلایدر خود وارد نمایید
-										<span class="ms-1" data-bs-toggle="tooltip" title="مثال: http://www.mysite.com/slider">
-											<i class="ki-outline ki-information fs-7"></i>
-										</span>
+										آدرس پیوند یا لینک اسلایدر...
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
-									<div class="col-lg-12">
-										<input type="text" asp-for="Link" disabled id="kt_docs_maxlength_custom_text" maxlength="512 " class="form-control border-danger bg-light-danger text-danger fw-semibold fw-bold" autocomplete="off" placeholder="یک پیوند یا لینک برای اسلایدر خود وارد نمایید.">
+									<div class="col-lg-8">
+										<input type="text" asp-for="Link" disabled id="kt_docs_maxlength_custom_text" maxlength="512 " class="form-control border-danger bg-light-danger FEN" autocomplete="off" placeholder="یک پیوند یا لینک برای اسلایدر خود وارد نمایید.">
 										<span asp-validation-for="Link" class="badge bg-red-thunderbird bg-font-red-thunderbird"></span>
 									</div>
 									<!--end::Col-->
 								</div>
 								<!--end::Row-->
-								<!--begin::Input group-->
-								<div class="row mb-7">
-									<!--begin::Col-->
-									<div class="col-lg-5">
-										<div class="form-check form-switch form-check-custom form-check-danger form-check-solid me-10">
-											<input asp-for="IsActive" disabled class="form-check-input h-30px w-50px" type="checkbox" id="flexSwitch30x50" />
-											<label class="form-check-label" for="flexSwitch30x50">
-												فعال یا غیر فعالسازی تصویر اسلایدر
-											</label>
-										</div>
-									</div>
-									<!--end::Col-->
-								</div>
-								<!--end::Input group-->
 								<!--end::Input group-->
 							</div>
 							<!--end::کارت body-->

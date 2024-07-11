@@ -1,5 +1,6 @@
 ﻿using eShop.Core.ExtentionMethods;
 using eShop.Data.ViewModels.ProductPropertyGroupViewModels.ProductPropertyGroupVMServer;
+using eShop.Data.ViewModels.WarrantiesViewModels.WarrantiesVMServer;
 using eShop.Service.BrandsService.BrandsForServer;
 using eShop.Service.CategoryService.CategoryForServer;
 using eShop.Service.ProductPropertyGroupService.ProductPropertyGroupForServer;
@@ -56,6 +57,66 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 			});
 			return RedirectToAction(nameof(Create));
 		}
+		#endregion
+
+		#region متد ویرایش اطلاعات گروه بندی کالا یا محصولات
+		[HttpGet]
+		public IActionResult Update(int Id)
+		{
+			var FindPPG = _propertyGroupService.FindProductPropertyGroupByIdForUpdate(Id);
+
+			if (FindPPG == null)
+				return NotFound();
+
+			return View(FindPPG);
+		}
+
+		[HttpPost]
+		public IActionResult Update(UpdateProductPropertyGroupViewModel UpdateTitle)
+		{
+			var Result = _propertyGroupService.UpdateProductPropertyGroup(UpdateTitle);
+			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
+			_toastNotification.AddInfoToastMessage("ویرایش اطلاعات با موفقیت انجام شد.", new ToastrOptions()
+			{
+				ProgressBar = true,
+				CloseButton = false,
+				NewestOnTop = true,
+				TimeOut = 2000,
+				Title = "بروزرسانی",
+				PositionClass = ToastPositions.TopFullWidth,
+			});
+			return RedirectToAction(nameof(Index));
+		}
+		#endregion
+
+		#region  متد حذف اطلاعات گروه بندی کالا یا محصولات
+		//[HttpGet]
+		//public IActionResult Remove(int Id)
+		//{
+		//	var FindPPG = _propertyGroupService.FindProductPropertyGroupByIdForRemove(Id);
+
+		//	if (FindPPG == null)
+		//		return NotFound();
+
+		//	return View(FindPPG);
+		//}
+
+		//[HttpPost]
+		//public IActionResult Remove(RemoveProductPropertyGroupViewModel RemoveTitle)
+		//{
+		//	var Result = _propertyGroupService.RemoveProductPropertyGroup(RemoveTitle);
+		//	TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
+		//	_toastNotification.AddErrorToastMessage("حذف اطلاعات با موفقیت انجام شد.", new ToastrOptions()
+		//	{
+		//		ProgressBar = true,
+		//		CloseButton = true,
+		//		NewestOnTop = true,
+		//		TimeOut = 2000,
+		//		Title = "حذف",
+		//		PositionClass = ToastPositions.TopFullWidth,
+		//	});
+		//	return RedirectToAction(nameof(Index));
+		//}
 		#endregion
 	}
 }

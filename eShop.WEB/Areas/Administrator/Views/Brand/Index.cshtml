@@ -20,12 +20,37 @@
 								<span class="card-label fw-bold text-dark">لیست برندها</span>
 								<span class="text-muted mt-1 fw-semibold fs-7">لیست برندهای موجود در فروشگاه</span>
 							</h3>
-                        <a href="/Administrator/" class="btn btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+                        <a href="/Administrator/" class="btn btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
                             <i class="ki-duotone ki-home fs-3">
                             </i>
                             بازگشت
                         </a>
 						</div>
+							<!--begin::Ribbon wrapper 1-->
+							<div class="overflow-hidden position-relative card-rounded">
+								<!--begin::Ribbon-->
+								<div class="ribbon ribbon-triangle ribbon-top-start border-success">
+									<!--begin::Ribbon icon-->
+									<div class="ribbon-icon mt-n5 ms-n6">
+										<i class="ki-duotone ki-information-4 fs-2 text-white"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+									</div>
+									<!--end::Ribbon icon-->
+								</div>
+								<!--end::Ribbon-->
+								<!--begin::Card-->
+								<div class="card card-bordered bg-light-success">
+									<!--begin::Body-->
+									<div class="card-body">
+										<!--begin::Title-->
+										<h2 class="mb-1 text-dark">راهنمای کاربر</h2>
+										<!--end::Title-->
+										<span class="text-dark fs-5">تصویر آیکن برند، حداکثر در اندازه <span class="badge badge-success"> 512 * 512 پیکسل</span> باشد.</span>
+									</div>
+									<!--end::Body-->
+								</div>
+								<!--end::Card-->
+							</div>
+							<!--end::Ribbon wrapper 1-->
 						@*  *@
 						<!--نمایش پیغام موفقیت آمیز بودن ثبت یا خطای درج اطلاعات در برنامه-->
 						@if (TempData["Result"] != null)
@@ -67,7 +92,7 @@
 								<!--begin::جستجو-->
 								<div class="d-flex align-items-center position-relative my-1">
 									<i class="ki-outline ki-magnifier fs-2 position-absolute ms-4"></i>
-									<input type="text" id="brandsSearch" class="form-control  w-250px ps-12" autocomplete="off" placeholder="جستجو اطلاعات">
+									<input type="text" id="brandsSearch" class="form-control w-250px ps-12" autocomplete="off" placeholder="جستجو اطلاعات">
 									<div id="autoCompleteDiv"></div>
 									<!--begin::Spinner-->
 									<span class="search-spinner position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-1" data-kt-filter="spinner">
@@ -126,10 +151,10 @@
 						<!--begin::TABELS-->
 						<table id="datatable_brands" class="table table-rounded table-striped border table-row-bordered gy-5 gs-7">
 							<thead>
-								<tr class="fw-semibold fs-6">
+								<tr class="bg-light-success text-success fw-semibold fs-6 text-gray-800">
 									<th class="fw-semibold fw-bolder text-start fs-6">ردیف</th>
 									<th class="fw-semibold fw-bolder text-start fs-6">نام فارسی</th>
-									<th class="fw-semibold fw-bolder text-start fs-6">تصویر شاخص</th>
+									<th class="fw-semibold fw-bolder text-start fs-6">آیکن برند</th>
 									<th class="fw-semibold fw-bolder text-end FEN fs-6">English Name Brand</th>
 									<th class="fw-semibold fw-bolder text-end fs-6">عملیات</th>
 								</tr>
@@ -289,4 +314,17 @@
 			//document.getElementById("frmEditProduct").reset(); //or $('#form2')[0].reset();
 		})
 	</script>
+	<!--==================================================================-->
+@* 	<script>
+		var infoDataTable = $("#datatable_brands").DataTable({
+			"scrollY": "500px",
+			"scrollCollapse": true,
+			"paging": false,
+			"dom": "<'table-responsive'tr>"
+			"language": {
+				"url": "\\assets\\js\\datatables\\fa.json"
+			}
+		});
+	</script> *@
+	<!--==================================================================-->
 }

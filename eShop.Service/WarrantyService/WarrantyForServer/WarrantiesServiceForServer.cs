@@ -91,17 +91,6 @@ namespace eShop.Service.WarrantyService.WarrantyForServer
 				.SingleOrDefault();
 		}
 		#endregion
-		
-		#region ID متد جستجوی گارانتی بر اساس مقدار 
-
-		public TBL_Warranty FindWarrantyById(int warrantyId)
-		{
-			return _context.TBL_Warranties
-				.Where(w => w.Id == warrantyId)
-				.AsNoTracking()
-				.FirstOrDefault();
-		}
-		#endregion
 
 		#region متد عملیاتی بروزرسانی اطلاعات گارانتی
 		public OperationResult UpdateWarranty(UpdateWarrantyViewModel UpdateWarranty)
@@ -139,6 +128,16 @@ namespace eShop.Service.WarrantyService.WarrantyForServer
 			};
 		}
 
+		#endregion
+
+		#region ID متد جستجوی گارانتی بر اساس مقدار 
+		public TBL_Warranty FindWarrantyById(int warrantyId)
+		{
+			return _context.TBL_Warranties
+				.Where(w => w.Id == warrantyId)
+				.AsNoTracking()
+				.FirstOrDefault();
+		}
 		#endregion
 
 		#region جهت عملیات حذف اطلاعات ID متد جستجوی گارانتی بر اساس

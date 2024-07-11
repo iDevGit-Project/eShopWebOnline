@@ -27,7 +27,7 @@
 							<span class="card-label fw-bold text-dark">ویرایش اسلایدرها</span>
 							<span class="text-muted mt-1 fw-semibold fs-7">ویرایش اطلاعات مربوط به اسلایدر ها در فروشگاه</span>
 						</h3>
-						<a asp-action="Index" asp-controller="Slider" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+						<a asp-action="Index" asp-controller="Slider" class="btn  btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
 							<i class="ki-duotone ki-home fs-3">
 							</i>
 							بازگشت به لیست اسلایدرها
@@ -49,15 +49,15 @@
 								<div class="row mb-7">
 									<!--begin::Tags-->
 									<label asp-for="Link" class="col-lg-4 fw-semibold fw-bold">
-										یک پیوند یا لینک برای اسلایدر خود وارد نمایید
+										آدرس پیوند یا لینک برای اسلایدر
 										<span class="ms-1" data-bs-toggle="tooltip" title="مثال: http://www.mysite.com/slider">
 											<i class="ki-outline ki-information fs-7"></i>
 										</span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
-									<div class="col-lg-12">
-										<input type="text" asp-for="Link" id="kt_docs_maxlength_custom_text" maxlength="512 " class="form-control border-warning bg-light-warning text-warning fw-semibold fw-bold" autocomplete="off" placeholder="یک پیوند یا لینک برای اسلایدر خود وارد نمایید.">
+									<div class="col-lg-8">
+										<input type="text" asp-for="Link" id="kt_docs_maxlength_custom_text" maxlength="512 " disabled class="form-control border-warning bg-light-warning FEN" autocomplete="off" placeholder="یک پیوند یا لینک برای اسلایدر خود وارد نمایید.">
 										<span asp-validation-for="Link" class="badge bg-red-thunderbird bg-font-red-thunderbird"></span>
 									</div>
 									<!--end::Col-->
@@ -66,24 +66,29 @@
 								<!--begin::Input group-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label class="col-lg-2 fw-semibold fw-bold">بارگزاری تصویر اسلایدر</label>
+									<label class="col-lg-4 fw-semibold fw-bold">بارگزاری تصویر اسلایدر</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
-									<div class="col-lg-5">
-										<label for="files" class="btn fw-bold  btn-light-danger">تصویر اسلایدر خود را انتخاب و بارگزاری نمایید ...</label>
-										<input asp-for="ImgName" style="display:none;" type="file" id="files" class="form-control  FEN fw-semibold fw-bold input_container">
+									<div class="col-lg-8">
+										<label for="files" class="btn fw-bold btn-light-danger">انتخاب و بارگزاری تصویر اسلایدر...</label>
+										<span class="badge badge-light-danger fs-5 FEN fw-bold text-dark">png, jpg, jpeg: پسوند های مجاز</span>
+										<input asp-for="ImgName" style="display:none;" type="file" id="files" class="form-control FEN input_container">
 										<span asp-validation-for="ImgName" class="badge bg-red-thunderbird bg-font-red-thunderbird"></span>
-										<!--begin::توضیحات-->
-										<div class="text-muted fs-7">پسوند های مجاز : <span class="fs-7 text-dark fw-bold badge badge-light-danger fw-semibold">png, jpg, jpeg</span></div>
-										<!--end::توضیحات-->
 									</div>
 									<!--end::Col-->
+								</div>
+								<!--end::Input group-->
+								<!--begin::Input group-->
+								<div class="row mb-7">
+									<!--begin::Tags-->
+									<label class="col-lg-4 fw-semibold fw-bold">آیا تصویر اسلایدر در سایت فعال شود؟</label>
+									<!--end::Tags-->
 									<!--begin::Col-->
-									<div class="col-lg-5">
+									<div class="col-lg-8">
 										<div class="form-check form-switch form-check-custom form-check-solid me-10">
-											<input asp-for="IsActive" class="form-check-input h-30px w-50px" type="checkbox" id="flexSwitch30x50" />
+											<input asp-for="IsActive" class="form-check-input h-30px w-50px" style="cursor:pointer" onclick="confirmdSwitchSliderCommand()" type="checkbox" id="flexSwitch30x50" />
 											<label class="form-check-label" for="flexSwitch30x50">
-												فعال یا غیر فعالسازی تصویر اسلایدر
+												جهت ثبت نهایی عملیات بر وری دکمه <span class="badge badge-light-warning fw-bold"> ویرایش اطلاعات</span> کلیک نمایید.
 											</label>
 										</div>
 									</div>
@@ -98,7 +103,7 @@
 						<!--begin::Actions-->
 						<div class="text-start">
 							<button type="submit" class="btn btn-light-warning me-3"><i class="ki-duotone ki-pencil fs-3"><span class="path1"></span><span class="path2"></span></i><span class="indicator-label">ویرایش اطلاعات</span></button>
-							<a asp-action="Index" asp-controller="AdminDashboard" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+							<a asp-action="Index" asp-controller="AdminDashboard" class="btn btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
 								<i class="ki-duotone ki-home fs-3">
 								</i>
 								انصراف و بازگشت
@@ -153,8 +158,8 @@
 			loadingEl.classList.add("bg-dark");
 			loadingEl.classList.add("bg-opacity-75");
 			loadingEl.innerHTML = `
-							<span class="spinner-border text-primary" role="status"></span>
-							<span class="text-gray-100 fs-5 mt-5">سیستم در حال بروزرسانی اطلاعات ...</span>`;
+				<span class="spinner-border text-primary" role="status"></span>
+				<span class="text-gray-100 fs-5 mt-5">سیستم در حال بروزرسانی اطلاعات ...</span>`;
 			KTApp.showPageLoading();
 			setTimeout(function () {
 				KTApp.hidePageLoading();
@@ -183,8 +188,7 @@
 		})
 	</script>
 	<!--===================================================================-->
-	<!-- اسکریپت آژاکس مربوط به حذف قیمت -->
-	<script>
+@* 	<script>
 		function emptyInputInvalid(brandid) {
 			Swal.fire({
 				showClass: {
@@ -213,6 +217,48 @@
 				}
 			})
 		}
+	</script> *@
+	<!--===================================================================-->
+	<script>
+		function confirmdSwitchSliderCommand() {
+			// Swal.fire({
+			// 	title: "Do you want to save the changes?",
+			// 	showDenyButton: true,
+			// 	showCancelButton: true,
+			// 	confirmButtonText: "Save",
+			// 	denyButtonText: `Don't save`
+			// }).then((result) => {
+			// 	/* Read more about isConfirmed, isDenied below */
+			// 	if (result.isConfirmed) {
+			// 		Swal.fire("Saved!", "", "success");
+			// 	} else if (result.isDenied) {
+			// 		Swal.fire("Changes are not saved", "", "info");
+			// 	}
+			// });
+			Swal.fire({
+				showClass: {
+					popup: `
+						animate__animated
+						animate__fadeInUp
+						animate__faster`
+				},
+				hideClass: {
+					popup: `
+						animate__animated
+						animate__fadeOutDown
+						animate__faster`
+				},
+				icon: 'success',
+				title: "عملیات فوق بر روی تصویر اسلایدر انجام شد.",
+				confirmButtonText: "انجام شد. بازگشت",
+				position: "top-center",
+				// footer: '<span class="badge badge-light-warning"> ثبت نهایی: فشردن دسکه ویرایش اطلاعات</span>'
+				reverseButtons: false,
+				customClass: {
+					confirmButton: "btn btn-primary"
+				}
+			})
+		}
 	</script>
-	<!-- اسکریپت آژاکس مربوط به حذف قیمت -->
+	<!--===================================================================-->
 }

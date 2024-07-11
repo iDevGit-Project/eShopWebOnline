@@ -48160,7 +48160,9 @@ input[type=file]::file-selector-button {
     color: white;
     margin-left: 13px;
 }
-
+.BKG_TableHeader {
+    background-color: #f1f4ff;
+}
 /*div.dataTables_length select {
     color: green !important;
     background-color: blue !important;

@@ -25,7 +25,7 @@
 							<span class="card-label fw-bold text-dark">ثبت برند جدید</span>
 							<span class="text-muted mt-1 fw-semibold fs-7">ثبت اطلاعات مربوط به برند جدید در فروشگاه</span>
 						</h3>
-						<a asp-action="Index" asp-controller="Brand" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+						<a asp-action="Index" asp-controller="Brand" class="btn  btn-sm btn-light-dark data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
 							<i class="ki-duotone ki-home fs-3">
 							</i>
 							بازگشت به لیست برندها
@@ -89,26 +89,22 @@
 									<!--end::Col-->
 								</div>
 								<!--end::Row-->
-								<!--end::Input group-->
-								<!--begin::Input group-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
 									<label asp-for="ImgName" class="col-lg-4 fw-semibold fw-bold">
-										بارگزاری تصویر شاخص
+										بارگزاری تصویر برند
 										<span asp-validation-for="ImgName" class="badge badge-light-danger"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-8">
-										<label for="files" class="btn fw-bold  btn-light-danger">تصویر برند خود را انتخاب و بارگزاری نمایید ...</label>
-										<input asp-for="ImgName" style="display:none;" type="file" id="files" class="form-control  FEN fw-semibold fw-bold input_container">
-										<!--begin::توضیحات-->
-										<div class="text-muted fs-7">پسوند های مجاز : <span class="fs-7 text-dark fw-bold badge badge-light-danger fw-semibold">png, jpg, jpeg</span></div>
-										<!--end::توضیحات-->
+										<label for="files" class="btn fw-bold btn-light-danger">انتخاب و بارگزاری تصویر برند...</label>
+										<span class="badge badge-light-danger fs-5 FEN fw-bold text-dark">png, jpg, jpeg: پسوند های مجاز</span>
+										<input asp-for="ImgName" style="display:none;" type="file" id="files" class="form-control FEN input_container">
+										<span asp-validation-for="ImgName" class="badge bg-red-thunderbird bg-font-red-thunderbird"></span>
 									</div>
 									<!--end::Col-->
 								</div>
-								<!--end::Input group-->
 							</div>
 							<!--end::کارت body-->
 						</div>
@@ -116,7 +112,7 @@
                         <!--begin::Actions-->
                         <div class="text-start">
                             <button type="submit" class="btn  btn-sm btn-primary me-3"><i class="ki-duotone ki-plus fs-2"></i><span class="indicator-label">ثبت اطلاعات</span></button>
-							<a asp-action="Index" asp-controller="AdminDashboard" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+							<a asp-action="Index" asp-controller="AdminDashboard" class="btn  btn-sm btn-light-dark data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
 								<i class="ki-duotone ki-home fs-3">
 								</i>
 								انصراف و بازگشت

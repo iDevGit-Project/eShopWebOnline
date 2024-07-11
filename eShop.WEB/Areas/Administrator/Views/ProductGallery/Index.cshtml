@@ -26,7 +26,32 @@
 							بازگشت به لیست محصولات
 						</a>
 					</div>
-					<!--end::Alert-->
+					<!--end::heading-->
+					<!--begin::Ribbon wrapper 1-->
+					<div class="overflow-hidden position-relative card-rounded">
+						<!--begin::Ribbon-->
+						<div class="ribbon ribbon-triangle ribbon-top-start border-primary">
+							<!--begin::Ribbon icon-->
+							<div class="ribbon-icon mt-n5 ms-n6">
+								<i class="ki-duotone ki-information-4 fs-2 text-white"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+							</div>
+							<!--end::Ribbon icon-->
+						</div>
+						<!--end::Ribbon-->
+						<!--begin::Card-->
+						<div class="card card-bordered bg-light-primary">
+							<!--begin::Body-->
+							<div class="card-body">
+								<!--begin::Title-->
+								<h2 class="mb-1 text-dark">راهنمای کاربر</h2>
+								<!--end::Title-->
+								<span class="text-dark fs-5">جهت ثبت تصویر برای محصول، ابتدا تصویر کالا یا محصول خود را انتخاب و سپس بعد از نمایش دکمه <span class="badge badge-primary"> ثبت تصویر محصول</span> کلیک نمایید.</span>
+							</div>
+							<!--end::Body-->
+						</div>
+						<!--end::Card-->
+					</div>
+					<!--end::Ribbon wrapper 1-->
 					<!--begin::Ribbon wrapper 1-->
 					<div class="overflow-hidden position-relative card-rounded">
 						<!--begin::Add Picture For Product Gallery-->
@@ -47,7 +72,7 @@
 											<!--begin::Tags-->
 											<input type="hidden" name="ProductId" value="@TempData["ProductId"].ToString()" />
 											<!--end::Tags-->
-											<label for="files" class="btn fw-bold btn-light-danger me-3">انتخاب تصویر کالا یا محصول ...</label>
+											<label for="files" id="btnBrowserFile" class="btn fw-bold btn-light-danger me-3">انتخاب تصویر کالا یا محصول ...</label>
 											<input name="ImgName" style="display:none;" type="file" id="files" class="form-control FEN fw-semibold fw-bold input_container me-3">
 											<!--begin::توضیحات-->
 											<div class="text-muted fs-7">پسوند های مجاز : <span class="fs-7 text-dark fw-bold badge badge-light-danger fw-semibold">png, jpg, jpeg</span></div>
@@ -61,7 +86,7 @@
 										<!--begin::Toolbar-->
 										<div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
 											<!--begin::خروجی buttons-->
-											<button type="submit" class="btn  btn-sm btn-primary me-3"><i class="ki-duotone ki-plus fs-2"></i><span class="indicator-label">ثبت تصویر محصول</span></button>
+											<button id="btnAddGalleryforProfuct" type="submit" style="display:none;" class="btn  btn-sm btn-primary me-3"><i class="ki-duotone ki-plus fs-2"></i><span class="indicator-label">ثبت تصویر محصول</span></button>
 											<!--end::خروجی buttons-->
 											<!--begin::Menu 1-->
 											<button type="button" id="kt_refresh_datatable" class="btn btn-sm btn-light-success" data-bs-toggle="tooltip" title="بروزرسانی لیست اطلاعات تصاویر کالاها">
@@ -86,10 +111,10 @@
 					</div>
 					<!--end::Ribbon wrapper 1-->
 					<!--begin::TABELS-->
-					<table id="datatable_galleryProducts" class="table table-rounded table-striped border table-row-bordered gy-5 gs-7">
+					<table class="table table-rounded table-striped border table-row-bordered gy-5 gs-7">
 						<thead>
 							<tr class="fw-semibold fs-6">
-								<th class="fw-semibold fw-bolder text-start fs-6">ردیف</th>
+								@* <th class="fw-semibold fw-bolder text-start fs-6">ردیف</th> *@
 								<th class="fw-semibold fw-bolder text-start fs-6">تصویر کالا</th>
 								<th class="fw-semibold fw-bolder text-end fs-6">عملیات</th>
 							</tr>
@@ -98,7 +123,7 @@
 							@foreach (var item in Model)
 							{
 								<tr>
-									<td class="text-start fs-6">@item.GalleryId</td>
+									@* <td class="text-start fs-6">@item.GalleryId</td> *@
 									<td class="text-start fs-6">
 										<img class="lozad rounded mw-100" src="@ImagePathExtention.PathProductGalleryImageClient/@item.ImgName" style="height: 41px" />
 									</td>
@@ -138,6 +163,14 @@
 <!--end::content container-->
 @section AdminScripts {
 
+	<!--==================================================================-->
+	<!--اسکریپت نمایش دکمه ثبت تصویر محصول به هنگام بارگذاری فایل تصویر-->
+	<script>
+		$("#btnBrowserFile").on('click', function (e) {
+			$("#btnAddGalleryforProfuct").css('display', 'block')
+		});
+	</script>
+	<!--==================================================================-->
 	<!--اسکریپت تغییر نام عکس انتخاب شده-->
 	<script>
 		document.querySelector("#files").onchange = function () {
@@ -145,34 +178,6 @@
 			const label = document.querySelector("label[for=files]");
 			label.innerText = fileName ?? "تصویر برند خود را انتخاب و بارگزاری نمایید ...";
 		};
-	</script>
-	<!--اسکریپت جستجوی اطلاعات-->
-	<script>
-		var infoDataTable = $('#datatable_galleryProducts').DataTable({
-			ordering: false,
-			scrollCollapse: true,
-			// نمایش اطلاعات جستجو شده در زیر جدول
-			info: false,
-			scrollX: true
-					//scrollX: true,
-					//scrollY: true,
-					//scrollY: 350,
-					// Change language : FA
-					"language": {
-				"url": "\\assets\\js\\datatables\\fa.json"
-			}
-		});
-		$('#galleryProductsSearch').keyup(function () {
-			infoDataTable.search($(this).val()).draw();
-		});
-		// مرتب سازی اطلاعات ردیف جدول
-		infoDataTable.on('order.dt search.dt', function () {
-			let i = 1;
-			// مرتب سازی از ستون 0 که اولین ستون جدول است انجام شود
-			infoDataTable.cells(null, 0, { search: 'applied', order: 'applied' }).every(function (cell) {
-				this.data(i++);
-			});
-		}).draw();
 	</script>
 	<!--==================================================================-->
 	<!--اسکریپت گزارشات-->
