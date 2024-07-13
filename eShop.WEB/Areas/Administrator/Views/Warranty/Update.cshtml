@@ -23,10 +23,10 @@
 					<!--begin::heading-->
 					<div class="card-header align-items-start px-0 border-0 pt-50">
 						<h3 class="card-title align-items-start flex-column">
-							<span class="card-label fw-bold text-dark">ویرایش اطلاعات گارانتی</span>
+							<span class="card-label fw-bold text-dark">شما در حال ویرایش گارانتی: <span class="badge badge-light-warning pulse pulse-warning fw-normal FEN"><span class="pulse-ring"></span>@Model.WarrantyName</span> هستید.</span>
 							<span class="text-muted mt-1 fw-semibold fs-7">ویرایش اطلاعات مربوط به گارانتی جاری در فروشگاه</span>
 						</h3>
-						<a asp-action="Index" asp-controller="Warranty" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+						<a asp-action="Index" asp-controller="Warranty" class="btn  btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
 							<i class="ki-duotone ki-home fs-3">
 							</i>
 							بازگشت به لیست گارانتی ها
@@ -47,13 +47,13 @@
 								<div class="row mb-7">
 									<!--begin::Tags-->
 									<label asp-for="WarrantyName" class="col-lg-4 fw-semibold fw-bold" for="WarrantyName">
-										نام گارانتی (فارسی)
+										نام گارانتی ( به فارسی ).
 										<span asp-validation-for="WarrantyName" class="badge badge-light-danger mb-1"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-8">
-										<input type="text" asp-for="WarrantyName" id="kt_docs_maxlength_custom_text" maxlength="64 " class="form-control border-warning bg-light-warning fw-semibold fw-bold" autocomplete="off" placeholder="نام گارانتی را به فارسی وارد نمایید.">
+										<input type="text" asp-for="WarrantyName" id="kt_docs_maxlength_custom_text" maxlength="64 " class="form-control border-warning bg-light-warning text-dark" autocomplete="off" placeholder="نام گارانتی را به فارسی وارد نمایید.">
 									</div>
 									<!--end::Col-->
 								</div>
@@ -64,8 +64,8 @@
 						<!--end::details نمایش-->
 						<!--begin::Actions-->
 						<div class="text-start">
-							<button type="submit" class="btn btn-light-warning me-3"><i class="ki-duotone ki-pencil fs-3"><span class="path1"></span><span class="path2"></span></i><span class="indicator-label">ویرایش اطلاعات</span></button>
-							<a asp-action="Index" asp-controller="AdminDashboard" class="btn btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+							<button type="submit" class="btn btn-light-warning fw-bold  ]me-3"><i class="ki-duotone ki-pencil fs-3"><span class="path1"></span><span class="path2"></span></i><span class="indicator-label">ویرایش اطلاعات</span></button>
+							<a asp-action="Index" asp-controller="AdminDashboard" class="btn btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
 								<i class="ki-duotone ki-home fs-3">
 								</i>
 								انصراف و بازگشت

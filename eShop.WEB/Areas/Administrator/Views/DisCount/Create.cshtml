@@ -27,7 +27,7 @@
 							<span class="card-label fw-bold text-dark">ثبت کد تخفیف جدید</span>
 							<span class="text-muted mt-1 fw-semibold fs-7">ثبت اطلاعات مربوط به کد تخفیف جدید در فروشگاه</span>
 						</h3>
-						<a asp-action="Index" asp-controller="DisCount" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+						<a asp-action="Index" asp-controller="DisCount" class="btn  btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
 							<i class="ki-duotone ki-home fs-3">
 							</i>
 							بازگشت به لیست کد های تخفیف
@@ -48,13 +48,16 @@
 								<div class="row mb-7">
 									<!--begin::Tags-->
 									<label asp-for="Code" class="col-lg-4 fw-semibold fw-bold">
-										نام کد تخفیف
+										 نام کد تخفیف جدید به انگلیسی.
+										<span class="ms-1 FEN" data-bs-toggle="tooltip" title="نمونه کد تخفیف: bahar_1403">
+											<i class="ki-outline ki-information fs-7"></i>
+										</span>
 										<span asp-validation-for="Code" class="badge badge-light-danger mb-1"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-8">
-										<input type="text" asp-for="Code" id="kt_docs_maxlength_custom_text" maxlength="512 " class="form-control border-primary FEN" autocomplete="off" placeholder="نام کد تخفیف را به انگلیسی یا ترکیبی از کاراکترها وارد نمایید.">
+										<input type="text" asp-for="Code" id="kt_docs_maxlength_custom_text" maxlength="512 " class="form-control border-primary text-dark FEN" autocomplete="off" placeholder="Enter the name of the discount code in English or a combination of characters.">
 									</div>
 									<!--end::Col-->
 								</div>
@@ -63,7 +66,7 @@
 								<div class="row mb-7">
 									<!--begin::Tags-->
 									<label asp-for="UserCount" class="col-lg-4 fw-semibold fw-bold">
-										تعداد کد تخفیف
+										تعداد کد تخفیف.
 										<span class="ms-1" data-bs-toggle="tooltip" title="راهنمایی: چه تعداد مشتری از این کد میتوانند استفاده کنند؟">
 											<i class="ki-outline ki-information fs-7"></i>
 										</span>
@@ -80,12 +83,12 @@
 								<div class="row mb-7">
 									<!--begin::Tags-->
 									<label asp-for="StartDisCount" class="col-lg-4 position-relative d-flex align-items-center fw-semibold fw-bold">
-										تاریخ شروع و پایان کد تخفیف
+										تاریخ شروع و پایان کد تخفیف.
 									</label>
 									<!--end::Tags-->
 									<!--begin::Tags-->
 									<label class="col-lg-1 position-relative d-flex align-items-center fw-semibold fw-bold">
-										شروع
+										شروع.
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
@@ -98,7 +101,7 @@
 									<!--end::Col-->
 									<!--begin::Tags-->
 									<label asp-for="EndDisCount" class="col-lg-1 position-relative d-flex align-items-center fw-semibold fw-bold">
-										پایان
+										پایان.
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
@@ -114,7 +117,7 @@
 								<div class="row mb-7">
 									<!--begin::Tags-->
 									<label asp-for="IsActive" class="col-lg-4 fw-semibold fw-bold">
-										فعال یا غیرفعالسازی کد تخفیف
+										فعال یا غیرفعالسازی کد تخفیف.
 										<span asp-validation-for="IsActive" class="badge badge-light-danger"></span>
 									</label>
 									<!--end::Tags-->
@@ -123,9 +126,9 @@
 											<!--begin::آیتم-->
 											<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 												<div class="form-check form-switch form-check-custom form-check-solid me-10">
-													<input asp-for="IsActive" class="form-check-input h-30px w-50px" type="checkbox" id="flexSwitch30x50" style="cursor: pointer;" />
-													<label class="form-check-label" for="flexSwitch30x50">
-														آیا کد تخفیف فعال شود؟
+													<input asp-for="IsActive" class="form-check-input h-30px w-50px" onclick="confirmdSwitchDiscountCommand()" type="checkbox" id="flexSwitch30x50" style="cursor: pointer;" />
+													<label class="form-check-label text-dark fw-bold" for="flexSwitch30x50">
+														آیا کد تخفیف جدید بر روی سایت فعال شود؟
 														<span asp-validation-for="IsActive" class="badge badge-light-danger mb-1"></span>
 													</label>
 												</div>
@@ -141,8 +144,8 @@
 						<!--end::details نمایش-->
 						<!--begin::Actions-->
 						<div class="text-start">
-							<button type="submit" class="btn btn-sm btn-primary me-3"><i class="ki-duotone ki-plus fs-2"></i><span class="indicator-label">ثبت اطلاعات</span></button>
-							<a asp-action="Index" asp-controller="AdminDashboard" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+							<button type="submit" class="btn btn-light-primary fw-bold me-3"><i class="ki-duotone ki-plus fs-2"></i><span class="indicator-label">ثبت اطلاعات</span></button>
+							<a asp-action="Index" asp-controller="AdminDashboard" class="btn  btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
 								<i class="ki-duotone ki-home fs-3">
 								</i>
 								انصراف و بازگشت
@@ -279,4 +282,34 @@
 			//document.getElementById("frmEditProduct").reset(); //or $('#form2')[0].reset();
 		})
 	</script>
+	<!--==================================================================-->
+	<!-- SweetAlert نمایش پیغام به کاربر توسط  -->
+	<script>
+		function confirmdSwitchDiscountCommand() {
+			Swal.fire({
+				showClass: {
+					popup: `
+						animate__animated
+						animate__fadeInUp
+						animate__faster`
+				},
+				hideClass: {
+					popup: `
+						animate__animated
+						animate__fadeOutDown
+						animate__faster`
+				},
+				icon: 'success',
+				title: "عملیات بر روی کد تخفیف انجام شد.",
+				confirmButtonText: "انجام شد. بازگشت",
+				position: "top-center",
+				// footer: '<span class="badge badge-light-warning"> ثبت نهایی: فشردن دسکه ویرایش اطلاعات</span>'
+				reverseButtons: false,
+				customClass: {
+					confirmButton: "btn btn-primary"
+				}
+			})
+		}
+	</script>
+	<!--===================================================================-->
 }

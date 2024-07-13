@@ -17,7 +17,7 @@
 					<!--begin::heading-->
 					<div class="card-header align-items-start px-0 border-0 pt-50">
 						<h3 class="card-title align-items-start flex-column">
-							<span class="card-label fw-bold text-dark">حذف دسته بندی جاری</span>
+							<span class="card-label fw-bold text-dark">شما در حال حذف دسته بندی منوی: <span class="badge badge-light-danger pulse pulse-danger fw-normal FEN"><span class="pulse-ring"></span>@Model.FaTitle</span> هستید.</span>
 							<span class="text-muted mt-1 fw-semibold fs-7">حذف اطلاعات مربوط به دسته بندی ها در فروشگاه</span>
 						</h3>
 						<a asp-action="Index" asp-controller="Category" class="btn btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
@@ -113,7 +113,7 @@
 						<!--end::details نمایش-->
 						<!--begin::Actions-->
 						<div class="text-start">
-							<button type="submit" class="btn btn-sm btn-danger me-3"><i class="ki-outline ki-trash fs-3"></i><span class="indicator-label">حذف اطلاعات</span></button>
+							<button type="submit" class="btn btn-light-danger fw-bold me-3"><i class="ki-outline ki-trash fs-3"></i><span class="indicator-label">حذف اطلاعات</span></button>
 							<a asp-action="Index" asp-controller="AdminDashboard" class="btn  btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
 								<i class="ki-duotone ki-home fs-3">
 								</i>

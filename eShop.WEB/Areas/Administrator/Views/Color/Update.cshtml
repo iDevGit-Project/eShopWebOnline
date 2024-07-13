@@ -22,10 +22,10 @@
 					<!--begin::heading-->
 					<div class="card-header align-items-start px-0 border-0 pt-50">
 						<h3 class="card-title align-items-start flex-column">
-							<span class="card-label fw-bold text-dark">ویرایش اطلاعات رنگ</span>
+							<span class="card-label fw-bold text-dark">شما در حال ویرایش رنگ: <span class="badge badge-light-warning pulse pulse-warning fw-normal FEN"><span class="pulse-ring"></span>@Model.ColorName</span> هستید.</span>
 							<span class="text-muted mt-1 fw-semibold fs-7">ویرایش اطلاعات مربوط به رنگ ثبت شده در فروشگاه</span>
 						</h3>
-						<a asp-action="Index" asp-controller="Color" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+						<a asp-action="Index" asp-controller="Color" class="btn  btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
 							<i class="ki-duotone ki-home fs-3">
 							</i>
 							بازگشت به لیست دسته رنگ ها
@@ -47,13 +47,13 @@
 								<div class="row mb-7">
 									<!--begin::Tags-->
 									<label asp-for="ColorName" class="col-lg-4 fw-semibold fw-bold">
-										نام رنگ
+										نام رنگ.
 										<span asp-validation-for="ColorName" class="badge badge-light-danger mb-1"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-8">
-										<input type="text" asp-for="ColorName" id="kt_docs_maxlength_custom_text" maxlength="64 " class="form-control border-warning bg-light-warning text-warning fw-semibold fw-bold" autocomplete="off" placeholder="نام دسته بندی را به فارسی وارد نمایید.">
+										<input type="text" asp-for="ColorName" id="kt_docs_maxlength_custom_text" maxlength="64 " class="form-control border-warning bg-light-warning text-dark" autocomplete="off" placeholder="نام دسته بندی را به فارسی وارد نمایید.">
 									</div>
 									<!--end::Col-->
 								</div>
@@ -62,7 +62,7 @@
 								<div class="row mb-7">
 									<!--begin::Tags-->
 									<label asp-for="ColorCode" class="col-lg-4 fw-semibold fw-bold">
-										کد رنگ
+										کد رنگ.
 										<span asp-validation-for="ColorCode" class="badge badge-light-danger mb-1"></span>
 										<span class="ms-1 FEN" data-bs-toggle="tooltip" title="راهنمایی: 0b0b0b#">
 											<i class="ki-outline ki-information fs-7"></i>
@@ -72,7 +72,7 @@
 									<!--begin::Col-->
 									<div class="col-lg-8">
 										<div class="minicolors minicolors-theme-bootstrap minicolors-position-top minicolors-position-right">
-											<input type="text" asp-for="ColorCode" id="position-top-right" class="form-control border-warning bg-light-warning text-warning demo FEN minicolors-input" data-position="top right" size="7">
+											<input type="text" asp-for="ColorCode" id="position-top-right" class="form-control border-warning bg-light-warning text-dark demo FEN minicolors-input" data-position="top right" size="7">
 											<span class="minicolors-swatch minicolors-sprite">
 												<span class="minicolors-swatch-color" style="cursor:pointer">
 												</span>
@@ -86,7 +86,7 @@
 								<div class="row mb-7">
 									<!--begin::Tags-->
 									<label class="col-lg-4 fw-semibold fw-bold">
-										فعال یا غیر فعالسازی رنگ
+										فعال یا غیر فعالسازی رنگ.
 									</label>
 									<!--end::Tags-->
 									<div class="col-lg-8">
@@ -94,8 +94,8 @@
 											<!--begin::آیتم-->
 											<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 												<div class="form-check form-switch form-check-custom form-check-solid me-10">
-													<input asp-for="IsActive" class="form-check-input h-30px w-50px" type="checkbox" id="flexSwitch30x50" />
-													<label class="form-check-label" for="flexSwitch30x50">
+													<input asp-for="IsActive" class="form-check-input h-30px w-50px" onclick="confirmdSwitchColorCommand()" type="checkbox" id="flexSwitch30x50" style="cursor: pointer" />
+													<label class="form-check-label fw-bold text-dark" for="flexSwitch30x50">
 														رنگ ثبت شده فعال شود؟
 														<span asp-validation-for="IsActive" class="badge badge-light-danger mb-1"></span>
 													</label>
@@ -113,8 +113,8 @@
 						<!--end::details نمایش-->
 						<!--begin::Actions-->
 						<div class="text-start">
-							<button type="submit" class="btn btn-sm btn-light-warning me-3"><i class="ki-duotone ki-pencil fs-3"><span class="path1"></span><span class="path2"></span></i><span class="indicator-label">ویرایش اطلاعات</span></button>
-							<a asp-action="Index" asp-controller="AdminDashboard" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+							<button type="submit" class="btn btn-light-warning fw-bold me-3"><i class="ki-duotone ki-pencil fs-3"><span class="path1"></span><span class="path2"></span></i><span class="indicator-label">ویرایش اطلاعات</span></button>
+							<a asp-action="Index" asp-controller="AdminDashboard" class="btn  btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
 								<i class="ki-duotone ki-home fs-3">
 								</i>
 								انصراف و بازگشت
@@ -161,6 +161,7 @@
 			validate: true
 		});
 	</script>
+	<!--===================================================================-->
 	<script>
 		// نمایش حداکثر تعداد کاراکتر وارد شده به انگلیسی
 		$('#kt_docs_maxlength_custom_Entext').maxlength({
@@ -173,6 +174,7 @@
 			validate: true
 		});
 	</script>
+	<!--===================================================================-->
 	<!-- Refresh Data in Tables -->
 	<script>
 		$('#kt_refresh_datatable').on('click', function () {
@@ -214,36 +216,32 @@
 		})
 	</script>
 	<!--===================================================================-->
-	<!-- اسکریپت آژاکس مربوط به حذف قیمت -->
+	<!-- SweetAlert نمایش پیغام به کاربر توسط  -->
 	<script>
-		function emptyInputInvalid() {
+		function confirmdSwitchColorCommand() {
 			Swal.fire({
 				showClass: {
 					popup: `
-					animate__animated
-					animate__fadeInUp
-					animate__faster`
+										animate__animated
+										animate__fadeInUp
+										animate__faster`
 				},
 				hideClass: {
 					popup: `
-					animate__animated
-					animate__fadeOutDown
-					animate__faster`
+										animate__animated
+										animate__fadeOutDown
+										animate__faster`
 				},
-				icon: 'warning',
-				title: "آیا از حذف قیمت انتخاب شده مطمئن هستید ؟",
-				text: "حذف قیمت جاری از سیستم",
-				confirmButtonText: "بلی, حذف شود.",
-				cancelButtonText: "خیر, انصراف!",
+				icon: 'success',
+				title: "عملیات فوق بر روی رنگ انتخاب شده انجام شد.",
+				confirmButtonText: "انجام شد. بازگشت",
 				position: "top-center",
-				showCancelButton: true,
+				// footer: '<span class="badge badge-light-warning"> ثبت نهایی: فشردن دسکه ویرایش اطلاعات</span>'
 				reverseButtons: false,
 				customClass: {
-					confirmButton: "btn btn-danger",
-					cancelButton: "btn btn-secondary"
+					confirmButton: "btn btn-primary"
 				}
 			})
 		}
 	</script>
-	<!-- اسکریپت آژاکس مربوط به حذف قیمت -->
 }

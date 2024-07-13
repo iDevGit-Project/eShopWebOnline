@@ -31,7 +31,7 @@
 							<span class="card-label fw-bold text-dark">ثبت مقدار ویژه گی های کالا یا محصولات جدید</span>
 							<span class="text-muted mt-1 fw-semibold fs-7">ثبت اطلاعات مربوط به مقدار ویژه گی های کالا یا محصولات در فروشگاه</span>
 						</h3>
-						<a asp-action="Index" asp-controller="ProductPropertyValue" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به مقادیر ویژه گی های کالا یا محصولات">
+						<a asp-action="Index" asp-controller="ProductPropertyValue" class="btn  btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به مقادیر ویژه گی های کالا یا محصولات">
 							<i class="ki-duotone ki-home fs-3">
 							</i>
 							بازگشت به لیست مقادیر ویژه گی های کالا یا محصولات
@@ -52,13 +52,13 @@
 								<div class="row mb-7">
 									<!--begin::Tags-->
 									<label asp-for="Value" class="col-lg-5 fw-semibold fw-bold">
-										نام ویژه گی های کالا یا محصول)
+										نام مقدار جدید برای ویژه گی های کالا یا محصولات.
 										<span asp-validation-for="Value" class="badge badge-light-danger mb-1"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-7">
-										<input type="text" asp-for="Value" id="kt_docs_maxlength_custom_text" maxlength="128 " class="form-control border-primary fw-semibold fw-bold" autocomplete="off" placeholder="نام کالا یا محصول را به فارسی وارد نمایید.">
+										<input type="text" asp-for="Value" id="kt_docs_maxlength_custom_text" maxlength="128 " class="form-control border-primary text-dark" autocomplete="off" placeholder="نام مقدار جدید برای ویژه گی های کالا یا محصولات را به فارسی وارد نمایید.">
 									</div>
 									<!--end::Col-->
 								</div>
@@ -67,14 +67,14 @@
 								<div class="row mb-7">
 									<!--begin::Tags-->
 									<label asp-for="PropertyNameId" class="col-lg-5 fw-semibold fw-bold">
-										نام ویژه گی را انتخاب کنید
+										انتخاب لیست ویژه گی های کالا یا محصولات.
 										<span asp-validation-for="PropertyNameId" class="badge badge-light-danger mb-1"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::آیتم-->
 									<div class="col-lg-7">
 										<!--begin::Option-->
-										<select asp-for="PropertyNameId" class="form-select" data-control="select2" data-hide-search="false" placeholder="گروه بندی ویژه گی را انتخاب کنید">
+										<select asp-for="PropertyNameId" class="form-select" data-control="select2" data-hide-search="false" placeholder="لیست گروه بندی لیست ویژه گی های کالا یا محصولات را انتخاب کنید">
 											@foreach (var item in Names)
 											{
 												if (item.type == PropertyType.Single_Choice
@@ -94,7 +94,7 @@
 						<!--end::details نمایش-->
 						<!--begin::Actions-->
 						<div class="text-start">
-							<button type="submit" class="btn  btn-sm btn-primary me-3"><i class="ki-duotone ki-plus fs-2"></i><span class="indicator-label">ثبت اطلاعات</span></button>
+							<button type="submit" class="btn btn-light-primary fw-bold me-3"><i class="ki-duotone ki-plus fs-2"></i><span class="indicator-label">ثبت اطلاعات</span></button>
 							<a asp-action="Index" asp-controller="AdminDashboard" class="btn btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
 								<i class="ki-duotone ki-home fs-3">
 								</i>

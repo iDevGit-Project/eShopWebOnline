@@ -25,7 +25,7 @@
 							<span class="card-label fw-bold text-dark">ثبت نام گروه بندی محصولات یا کالاهای جدید</span>
 							<span class="text-muted mt-1 fw-semibold fs-7">ثبت اطلاعات مربوط به گروه بندی محصولات یا کالاهای جدید در فروشگاه</span>
 						</h3>
-						<a asp-action="Index" asp-controller="ProductPropertyGroup" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به لیست گروه بندی محصولات یا کالاها">
+						<a asp-action="Index" asp-controller="ProductPropertyGroup" class="btn  btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به لیست گروه بندی محصولات یا کالاها">
 							<i class="ki-duotone ki-home fs-3">
 							</i>
 							بازگشت به لیست گروه بندی محصولات یا کالا ها
@@ -46,13 +46,13 @@
 								<div class="row mb-7">
 									<!--begin::Tags-->
 									<label asp-for="GroupTitle" class="col-lg-4 fw-semibold fw-bold" for="GroupTitle">
-										نام گروه بندی (فارسی)
+										نام گروه بندی (فارسی).
 										<span asp-validation-for="GroupTitle" class="badge badge-light-danger mb-1"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-8">
-										<input type="text" asp-for="GroupTitle" id="kt_docs_maxlength_custom_text" maxlength="64 " class="form-control border-primary fw-semibold fw-bold" autocomplete="off" placeholder="نام گروه بندی محصولات یا کالا را به فارسی وارد نمایید.">
+										<input type="text" asp-for="GroupTitle" id="kt_docs_maxlength_custom_text" maxlength="64 " class="form-control border-primary text-dark" autocomplete="off" placeholder="نام گروه بندی محصولات یا کالا را به فارسی وارد نمایید.">
 									</div>
 									<!--end::Col-->
 								</div>
@@ -63,8 +63,8 @@
 						<!--end::details نمایش-->
 						<!--begin::Actions-->
 						<div class="text-start">
-							<button type="submit" class="btn  btn-sm btn-primary me-3"><i class="ki-duotone ki-plus fs-2"></i><span class="indicator-label">ثبت اطلاعات</span></button>
-							<a asp-action="Index" asp-controller="AdminDashboard" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+							<button type="submit" class="btn btn-light-primary fw-bold me-3"><i class="ki-duotone ki-plus fs-2"></i><span class="indicator-label">ثبت اطلاعات</span></button>
+							<a asp-action="Index" asp-controller="AdminDashboard" class="btn  btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
 								<i class="ki-duotone ki-home fs-3">
 								</i>
 								انصراف و بازگشت
