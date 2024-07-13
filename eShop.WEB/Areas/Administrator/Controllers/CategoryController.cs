@@ -114,7 +114,15 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		}
 		#endregion
 
-		#region متد حذف دسته بندی ها
+		#region متد حذف دسته بندی ها به صورت نمایش فرم مودال
+		//[HttpGet]
+		//public IActionResult Remove()
+		//{
+		//	return PartialView(FindCategory);
+		//}
+		#endregion
+
+		#region متد حذف دسته بندی ها به صورت نمایش فرم
 		[HttpGet]
 		public IActionResult Remove(int Id)
 		{

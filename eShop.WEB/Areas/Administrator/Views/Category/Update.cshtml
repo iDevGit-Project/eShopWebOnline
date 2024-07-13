@@ -29,7 +29,7 @@
 							<span class="card-label fw-bold text-dark">ویرایش دسته بندی جاری</span>
 							<span class="text-muted mt-1 fw-semibold fs-7">ویرایش اطلاعات مربوط به دسته بندی جاری در فروشگاه</span>
 						</h3>
-						<a asp-action="Index" asp-controller="Category" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+						<a asp-action="Index" asp-controller="Category" class="btn  btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
 							<i class="ki-duotone ki-home fs-3">
 							</i>
 							بازگشت به لیست دسته بندی ها
@@ -51,11 +51,11 @@
 								<!--begin::Row-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="FaTitle" class="col-lg-4 fw-semibold fw-bold">نام دسته بندی (فارسی)</label>
+									<label asp-for="FaTitle" class="col-lg-4 fw-semibold fw-bold">نام دسته بندی (فارسی.)</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-8">
-										<input type="text" asp-for="FaTitle" id="kt_docs_maxlength_custom_text" maxlength="64 " class="form-control border-warning bg-light-warning text-warning fw-semibold fw-bold" autocomplete="off" placeholder="نام دسته بندی را به فارسی وارد نمایید.">
+										<input type="text" asp-for="FaTitle" id="kt_docs_maxlength_custom_text" maxlength="64 " class="form-control border-warning bg-light-warning text-dark" autocomplete="off" placeholder="نام دسته بندی را به فارسی وارد نمایید.">
 										<span asp-validation-for="FaTitle" class="badge bg-red-thunderbird bg-font-red-thunderbird"></span>
 									</div>
 									<!--end::Col-->
@@ -65,7 +65,7 @@
 								<div class="row mb-7">
 									<!--begin::Tags-->
 									<label asp-for="EnTitle" class="col-lg-4 fw-semibold fw-bold">
-										نام دسته بندی (انگلیسی)
+										نام دسته بندی (انگلیسی).
 										<span class="ms-1" data-bs-toggle="tooltip" title="Dear user: The name of the category must be written in Latin.">
 											<i class="ki-outline ki-information fs-7"></i>
 										</span>
@@ -73,7 +73,7 @@
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-8">
-										<input type="text" asp-for="EnTitle" id="kt_docs_maxlength_custom_Entext" maxlength="64 " class="form-control  border-warning bg-light-warning text-warning fw-semibold fw-bold FEN text-end" autocomplete="off" placeholder="Enter the brand name in English">
+										<input type="text" asp-for="EnTitle" id="kt_docs_maxlength_custom_Entext" maxlength="64 " class="form-control  border-warning bg-light-warning text-dark FEN text-end" autocomplete="off" placeholder="Enter the brand name in English">
 										<span asp-validation-for="EnTitle"></span>
 									</div>
 									<!--end::Col-->
@@ -83,11 +83,11 @@
 								<!--begin::Row-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="Icon" class="col-lg-4 fw-semibold fw-bold">تصویر یا آیکن دسته بندی</label>
+									<label asp-for="Icon" class="col-lg-4 fw-semibold fw-bold">تصویر یا آیکن دسته بندی.</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-8">
-										<input type="text" asp-for="Icon" class="form-control border-warning bg-light-warning text-warning fw-semibold fw-bold" autocomplete="off" placeholder="شما می توانید برای دسته بندی خود توضیحاتی را به فارسی وارد نمایید.">
+										<input type="text" asp-for="Icon" class="form-control border-warning bg-light-warning text-dark" autocomplete="off" placeholder="شما می توانید برای دسته بندی خود یک آیکن تصویری انتخاب کنید.">
 										<span asp-validation-for="Icon"></span>
 									</div>
 									<!--end::Col-->
@@ -96,56 +96,80 @@
 								<!--begin::Row-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="Description" class="col-lg-4 fw-semibold fw-bold">توضیحات دسته بندی</label>
+									<label asp-for="Description" class="col-lg-4 fw-semibold fw-bold">توضیحات دسته بندی.</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-8">
-										<input type="text" asp-for="Description" class="form-control border-warning bg-light-warning text-warning fw-semibold fw-bold" autocomplete="off" placeholder="شما می توانید برای دسته بندی خود توضیحاتی را به فارسی وارد نمایید.">
+										<input type="text" asp-for="Description" class="form-control border-warning bg-light-warning text-dark" autocomplete="off" placeholder="شما می توانید برای دسته بندی خود توضیحاتی را به فارسی وارد نمایید.">
 										<span asp-validation-for="Description"></span>
 									</div>
 									<!--end::Col-->
 								</div>
 								<!--end::Row-->
-								<!--end::Input group-->
-								<!--begin::Input group-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label class="col-lg-4 fw-semibold fw-bold">بارگزاری تصویر دسته بندی</label>
+									<label asp-for="ImgName" class="col-lg-4 fw-semibold fw-bold">
+										بارگزاری تصویر برای دسته بندی.
+										<span asp-validation-for="ImgName" class="badge badge-light-danger"></span>
+									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-8">
-										<label for="files" class="btn fw-bold  btn-light-danger">تصویر دسته بندی خود را بارگزاری نمایید ...</label>
-										<input asp-for="ImgName" style="display:none;" type="file" id="files" class="form-control border-warning bg-light-warning text-warning FEN fw-semibold fw-bold input_container">
-										<!--begin::توضیحات-->
-										<div class="text-muted fs-7">پسوند های مجاز : <span class="fs-7 text-dark fw-bold badge badge-light-danger fw-semibold">png, jpg, jpeg</span></div>
-										<!--end::توضیحات-->
+										<label for="files" class="btn fw-bold btn-light-warning">انتخاب و بارگزاری تصویر دسته بندی...</label>
+										<span class="badge badge-light-warning fs-5 FEN fw-bold text-dark">png, jpg, jpeg: پسوند های مجاز</span>
+										<input asp-for="ImgName" style="display:none;" type="file" id="files" class="form-control FEN input_container">
+										<span asp-validation-for="ImgName" class="badge bg-red-thunderbird bg-font-red-thunderbird"></span>
 									</div>
 									<!--end::Col-->
 								</div>
-								<!--end::Input group-->
 								<!--begin::Col-->
-								<!--begin::Input group-->
-								<div class="overflow-auto pb-5">
-									<div class="d-flex align-items-center border border-dashed border-gray-300 rounded px-7 py-3">
-										<!--begin::آیتم-->
-										<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
-											<div class="form-check form-switch form-check-custom form-check-solid me-10">
-												<input asp-for="IsActive" class="form-check-input h-30px w-50px" type="checkbox" id="flexSwitch30x50" />
-												<label class="form-check-label" for="flexSwitch30x50">
-													فعالسازی دسته بندی.
-												</label>
+								<div class="row mb-7">
+									<!--begin::Tags-->
+									<label asp-for="IsActive" class="col-lg-4 fw-semibold fw-bold">
+										فعال یا غیرفعاسازی دسته بندی.
+										<span asp-validation-for="IsActive" class="badge badge-light-danger"></span>
+									</label>
+									<!--end::Tags-->
+									<div class="col-lg-8">
+										<div class="d-flex align-items-center border border-dashed border-gray-300 rounded px-7 py-3">
+											<!--begin::آیتم-->
+											<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
+												<div class="form-check form-switch form-check-custom form-check-solid me-10">
+													<input asp-for="IsActive" class="form-check-input h-30px w-50px" onclick="confirmdSwitchSliderCommand()" type="checkbox" id="flexSwitch30x50" style="cursor: pointer;" />
+													<label class="form-check-label fw-semibold fw-bold text-dark" for="flexSwitch30x50">
+														آیا دسته بندی جدید در سایت ویرایش شود؟
+														<span asp-validation-for="IsActive" class="badge badge-light-danger mb-1"></span>
+													</label>
+												</div>
 											</div>
-											<div class="form-check form-switch form-check-custom form-check-solid me-10">
-												<input asp-for="IsMain" class="form-check-input h-30px w-50px" type="checkbox" id="flexSwitch30x50" />
-												<label class="form-check-label" for="flexSwitch30x50">
-													ثبت در منوی اصلی.
-												</label>
-											</div>
+											<!--end::آیتم-->
 										</div>
-										<!--end::آیتم-->
 									</div>
-									<!--begin::Col-->
 								</div>
+								<div class="row mb-7">
+									<!--begin::Tags-->
+									<label asp-for="IsMain" class="col-lg-4 fw-semibold fw-bold">
+										ویرایش دسته بندی در منوی اصلی.
+										<span asp-validation-for="IsMain" class="badge badge-light-danger"></span>
+									</label>
+									<!--end::Tags-->
+									<div class="col-lg-8">
+										<div class="d-flex align-items-center border border-dashed border-gray-300 rounded px-7 py-3">
+											<!--begin::آیتم-->
+											<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
+												<div class="form-check form-switch form-check-custom form-check-solid me-10">
+													<input asp-for="IsMain" class="form-check-input h-30px w-50px" onclick="confirmdSwitchSliderCommand()" type="checkbox" id="flexSwitch30x50" style="cursor: pointer;" />
+													<label class="form-check-label fw-semibold fw-bold text-dark" for="flexSwitch30x50">
+														آیا دسته بندی جدید در منوی اصلی ویرایش شود؟
+														<span asp-validation-for="IsMain" class="badge badge-light-danger mb-1"></span>
+													</label>
+												</div>
+											</div>
+											<!--end::آیتم-->
+										</div>
+									</div>
+								</div>
+								<!--begin::Input group-->
 								<div class="d-flex align-items-center border border-dashed border-gray-300 rounded px-7 py-3">
 									<!--begin::Tags-->
 									<label asp-for="IsMain" class="col-lg-4 fw-semibold fw-bold">
@@ -155,7 +179,7 @@
 									<!--begin::آیتم-->
 									<div class="d-flex align-items-center min-w-100px">
 										<!--begin::Option-->
-										<button type="button" class="btn btn-sm btn-light-primary me-20 add-parent" data-name="addOrUpdateParent.ParentId">
+										<button type="button" class="btn btn-sm btn-light-warning me-20 add-parent" data-name="addOrUpdateParent.ParentId">
 											<i class="ki-duotone ki-abstract-26 fs-2"><span class="path1"></span><span class="path2"></span></i>انتخاب
 										</button>
 										<!--end::Option-->
@@ -204,10 +228,11 @@
 							<!--end::کارت body-->
 						</div>
 						<!--end::details نمایش-->
+
 						<!--begin::Actions-->
 						<div class="text-start">
 							<button type="submit" class="btn btn-light-warning me-3"><i class="ki-duotone ki-pencil fs-3"><span class="path1"></span><span class="path2"></span></i><span class="indicator-label">ویرایش اطلاعات</span></button>
-							<a asp-action="Index" asp-controller="AdminDashboard" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+							<a asp-action="Index" asp-controller="AdminDashboard" class="btn  btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
 								<i class="ki-duotone ki-home fs-3">
 								</i>
 								انصراف و بازگشت

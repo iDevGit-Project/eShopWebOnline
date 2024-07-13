@@ -1,4 +1,4 @@
-﻿@* @model AddOrUpdateProductPropertyValueForProductViewModel
+﻿@model AddOrUpdateProductPropertyValueForProductViewModel
 
 @{
     var OldValue = ViewBag.OldValue as List<ProductPropertyOldValueForProductViewModel>;
@@ -21,184 +21,95 @@
 			<!--begin::engage widget 1-->
 			<div class="card h-md-100" dir="rtl">
 				<!--begin::body-->
-				<div class="card-body align-items-start flex-column">
-					<!--begin::heading-->
-					<div class="card-header align-items-start px-0 border-0 pt-50">
-						<h3 class="card-title align-items-start flex-column">
-							<span class="card-label fw-bold text-dark">ثبت کالا یا محصول جدید</span>
-							<span class="text-muted mt-1 fw-semibold fs-7">ثبت اطلاعات مربوط به کالا یا محصول جدید در فروشگاه</span>
-						</h3>
-						<a asp-action="Index" asp-controller="Product" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
-							<i class="ki-duotone ki-home fs-3">
-							</i>
-							بازگشت به لیست کالا یا محصول ها
-						</a>
-					</div>
-					<!--begin:Form-->
-					<form asp-controller="ProductPropertyValue" asp-action="ProductProperty"
-						  method="post"
-						  data-ajax="true"
-						  data-callback=""
-						  data-action="Refresh"
-						  enctype="multipart/form-data">
-						<input type="hidden" asp-for="ProductId" />
-						<input type="hidden" asp-for="categoryid" />
-						<!--begin::details نمایش-->
-						<div class="card mb-5 d-flex flex-column nav-group nav-group-outline mx-auto" id="myForm">
-							<!--begin::کارت body-->
-							<div class="card-body p-9">
-								<!--begin::Row-->
-								<div class="row mb-7">
-									<!--begin::Tags-->
-									<label asp-for="FaTitle" class="col-lg-5 fw-semibold fw-bold">
-										نام کالا (فارسی)
-										<span asp-validation-for="FaTitle" class="badge badge-light-danger mb-1"></span>
-									</label>
-									<!--end::Tags-->
-									<!--begin::Col-->
-									<div class="col-lg-7">
-										<input type="text" asp-for="FaTitle" id="kt_docs_maxlength_custom_text" maxlength="128 " class="form-control border-primary fw-semibold fw-bold" autocomplete="off" placeholder="نام کالا یا محصول را به فارسی وارد نمایید.">
-									</div>
-									<!--end::Col-->
-								</div>
-								<!--end::Row-->
-								<!--begin::Row-->
-								<div class="row mb-7">
-									<!--begin::Tags-->
-									<label asp-for="EnTitle" class="col-lg-5 fw-semibold fw-bold">
-										نام کالا (انگلیسی)
-										<span asp-validation-for="EnTitle" class="badge badge-light-danger mb-1"></span>
-									</label>
-									<!--end::Tags-->
-									<!--begin::Col-->
-									<div class="col-lg-7">
-										<input type="text" asp-for="EnTitle" id="kt_docs_maxlength_custom_text" maxlength="128 " class="form-control border-primary FEN" autocomplete="off" placeholder="Enter the name of the product in English.">
-									</div>
-									<!--end::Col-->
-								</div>
-								<!--end::Row-->
-								<!--begin::Row-->
-								<div class="row mb-7">
-									<!--begin::Tags-->
-									<label asp-for="CategoryId" class="col-lg-5 fw-semibold fw-bold">
-										دسته بندی را انتخاب کنید
-										<span asp-validation-for="CategoryId" class="badge badge-light-danger mb-1"></span>
-									</label>
-									<!--end::Tags-->
-									<!--begin::آیتم-->
-									<div class="col-lg-7">
-										<!--begin::Option-->
-										<select asp-for="CategoryId" class="form-select" data-control="select2" data-hide-search="false" placeholder="دسته بندی خود را انتخاب کنید" style="cursor: pointer;">
-											<option>لیست دسته بندی ها</option>
-											@foreach (var item in Model.GetCategories)
-											{
-												<option value="@item.CategoryId">@item.FaTitle</option>
-											}
-										</select>
-										<!--end::Option-->
-									</div>
-									<!--end::آیتم-->
-								</div>
-								<!--end::Row-->
-								<!--begin::Row-->
-								<div class="row mb-7">
-									<!--begin::Tags-->
-									<label asp-for="BrandId" class="col-lg-5 fw-semibold fw-bold">
-										برند کالا را انتخاب کنید
-										<span asp-validation-for="BrandId" class="badge badge-light-danger mb-1"></span>
-									</label>
-									<!--end::Tags-->
-									<!--begin::آیتم-->
-									<div class="col-lg-7">
-										<!--begin::Option-->
-										<select asp-for="BrandId" class="form-select" data-control="select2" data-hide-search="false" placeholder="برند خود را انتخاب کنید" style="cursor: pointer;">
-											<option>لیست برندها</option>
-											@foreach (var item in Model.Brands)
-											{
-												<option value="@item.BrandId">@item.FaTitle</option>
-											}
-										</select>
-										<!--end::Option-->
-									</div>
-									<!--end::آیتم-->
-								</div>
-								<!--end::Row-->
-								<!--begin::Row-->
-								<div class="row mb-7">
-									<!--begin::Tags-->
-									<label asp-for="Score" class="col-lg-5 fw-semibold fw-bold">
-										امتیاز محصول
-										<span asp-validation-for="Score" class="badge badge-light-danger mb-1"></span>
-									</label>
-									<!--end::Tags-->
-									<!--begin::Dialer-->
-									<!--begin::Col-->
-									<div class="col-lg-7">
-										<input type="text" asp-for="Score" class="form-control border-primary" autocomplete="off" placeholder="امتیاز به این نحصول را به صورت عدد وارد نمایید.">
-									</div>
-									<!--end::Col-->
-								</div>
-								<!--end::Row-->
-								<div class="row mb-7">
-									<!--begin::Tags-->
-									<label asp-for="IsActive" class="col-lg-5 fw-semibold fw-bold">
-										فعال یا غیرفعاسازی محصول
-										<span asp-validation-for="IsActive" class="badge badge-light-danger"></span>
-									</label>
-									<!--end::Tags-->
-									<div class="col-lg-7">
-										<div class="d-flex align-items-center border border-dashed border-gray-300 rounded px-7 py-3">
-											<!--begin::آیتم-->
-											<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
-												<div class="form-check form-switch form-check-custom form-check-solid me-10">
-													<input asp-for="IsActive" class="form-check-input h-30px w-50px" type="checkbox" id="flexSwitch30x50" style="cursor: pointer;" />
-													<label class="form-check-label" for="flexSwitch30x50">
-														آیا محصول فعال شود؟
-														<span asp-validation-for="IsActive" class="badge badge-light-danger mb-1"></span>
-													</label>
-												</div>
-											</div>
-											<!--end::آیتم-->
-										</div>
-										<!--begin::Col-->
-									</div>
-								</div>
-								<div class="row mb-7">
-									<!--begin::Tags-->
-									<label asp-for="ImgName" class="col-lg-5 fw-semibold fw-bold">
-										بارگزاری تصویر کالا یا محصول
-										<span asp-validation-for="ImgName" class="badge badge-light-danger"></span>
-									</label>
-									<!--end::Tags-->
-									<!--begin::Col-->
-									<div class="col-lg-7">
-										<label for="files" class="btn fw-bold  btn-light-danger">انتخاب تصویر کالا یا محصول ...</label>
-										<input asp-for="ImgName" style="display:none;" type="file" id="files" class="form-control  FEN fw-semibold fw-bold input_container">
-										<!--begin::توضیحات-->
-										<div class="text-muted fs-7">پسوند های مجاز : <span class="fs-7 text-dark fw-bold badge badge-light-danger fw-semibold">png, jpg, jpeg</span></div>
-										<!--end::توضیحات-->
-										<span asp-validation-for="ImgName" class="badge bg-red-thunderbird bg-font-red-thunderbird"></span>
-									</div>
-									<!--end::Col-->
-								</div>
-								<!--end::Input group-->
+				@for (int i = 0; i < Model.propertyNameForProduct.Count(); i++)
+				{
+					@switch (Model.propertyNameForProduct[i].type)
+					{
+						case PropertyType.Single_Choice:
+							<div class="form-group">
+								<input type="hidden" name="nameid" value="@Model.propertyNameForProduct[i].NameId" />
+								<label>@Model.propertyNameForProduct[i].PropertyNameTitle</label>
+								<select name="value" class="form-control">
+									<option value="">@($"{Model.propertyNameForProduct[i].PropertyNameTitle} را انتخاب کنید ")</option>
+									@foreach (var item in Model.propertyNameForProduct[i].Values)
+									{
+										<option selected="@(OldValue.Any(x=>x.ValueId == item.ValueId)?"selected":null)" value="@item.ValueId">@item.Value</option>
+									}
+								</select>
 							</div>
-							<!--end::کارت body-->
-						</div>
-						<!--end::details نمایش-->
-						<!--begin::Actions-->
-						<div class="text-start">
-							<button type="submit" class="btn  btn-sm btn-primary me-3"><i class="ki-duotone ki-plus fs-2"></i><span class="indicator-label">ثبت اطلاعات</span></button>
-							<a asp-action="Index" asp-controller="AdminDashboard" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
-								<i class="ki-duotone ki-home fs-3">
-								</i>
-								انصراف و بازگشت
-							</a>
-						</div>
-						<!--end::Actions-->
-					</form>
-					<!--end:Form-->
-				</div>
+							break;
+
+						case PropertyType.Multiple_Choice:
+
+							<div class="form-group selectList">
+								<label>@Model.propertyNameForProduct[i].PropertyNameTitle</label>
+								<div class="row">
+
+									<div class="col-lg-4">
+										<button type="button" class="btn btn-success col-lg-6  add-prop"
+												data-porpname="nameid"
+												data-propvaluename="value"
+												data-nameid="@Model.propertyNameForProduct[i].NameId">
+											انتخاب
+										</button>
+
+									</div>
+									<select class="form-control col-lg-8 valueProperty">
+										@foreach (var item in Model.propertyNameForProduct[i].Values)
+										{
+											@if (OldValue.Any(x => x.ValueId == item.ValueId) == false)
+											{
+												<option value="@item.ValueId">@item.Value</option>
+											}
+
+										}
+									</select>
+
+								</div>
+
+								<div class="propertySelected">
+									@foreach (var item in OldValue.Where(x => x.NameId == Model.propertyNameForProduct[i].NameId))
+									{
+										<div class="item-Parent">
+											<button type="button" class="btn-remove item-btn-remove">×</button>
+											<input type="hidden" value="@item.ValueId" name="value" />
+											<input type="hidden" value="@item.NameId" name="nameid" />
+											<span class="subtext">@item.Value</span>
+										</div>
+									}
+								</div>
+							</div>
+
+							break;
+
+						case PropertyType.Linear:
+							<div class="form-group">
+								<input type="hidden" name="nameid" value="@Model.propertyNameForProduct[i].NameId" />
+								<label>@Model.propertyNameForProduct[i].PropertyNameTitle</label>
+								<input class="form-control" name="value" value="@Html.Raw(
+                                                OldValue.Find(x=>x.NameId==Model.propertyNameForProduct[i].NameId)==null?"":
+                                                OldValue.Find(x=>x.NameId==Model.propertyNameForProduct[i].NameId).Value)" />
+							</div>
+							break;
+
+						case PropertyType.Written:
+							<div class="form-group">
+								<input type="hidden" name="nameid" value="@Model.propertyNameForProduct[i].NameId" />
+								<label>@Model.propertyNameForProduct[i].PropertyNameTitle</label>
+								<textarea class="form-control" name="value">@Html.Raw(
+											OldValue.Find(x => x.NameId == Model.propertyNameForProduct[i].NameId) == null ? "" :
+											OldValue.Find(x => x.NameId == Model.propertyNameForProduct[i].NameId).Value)"</textarea>
+							</div>
+							break;
+
+						default:
+							<div class="form-group">
+								<span>تعریف نشده</span>
+							</div>
+							break;
+					}
+
+				}
 				<!--end::body-->
 			</div>
 			<!--end::engage widget 1-->
@@ -208,6 +119,9 @@
 	<!--end::row-->
 </div>
 <!--end::content container-->
+@section js {
+	<partial name="_MultiSelectForPropertyValuePartial" />
+}
 @section AdminScripts {
 	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
 	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
@@ -295,4 +209,3 @@
 	</script>
 	<!-- اسکریپت آژاکس مربوط به حذف قیمت -->
 }
- *@

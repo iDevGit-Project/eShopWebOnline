@@ -86,21 +86,45 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		#endregion
 
 		#region متد حذف اطلاعات برند 
+		//[HttpGet]
+		//public IActionResult Remove(int Id)
+		//{
+		//	var FindBrand = _brandsService.FindBrandByIdForRemove(Id);
+
+		//	if (FindBrand == null)
+		//		return NotFound();
+
+		//	return View(FindBrand);
+		//}
+
+		//[HttpPost]
+		//public IActionResult Remove(RemoveBrandViewModel RemoveBrand)
+		//{
+		//	var Result = _brandsService.RemoveBrand(RemoveBrand);
+		//	TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
+		//	_toastNotification.AddErrorToastMessage("حذف اطلاعات با موفقیت انجام شد", new ToastrOptions()
+		//	{
+		//		ProgressBar = true,
+		//		CloseButton = true,
+		//		NewestOnTop = true,
+		//		TimeOut = 2000,
+		//		Title = "حذف",
+		//		PositionClass = ToastPositions.TopFullWidth,
+		//	});
+		//	return RedirectToAction(nameof(Index));
+		//}
+		#endregion
+		
+		#region متد حذف اطلاعات برند به صورت نمایش فرم مودال 
 		[HttpGet]
-		public IActionResult Remove(int Id)
+		public IActionResult RemoveBrand(int Id)
 		{
-			//return PartialView("_ModalDeleteBrand", _brandsService.FindBrandByIdForRemove(Id));
-
-			var FindBrand = _brandsService.FindBrandByIdForRemove(Id);
-
-			if (FindBrand == null)
-				return NotFound();
-
-			return View(FindBrand);
+			// صدا زدن پارشیال مربوط به نمایش فرم مودال به هنگام حذف اطلاعات
+			return PartialView("_ModalDeleteBrand", _brandsService.FindBrandByIdForRemove(Id));
 		}
 
 		[HttpPost]
-		public IActionResult Remove(RemoveBrandViewModel RemoveBrand)
+		public IActionResult RemoveBrand(RemoveBrandViewModel RemoveBrand)
 		{
 			var Result = _brandsService.RemoveBrand(RemoveBrand);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);

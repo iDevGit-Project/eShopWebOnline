@@ -63,34 +63,43 @@
 								<!--begin::Input group-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="ImgName" class="col-lg-2 fw-semibold fw-bold">
+									<label asp-for="IsActive" class="col-lg-5 fw-semibold fw-bold">
+										فعال یا غیرفعاسازی محصول.
+										<span asp-validation-for="IsActive" class="badge badge-light-danger"></span>
+									</label>
+									<!--end::Tags-->
+									<div class="col-lg-7">
+										<div class="d-flex align-items-center border border-dashed border-gray-300 rounded px-7 py-3">
+											<!--begin::آیتم-->
+											<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
+												<div class="form-check form-switch form-check-custom form-check-solid me-10">
+													<input asp-for="IsActive" class="form-check-input h-30px w-50px" onclick="confirmdSwitchSliderCommand()" type="checkbox" id="flexSwitch30x50" style="cursor: pointer;" />
+													<label class="form-check-label" for="flexSwitch30x50">
+														آیا تصویر اسلایدردر صفحه اصلی سایت فعال شود؟
+														<span asp-validation-for="IsActive" class="badge badge-light-danger mb-1"></span>
+													</label>
+												</div>
+											</div>
+											<!--end::آیتم-->
+										</div>
+									</div>
+								</div>
+								<div class="row mb-7">
+									<!--begin::Tags-->
+									<label asp-for="ImgName" class="col-lg-5 fw-semibold fw-bold">
 										بارگزاری تصویر اسلایدر
 										<span asp-validation-for="ImgName" class="badge badge-light-danger"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
-									<div class="col-lg-5">
-										<label for="files" class="btn fw-bold  btn-light-danger">تصویر اسلایدر خود را انتخاب و بارگزاری نمایید ...</label>
-										<input asp-for="ImgName" style="display:none;" type="file" id="files" class="form-control  FEN fw-semibold fw-bold input_container">
+									<div class="col-lg-6">
+										<label for="files" class="btn fw-bold btn-light-danger">انتخاب و بارگزاری تصویر اسلایدر...</label>
+										<span class="badge badge-light-danger fs-5 FEN fw-bold text-dark">png, jpg, jpeg: پسوند های مجاز</span>
+										<input asp-for="ImgName" style="display:none;" type="file" id="files" class="form-control FEN input_container">
 										<span asp-validation-for="ImgName" class="badge bg-red-thunderbird bg-font-red-thunderbird"></span>
-										<!--begin::توضیحات-->
-										<div class="text-muted fs-7">پسوند های مجاز : <span class="fs-7 text-dark fw-bold badge badge-light-danger fw-semibold">png, jpg, jpeg</span></div>
-										<!--end::توضیحات-->
-									</div>
-									<!--end::Col-->
-									<!--begin::Col-->
-									<div class="col-lg-5">
-										<div class="form-check form-switch form-check-custom form-check-solid me-10">
-											<input asp-for="IsActive" class="form-check-input h-30px w-50px" type="checkbox" id="flexSwitch30x50" />
-											<label class="form-check-label" for="flexSwitch30x50">
-												فعال یا غیر فعالسازی تصویر اسلایدر
-												<span asp-validation-for="IsActive" class="badge badge-light-danger"></span>
-											</label>
-										</div>
 									</div>
 									<!--end::Col-->
 								</div>
-								<!--end::Input group-->
 								<!--end::Input group-->
 							</div>
 							<!--end::کارت body-->
@@ -143,7 +152,8 @@
 			validate: true
 		});
 	</script>
-	<!-- Refresh Data in Tables -->
+	<!--==================================================================-->
+	<!-- بروزرسانی اطلاعات جدول داده ها -->
 	<script>
 		$('#kt_refresh_datatable').on('click', function () {
 			// نمایش فرم انیمیشن در زمان ثبت اطلاعات
@@ -184,36 +194,32 @@
 		})
 	</script>
 	<!--===================================================================-->
-	<!-- اسکریپت آژاکس مربوط به حذف قیمت -->
+	<!-- SweetAlert نمایش پیغام به کاربر توسط  -->
 	<script>
-		function emptyInputInvalid(brandid) {
+		function confirmdSwitchSliderCommand() {
 			Swal.fire({
 				showClass: {
 					popup: `
-					animate__animated
-					animate__fadeInUp
-					animate__faster`
+						animate__animated
+						animate__fadeInUp
+						animate__faster`
 				},
 				hideClass: {
 					popup: `
-					animate__animated
-					animate__fadeOutDown
-					animate__faster`
+						animate__animated
+						animate__fadeOutDown
+						animate__faster`
 				},
-				icon: 'warning',
-				title: "آیا از حذف قیمت انتخاب شده مطمئن هستید ؟",
-				text: "حذف قیمت جاری از سیستم",
-				confirmButtonText: "بلی, حذف شود.",
-				cancelButtonText: "خیر, انصراف!",
+				icon: 'success',
+				title: "عملیات فوق بر روی تصویر اسلایدر انجام شد.",
+				confirmButtonText: "انجام شد. بازگشت",
 				position: "top-center",
-				showCancelButton: true,
+				// footer: '<span class="badge badge-light-warning"> ثبت نهایی: فشردن دسکه ویرایش اطلاعات</span>'
 				reverseButtons: false,
 				customClass: {
-					confirmButton: "btn btn-danger",
-					cancelButton: "btn btn-secondary"
+					confirmButton: "btn btn-primary"
 				}
 			})
 		}
 	</script>
-	<!-- اسکریپت آژاکس مربوط به حذف قیمت -->
 }

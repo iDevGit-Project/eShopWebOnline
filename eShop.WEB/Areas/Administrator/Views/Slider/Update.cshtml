@@ -4,8 +4,6 @@
 	ViewData["Title:"] = "پنل مدیریت | فراخوانی لیست اسلایدرهای سمت مدیر";
 }
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" asp-append-version="true" />
-
 @section scripts
 {
 	<partial name="_ValidationScriptsPartial" />
@@ -147,6 +145,7 @@
 			validate: true
 		});
 	</script>
+	<!--==================================================================-->
 	<!-- Refresh Data in Tables -->
 	<script>
 		$('#kt_refresh_datatable').on('click', function () {
@@ -188,53 +187,8 @@
 		})
 	</script>
 	<!--===================================================================-->
-@* 	<script>
-		function emptyInputInvalid(brandid) {
-			Swal.fire({
-				showClass: {
-					popup: `
-							animate__animated
-							animate__fadeInUp
-							animate__faster`
-				},
-				hideClass: {
-					popup: `
-							animate__animated
-							animate__fadeOutDown
-							animate__faster`
-				},
-				icon: 'warning',
-				title: "آیا از حذف قیمت انتخاب شده مطمئن هستید ؟",
-				text: "حذف قیمت جاری از سیستم",
-				confirmButtonText: "بلی, حذف شود.",
-				cancelButtonText: "خیر, انصراف!",
-				position: "top-center",
-				showCancelButton: true,
-				reverseButtons: false,
-				customClass: {
-					confirmButton: "btn btn-danger",
-					cancelButton: "btn btn-secondary"
-				}
-			})
-		}
-	</script> *@
-	<!--===================================================================-->
 	<script>
 		function confirmdSwitchSliderCommand() {
-			// Swal.fire({
-			// 	title: "Do you want to save the changes?",
-			// 	showDenyButton: true,
-			// 	showCancelButton: true,
-			// 	confirmButtonText: "Save",
-			// 	denyButtonText: `Don't save`
-			// }).then((result) => {
-			// 	/* Read more about isConfirmed, isDenied below */
-			// 	if (result.isConfirmed) {
-			// 		Swal.fire("Saved!", "", "success");
-			// 	} else if (result.isDenied) {
-			// 		Swal.fire("Changes are not saved", "", "info");
-			// 	}
-			// });
 			Swal.fire({
 				showClass: {
 					popup: `
