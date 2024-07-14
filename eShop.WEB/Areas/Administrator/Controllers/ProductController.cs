@@ -60,7 +60,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 			_toastNotification.AddSuccessToastMessage("ثبت اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{
 				ProgressBar = true,
-				CloseButton = true,
+				CloseButton = false,
 				NewestOnTop = true,
 				TimeOut = 2000,
 				Title = "ثبت",
@@ -98,10 +98,10 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 			_toastNotification.AddInfoToastMessage("ویرایش اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{
 				ProgressBar = true,
-				CloseButton = true,
+				CloseButton = false,
 				NewestOnTop = true,
 				TimeOut = 2000,
-				Title = "بروزرسانی",
+				Title = "ویرایش",
 				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));
@@ -132,7 +132,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 			_toastNotification.AddSuccessToastMessage("ثبت توضیحات کالا با موفقیت انجام شد.", new ToastrOptions()
 			{
 				ProgressBar = true,
-				CloseButton = true,
+				CloseButton = false,
 				NewestOnTop = true,
 				TimeOut = 2000,
 				Title = "موفق",

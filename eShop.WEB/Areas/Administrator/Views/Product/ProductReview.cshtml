@@ -22,10 +22,10 @@
 					<!--begin::heading-->
 					<div class="card-header align-items-start px-0 border-0 pt-50">
 						<h3 class="card-title align-items-start flex-column">
-							<span class="card-label fw-bold text-dark">ثبت و بروزرسانی توضیحات</span>
+							<span class="card-label fw-bold text-dark">ثبت و بروزرسانی توضیحات محصول جاری</span>
 							<span class="text-muted mt-1 fw-semibold fs-7">ثبت و بروزرسانی اطلاعات مربوط به محصول یا کالای جاری در فروشگاه</span>
 						</h3>
-						<a asp-action="Index" asp-controller="Product" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+						<a asp-action="Index" asp-controller="Product" class="btn  btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
 							<i class="ki-duotone ki-home fs-3">
 							</i>
 							بازگشت به لیست کالا یا محصول ها
@@ -47,15 +47,16 @@
 								<div class="row mb-7">
 									<!--begin::Tags-->
 									<label asp-for="Positive" class="col-lg-5 fw-semibold fw-bold">
+										نقاط قوت کالا.
 										<span class="badge badge-light-primary fs-base">
-											<i class="ki-outline ki-arrow-up fs-5 text-primary"></i> نقاط قوت کالا
+											<i class="ki-outline ki-arrow-up fs-5 text-primary FEN"></i>UP
 										</span>
 										<span asp-validation-for="Positive" class="badge badge-light-danger mb-1"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-7">
-										<input type="text" asp-for="Positive" class="form-control border-primary fw-semibold fw-bold" autocomplete="off" placeholder="نقاط قوت کالا یا محصول را وارد نمایید.">
+										<input type="text" asp-for="Positive" class="form-control border-primary text-dark badge-light-primary" autocomplete="off" placeholder="نقاط قوت کالا یا محصول را وارد نمایید.">
 									</div>
 									<!--end::Col-->
 								</div>
@@ -64,15 +65,16 @@
 								<div class="row mb-7">
 									<!--begin::Tags-->
 									<label asp-for="Negative" class="col-lg-5 fw-semibold fw-bold">
+										نقاط ضعف کالا.
 										<span class="badge badge-light-danger fs-base">
-											<i class="ki-outline ki-arrow-down fs-5 text-danger"></i> نقاط ضعف کالا
+											<i class="ki-outline ki-arrow-down fs-5 text-danger FEN"></i>Down
 										</span>
 										<span asp-validation-for="Negative" class="badge badge-light-danger mb-1"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-7">
-										<input type="text" asp-for="Negative" class="form-control border-danger fw-semibold fw-bold" autocomplete="off" placeholder="نقاط ضعف کالا یا محصول را وارد نمایید.">
+										<input type="text" asp-for="Negative" class="form-control border-danger text-dark badge-light-danger" autocomplete="off" placeholder="نقاط ضعف کالا یا محصول را وارد نمایید.">
 									</div>
 									<!--end::Col-->
 								</div>
@@ -81,13 +83,13 @@
 								<div class="row mb-7">
 									<!--begin::Tags-->
 									<label asp-for="Review" class="col-lg-5 fw-semibold fw-bold">
-										توضیحات کالا را وارد کنید
+										توضیحات کالا را وارد کنید.
 										<span asp-validation-for="Review" class="badge badge-light-danger mb-1"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-7">
-										<textarea type="text" asp-for="Review" id="kt_docs_maxlength_custom_text" maxlength="4096 " aria-label="With textarea" class="form-control border-primary hover-scroll-y h-200px px-5 fw-semibold fw-bold" autocomplete="off" placeholder="نقاط ضعف کالا یا محصول را وارد نمایید." style="text-align:justify"></textarea>
+										<textarea type="text" asp-for="Review" id="kt_docs_maxlength_custom_text" maxlength="4096 " aria-label="With textarea" class="form-control border-primary hover-scroll-y h-200px px-5" autocomplete="off" placeholder="توضیحاتی جهت آشنایی بیشتر با محصول را وارد نمایید." style="text-align:justify"></textarea>
 									</div>
 									<!--end::Col-->
 								</div>
@@ -98,8 +100,8 @@
 						<!--end::details نمایش-->
 						<!--begin::Actions-->
 						<div class="text-start">
-							<button type="submit" class="btn  btn-sm btn-primary me-3"><i class="ki-duotone ki-plus fs-2"></i><span class="indicator-label">ثبت توضیحات محصول</span></button>
-							<a asp-action="Index" asp-controller="AdminDashboard" class="btn  btn-sm btn-light-dark h-40px" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+							<button type="submit" class="btn btn-light-primary fw-bold me-3"><i class="ki-duotone ki-plus fs-2"></i><span class="indicator-label">ثبت توضیحات محصول</span></button>
+							<a asp-action="Index" asp-controller="AdminDashboard" class="btn  btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
 								<i class="ki-duotone ki-home fs-3">
 								</i>
 								انصراف و بازگشت

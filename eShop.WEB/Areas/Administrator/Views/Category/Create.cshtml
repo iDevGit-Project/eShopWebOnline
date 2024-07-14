@@ -133,7 +133,7 @@
 											<!--begin::آیتم-->
 											<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 												<div class="form-check form-switch form-check-custom form-check-solid me-10">
-													<input asp-for="IsActive" class="form-check-input h-30px w-50px" onclick="confirmdSwitchSliderCommand()" type="checkbox" id="flexSwitch30x50" style="cursor: pointer;" />
+													<input asp-for="IsActive" class="form-check-input h-30px w-50px" onclick="confirmdSwitchActivePrimaryCategoryCommand()" type="checkbox" id="flexSwitch30x50" style="cursor: pointer;" />
 													<label class="form-check-label fw-semibold fw-bold text-dark" for="flexSwitch30x50">
 														آیا دسته بندی جدید در سایت فعال شود؟
 														<span asp-validation-for="IsActive" class="badge badge-light-danger mb-1"></span>
@@ -156,7 +156,7 @@
 											<!--begin::آیتم-->
 											<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 												<div class="form-check form-switch form-check-custom form-check-solid me-10">
-													<input asp-for="IsMain" class="form-check-input h-30px w-50px" onclick="confirmdSwitchSliderCommand()" type="checkbox" id="flexSwitch30x50" style="cursor: pointer;" />
+													<input asp-for="IsMain" class="form-check-input h-30px w-50px" onclick="confirmdSwitchActiveCategoryPrimaryMenuCategoryCommand()" type="checkbox" id="flexSwitch30x50" style="cursor: pointer;" />
 													<label class="form-check-label fw-semibold fw-bold text-dark" for="flexSwitch30x50">
 														آیا دسته بندی جدید در منوی اصلی قرار بگیرد؟
 														<span asp-validation-for="IsMain" class="badge badge-light-danger mb-1"></span>
@@ -313,7 +313,7 @@
 	<!--===================================================================-->
 	<!-- SweetAlert نمایش پیغام به کاربر توسط  -->
 	<script>
-		function confirmdSwitchSliderCommand() {
+		function confirmdSwitchActivePrimaryCategoryCommand() {
 			Swal.fire({
 				showClass: {
 					popup: `
@@ -328,7 +328,36 @@
 						animate__faster`
 				},
 				icon: 'success',
-				title: "عملیات فوق بر روی تصویر اسلایدر انجام شد.",
+				title: "عملیات فعالسازی دسته بندی انجام شد.",
+				confirmButtonText: "انجام شد. بازگشت",
+				position: "top-center",
+				// footer: '<span class="badge badge-light-warning"> ثبت نهایی: فشردن دسکه ویرایش اطلاعات</span>'
+				reverseButtons: false,
+				customClass: {
+					confirmButton: "btn btn-primary"
+				}
+			})
+		}
+	</script>
+	<!--===================================================================-->
+	<!-- SweetAlert نمایش پیغام به کاربر توسط  -->
+	<script>
+		function confirmdSwitchActiveCategoryPrimaryMenuCategoryCommand() {
+			Swal.fire({
+				showClass: {
+					popup: `
+						animate__animated
+						animate__fadeInUp
+						animate__faster`
+				},
+				hideClass: {
+					popup: `
+						animate__animated
+						animate__fadeOutDown
+						animate__faster`
+				},
+				icon: 'success',
+				title: "عملیات فعالسازی دسته بندی منوی انجام شد.",
 				confirmButtonText: "انجام شد. بازگشت",
 				position: "top-center",
 				// footer: '<span class="badge badge-light-warning"> ثبت نهایی: فشردن دسکه ویرایش اطلاعات</span>'

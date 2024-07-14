@@ -1,5 +1,4 @@
-﻿
-@model CreateProductPropertyValueViewModel
+﻿@model CreateProductPropertyValueViewModel
 
 @{
 	ViewData["Title:"] = "پنل مدیریت | ثبت مقادیر ویژه گی های کالا یا محصولات جدید سمت مدیر";
@@ -114,6 +113,7 @@
 	<!--end::row-->
 </div>
 <!--end::content container-->
+
 @section js {
 	<partial name="_MultiSelectJsPartial" />
 }
@@ -142,6 +142,7 @@
 			validate: true
 		});
 	</script>
+	<!--==================================================================-->
 	<!-- Refresh Data in Tables -->
 	<script>
 		$('#kt_refresh_datatable').on('click', function () {

@@ -135,9 +135,9 @@
 											<!--begin::آیتم-->
 											<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 												<div class="form-check form-switch form-check-custom form-check-solid me-10">
-													<input asp-for="IsActive" class="form-check-input h-30px w-50px" onclick="confirmdSwitchSliderCommand()" type="checkbox" id="flexSwitch30x50" style="cursor: pointer;" />
+													<input asp-for="IsActive" class="form-check-input h-30px w-50px" onclick="confirmdSwitchActiveCategoryCommand()()" type="checkbox" id="flexSwitch30x50" style="cursor: pointer;" />
 													<label class="form-check-label fw-semibold fw-bold text-dark" for="flexSwitch30x50">
-														آیا دسته بندی جدید در سایت ویرایش شود؟
+														آیا دسته بندی فوق در سایت ویرایش شود؟
 														<span asp-validation-for="IsActive" class="badge badge-light-danger mb-1"></span>
 													</label>
 												</div>
@@ -158,9 +158,9 @@
 											<!--begin::آیتم-->
 											<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 												<div class="form-check form-switch form-check-custom form-check-solid me-10">
-													<input asp-for="IsMain" class="form-check-input h-30px w-50px" onclick="confirmdSwitchSliderCommand()" type="checkbox" id="flexSwitch30x50" style="cursor: pointer;" />
+													<input asp-for="IsMain" class="form-check-input h-30px w-50px" onclick="confirmdSwitchEditCategoryCommand()" type="checkbox" id="flexSwitch30x50" style="cursor: pointer;" />
 													<label class="form-check-label fw-semibold fw-bold text-dark" for="flexSwitch30x50">
-														آیا دسته بندی جدید در منوی اصلی ویرایش شود؟
+														آیا دسته بندی جاری در منوی اصلی ویرایش شود؟
 														<span asp-validation-for="IsMain" class="badge badge-light-danger mb-1"></span>
 													</label>
 												</div>
@@ -281,6 +281,7 @@
 			validate: true
 		});
 	</script>
+	<!--==================================================================-->
 	<script>
 		// نمایش حداکثر تعداد کاراکتر وارد شده به انگلیسی
 		$('#kt_docs_maxlength_custom_Entext').maxlength({
@@ -293,6 +294,7 @@
 			validate: true
 		});
 	</script>
+	<!--==================================================================-->
 	<!-- Refresh Data in Tables -->
 	<script>
 		$('#kt_refresh_datatable').on('click', function () {
@@ -334,36 +336,61 @@
 		})
 	</script>
 	<!--===================================================================-->
-	<!-- اسکریپت آژاکس مربوط به حذف قیمت -->
+	<!-- SweetAlert نمایش پیغام به کاربر توسط  -->
 	<script>
-		function emptyInputInvalid(brandid) {
+		function confirmdSwitchActiveCategoryCommand() {
 			Swal.fire({
 				showClass: {
 					popup: `
-										animate__animated
-										animate__fadeInUp
-										animate__faster`
+						animate__animated
+						animate__fadeInUp
+						animate__faster`
 				},
 				hideClass: {
 					popup: `
-										animate__animated
-										animate__fadeOutDown
-										animate__faster`
+						animate__animated
+						animate__fadeOutDown
+						animate__faster`
 				},
-				icon: 'warning',
-				title: "آیا از حذف قیمت انتخاب شده مطمئن هستید ؟",
-				text: "حذف قیمت جاری از سیستم",
-				confirmButtonText: "بلی, حذف شود.",
-				cancelButtonText: "خیر, انصراف!",
+				icon: 'success',
+				title: "عملیات بر روی دسته بندی انجام شد.",
+				confirmButtonText: "انجام شد. بازگشت",
 				position: "top-center",
-				showCancelButton: true,
+				// footer: '<span class="badge badge-light-warning"> ثبت نهایی: فشردن دسکه ویرایش اطلاعات</span>'
 				reverseButtons: false,
 				customClass: {
-					confirmButton: "btn btn-danger",
-					cancelButton: "btn btn-secondary"
+					confirmButton: "btn btn-primary"
 				}
 			})
 		}
 	</script>
-	<!-- اسکریپت آژاکس مربوط به حذف قیمت -->
+	<!--===================================================================-->
+	<!-- SweetAlert نمایش پیغام به کاربر توسط  -->
+	<script>
+		function confirmdSwitchEditCategoryCommand() {
+			Swal.fire({
+				showClass: {
+					popup: `
+						animate__animated
+						animate__fadeInUp
+						animate__faster`
+				},
+				hideClass: {
+					popup: `
+						animate__animated
+						animate__fadeOutDown
+						animate__faster`
+				},
+				icon: 'success',
+				title: "عملیات بر روی دسته بندی انجام شد.",
+				confirmButtonText: "انجام شد. بازگشت",
+				position: "top-center",
+				// footer: '<span class="badge badge-light-warning"> ثبت نهایی: فشردن دسکه ویرایش اطلاعات</span>'
+				reverseButtons: false,
+				customClass: {
+					confirmButton: "btn btn-primary"
+				}
+			})
+		}
+	</script>
 }
