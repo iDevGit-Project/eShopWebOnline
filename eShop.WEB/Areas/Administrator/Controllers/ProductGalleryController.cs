@@ -35,14 +35,14 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		{
 			var Result = _productGalleryService.CreateImageForProductGallery(ProductId, ImgName);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
-			_toastNotification.AddSuccessToastMessage("ثبت اطلاعات با موفقیت انجام شد", new ToastrOptions()
+			_toastNotification.AddSuccessToastMessage("ثبت اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{
 				ProgressBar = true,
-				CloseButton = true,
+				CloseButton = false,
 				NewestOnTop = true,
 				Debug = false,
 				TimeOut = 2000,
-				Title = "موفق",
+				Title = "موفق...",
 				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index), new { Id = ProductId });

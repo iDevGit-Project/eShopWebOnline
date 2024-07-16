@@ -53,10 +53,10 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 			_toastNotification.AddSuccessToastMessage("ثبت اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{
 				ProgressBar = true,
-				CloseButton = true,
+				CloseButton = false,
 				NewestOnTop = true,
 				TimeOut = 2000,
-				Title = "موفق",
+				Title = "موفق...",
 				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Create));

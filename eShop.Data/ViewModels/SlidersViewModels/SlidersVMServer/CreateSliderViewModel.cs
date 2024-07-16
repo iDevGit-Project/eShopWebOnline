@@ -10,13 +10,13 @@ namespace eShop.Data.ViewModels.SlidersViewModels.SlidersVMServer
 {
 	public class CreateSliderViewModel
 	{
-		[Display(Name = "نام تصویر")]
-		[Required(ErrorMessage = "وارد کردن {0} الزامیست.")]
-		[MinLength(3, ErrorMessage = "{0} نمیتواند کمتر از {1} باشد")]
-		[MaxLength(100, ErrorMessage = "{0} نمیتواند بیشتر از {1} باید")]
+		//[Display(Name = "نام تصویر")]
+		//[Required(ErrorMessage = "وارد کردن {0} الزامیست.")]
+		//[MinLength(3, ErrorMessage = "{0} نمیتواند کمتر از {1} باشد")]
+		//[MaxLength(100, ErrorMessage = "{0} نمیتواند بیشتر از {1} باید")]
 		public IFormFile ImgName { get; set; }
 
-		[Display(Name = "آدرس لینک اسلایدر")]
+		[Display(Name = "آدرس لینک")]
 		[Required(ErrorMessage = "وارد کردن {0} الزامیست.")]
 		[MinLength(3, ErrorMessage = "{0} نمیتواند کمتر از {1} باشد")]
 		[MaxLength(100, ErrorMessage = "{0} نمیتواند بیشتر از {1} باید")]

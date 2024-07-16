@@ -19,7 +19,7 @@ namespace eShop.Data.Entities
 		#region جدول ارتباطات
 		[ForeignKey(nameof(UserId))]
 		public TBL_User TBLUsers { get; set; }
-		public List<TBL_ProductCartDetail> TBLProductCartDetails { get; set; }
+		//public List<TBL_ProductCartDetail> TBLProductCartDetails { get; set; }
 		public List<TBL_PaymentDetail> TBLPaymentDetails { get; set; }
 		#endregion
 	}

@@ -41,14 +41,14 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		{
 			var Result = _sliderService.CreateSlider(createSlider);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
-			_toastNotification.AddSuccessToastMessage("ثبت اطلاعات با موفقیت انجام شد", new ToastrOptions()
+			_toastNotification.AddSuccessToastMessage("ثبت اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{
 				ProgressBar = true,
-				CloseButton = true,
+				CloseButton = false,
 				NewestOnTop = true,
 				Debug = false,
 				TimeOut = 2000,
-				Title = "موفق",
+				Title = "موفق...",
 				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));
@@ -72,13 +72,13 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		{
 			var Result = _sliderService.UpdateSlider(UpdateSlider);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
-			_toastNotification.AddInfoToastMessage("ویرایش اطلاعات با موفقیت انجام شد", new ToastrOptions()
+			_toastNotification.AddInfoToastMessage("ویرایش اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{
 				ProgressBar = true,
-				CloseButton = true,
+				CloseButton = false,
 				NewestOnTop = true,
 				Debug = false,
-				Title = "ویرایش",
+				Title = "بروزرسانی...",
 				TimeOut = 2000,
 				PositionClass = ToastPositions.TopFullWidth,
 			});
@@ -103,13 +103,13 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		{
 			var Result = _sliderService.RemoveSlider(RemoveSlider);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
-			_toastNotification.AddErrorToastMessage("حذف اطلاعات با موفقیت انجام شد", new ToastrOptions()
+			_toastNotification.AddErrorToastMessage("حذف اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{
 				ProgressBar = true,
-				CloseButton = true,
+				CloseButton = false,
 				NewestOnTop = true,
 				Debug = false,
-				Title = "حذف",
+				Title = "حذف...",
 				TimeOut = 2000,
 				PositionClass = ToastPositions.TopFullWidth,
 			});

@@ -47,14 +47,14 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 
 			var Result = _colorsServiceForServer.CreateColor(createColor);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
-			_toastNotification.AddSuccessToastMessage("ثبت اطلاعات با موفقیت انجام شد", new ToastrOptions()
+			_toastNotification.AddSuccessToastMessage("ثبت اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{
 				ProgressBar = true,
-				CloseButton = true,
+				CloseButton = false,
 				NewestOnTop = true,
 				Debug = false,
 				TimeOut = 2000,
-				Title = "موفق",
+				Title = "موفق...",
 				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));
@@ -83,14 +83,14 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 
 			var Result = _colorsServiceForServer.UpdateColor(UpdateColor);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
-			_toastNotification.AddInfoToastMessage(".ویرایش اطلاعات با موفقیت انجام شد", new ToastrOptions()
+			_toastNotification.AddInfoToastMessage(".ویرایش اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{
 				ProgressBar = true,
-				CloseButton = true,
+				CloseButton = false,
 				NewestOnTop = true,
 				Debug = false,
 				TimeOut = 2000,
-				Title = "بروزرسانی",
+				Title = "بروزرسانی...",
 				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));
@@ -119,14 +119,14 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 
 			var Result = _colorsServiceForServer.RemoveColor(RemoveColor);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
-			_toastNotification.AddErrorToastMessage("حذف اطلاعات با موفقیت انجام شد", new ToastrOptions()
+			_toastNotification.AddErrorToastMessage("حذف اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{
 				ProgressBar = true,
-				CloseButton = true,
+				CloseButton = false,
 				NewestOnTop = true,
 				Debug = false,
 				TimeOut = 2000,
-				Title = "حذف",
+				Title = "حذف...",
 				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));

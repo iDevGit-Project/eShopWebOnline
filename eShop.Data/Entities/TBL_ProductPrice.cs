@@ -35,7 +35,7 @@ namespace eShop.Data.Entities
 		[ForeignKey(nameof(SellerId))]
 		public TBL_ProductSeler TBLProductSeler { get; set; }
 
-		public List<TBL_ProductCartDetail> TBLProductCartDetail { get; set; }
+		//public List<TBL_ProductCartDetail> TBLProductCartDetail { get; set; }
 		#endregion
 	}
 }

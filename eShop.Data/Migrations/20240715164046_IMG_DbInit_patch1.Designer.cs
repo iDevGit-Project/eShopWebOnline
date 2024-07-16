@@ -12,8 +12,8 @@ using eShop.Data.Context;
 namespace eShop.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240523133605_IMG_DbInit_MakeTable7")]
-    partial class IMG_DbInit_MakeTable7
+    [Migration("20240715164046_IMG_DbInit_patch1")]
+    partial class IMG_DbInit_patch1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -146,6 +146,46 @@ namespace eShop.Data.Migrations
                     b.ToTable("TBL_Colors");
                 });
 
+            modelBuilder.Entity("eShop.Data.Entities.TBL_DisCount", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("EndDisCount")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsRemove")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("RemoveDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("StartDisCount")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("UserCount")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TBL_DisCounts");
+                });
+
             modelBuilder.Entity("eShop.Data.Entities.TBL_FAQAnswer", b =>
                 {
                     b.Property<int>("Id")
@@ -181,6 +221,56 @@ namespace eShop.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TBL_FAQAnswers");
+                });
+
+            modelBuilder.Entity("eShop.Data.Entities.TBL_PaymentDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Athourity")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CartId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DisCountId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsRemove")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte>("PaymentType")
+                        .HasColumnType("tinyint");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RefId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RemoveDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserIp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("DisCountId");
+
+                    b.ToTable("TBL_PaymentDetails");
                 });
 
             modelBuilder.Entity("eShop.Data.Entities.TBL_Product", b =>
@@ -231,6 +321,51 @@ namespace eShop.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("TBL_Products");
+                });
+
+            modelBuilder.Entity("eShop.Data.Entities.TBL_ProductCart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FullAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsRemove")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte>("OrderType")
+                        .HasColumnType("tinyint");
+
+                    b.Property<string>("Province")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RemoveDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("SumOrder")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("TBL_ProductCarts");
                 });
 
             modelBuilder.Entity("eShop.Data.Entities.TBL_ProductGallery", b =>
@@ -327,6 +462,8 @@ namespace eShop.Data.Migrations
 
                     b.HasIndex("ProductId");
 
+                    b.HasIndex("SellerId");
+
                     b.ToTable("TBL_ProductPrices");
                 });
 
@@ -362,7 +499,7 @@ namespace eShop.Data.Migrations
 
                     b.HasIndex("PropertyValueId");
 
-                    b.ToTable("ProductProperties");
+                    b.ToTable("TBL_ProductProperties");
                 });
 
             modelBuilder.Entity("eShop.Data.Entities.TBL_ProductPropertyGroup", b =>
@@ -575,6 +712,46 @@ namespace eShop.Data.Migrations
                     b.ToTable("TBL_ProductReviews");
                 });
 
+            modelBuilder.Entity("eShop.Data.Entities.TBL_ProductSeler", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImgName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsRemove")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RemoveDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SellerName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TBL_ProductSelers");
+                });
+
             modelBuilder.Entity("eShop.Data.Entities.TBL_Slider", b =>
                 {
                     b.Property<int>("Id")
@@ -647,6 +824,58 @@ namespace eShop.Data.Migrations
                     b.ToTable("TBL_SubCategories");
                 });
 
+            modelBuilder.Entity("eShop.Data.Entities.TBL_User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ActiveCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CartNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImgName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsRemove")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NationalCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RemoveDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte>("type")
+                        .HasColumnType("tinyint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TBL_Users");
+                });
+
             modelBuilder.Entity("eShop.Data.Entities.TBL_Warranty", b =>
                 {
                     b.Property<int>("Id")
@@ -677,6 +906,25 @@ namespace eShop.Data.Migrations
                     b.ToTable("TBL_Warranties");
                 });
 
+            modelBuilder.Entity("eShop.Data.Entities.TBL_PaymentDetail", b =>
+                {
+                    b.HasOne("eShop.Data.Entities.TBL_ProductCart", "TBLProductCart")
+                        .WithMany("TBLPaymentDetails")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("eShop.Data.Entities.TBL_DisCount", "TBLDisCount")
+                        .WithMany()
+                        .HasForeignKey("DisCountId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("TBLDisCount");
+
+                    b.Navigation("TBLProductCart");
+                });
+
             modelBuilder.Entity("eShop.Data.Entities.TBL_Product", b =>
                 {
                     b.HasOne("eShop.Data.Entities.TBL_Brand", "TBLBrand")
@@ -694,6 +942,17 @@ namespace eShop.Data.Migrations
                     b.Navigation("TBLBrand");
 
                     b.Navigation("TBLCategory");
+                });
+
+            modelBuilder.Entity("eShop.Data.Entities.TBL_ProductCart", b =>
+                {
+                    b.HasOne("eShop.Data.Entities.TBL_User", "TBLUsers")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("TBLUsers");
                 });
 
             modelBuilder.Entity("eShop.Data.Entities.TBL_ProductGallery", b =>
@@ -727,9 +986,17 @@ namespace eShop.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("eShop.Data.Entities.TBL_ProductSeler", "TBLProductSeler")
+                        .WithMany("TBLProductPrice")
+                        .HasForeignKey("SellerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("TBLColor");
 
                     b.Navigation("TBLProduct");
+
+                    b.Navigation("TBLProductSeler");
 
                     b.Navigation("TBLWarranty");
                 });
@@ -855,6 +1122,11 @@ namespace eShop.Data.Migrations
                     b.Navigation("TBLProductsProperty");
                 });
 
+            modelBuilder.Entity("eShop.Data.Entities.TBL_ProductCart", b =>
+                {
+                    b.Navigation("TBLPaymentDetails");
+                });
+
             modelBuilder.Entity("eShop.Data.Entities.TBL_ProductPropertyGroup", b =>
                 {
                     b.Navigation("PropertyNames");
@@ -870,6 +1142,11 @@ namespace eShop.Data.Migrations
             modelBuilder.Entity("eShop.Data.Entities.TBL_ProductPropertyValue", b =>
                 {
                     b.Navigation("PropertyProducts");
+                });
+
+            modelBuilder.Entity("eShop.Data.Entities.TBL_ProductSeler", b =>
+                {
+                    b.Navigation("TBLProductPrice");
                 });
 #pragma warning restore 612, 618
         }

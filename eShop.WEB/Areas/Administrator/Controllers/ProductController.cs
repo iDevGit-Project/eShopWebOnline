@@ -63,7 +63,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				CloseButton = false,
 				NewestOnTop = true,
 				TimeOut = 2000,
-				Title = "ثبت",
+				Title = "موفق...",
 				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));
@@ -101,7 +101,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				CloseButton = false,
 				NewestOnTop = true,
 				TimeOut = 2000,
-				Title = "ویرایش",
+				Title = "بروزرسانی...",
 				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));
@@ -135,7 +135,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				CloseButton = false,
 				NewestOnTop = true,
 				TimeOut = 2000,
-				Title = "موفق",
+				Title = "موفق...",
 				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));

@@ -365,47 +365,6 @@ namespace eShop.Data.Migrations
                     b.ToTable("TBL_ProductCarts");
                 });
 
-            modelBuilder.Entity("eShop.Data.Entities.TBL_ProductCartDetail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CartId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsRemove")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("LastModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductPriceId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("RemoveDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CartId");
-
-                    b.HasIndex("ProductPriceId");
-
-                    b.ToTable("TBL_ProductCartDetails");
-                });
-
             modelBuilder.Entity("eShop.Data.Entities.TBL_ProductGallery", b =>
                 {
                     b.Property<int>("Id")
@@ -993,25 +952,6 @@ namespace eShop.Data.Migrations
                     b.Navigation("TBLUsers");
                 });
 
-            modelBuilder.Entity("eShop.Data.Entities.TBL_ProductCartDetail", b =>
-                {
-                    b.HasOne("eShop.Data.Entities.TBL_ProductCart", "TBLProductCart")
-                        .WithMany("TBLProductCartDetails")
-                        .HasForeignKey("CartId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("eShop.Data.Entities.TBL_ProductPrice", "TBLProductPrice")
-                        .WithMany("TBLProductCartDetail")
-                        .HasForeignKey("ProductPriceId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("TBLProductCart");
-
-                    b.Navigation("TBLProductPrice");
-                });
-
             modelBuilder.Entity("eShop.Data.Entities.TBL_ProductGallery", b =>
                 {
                     b.HasOne("eShop.Data.Entities.TBL_Product", "TBLProduct")
@@ -1182,13 +1122,6 @@ namespace eShop.Data.Migrations
             modelBuilder.Entity("eShop.Data.Entities.TBL_ProductCart", b =>
                 {
                     b.Navigation("TBLPaymentDetails");
-
-                    b.Navigation("TBLProductCartDetails");
-                });
-
-            modelBuilder.Entity("eShop.Data.Entities.TBL_ProductPrice", b =>
-                {
-                    b.Navigation("TBLProductCartDetail");
                 });
 
             modelBuilder.Entity("eShop.Data.Entities.TBL_ProductPropertyGroup", b =>

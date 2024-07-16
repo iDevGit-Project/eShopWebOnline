@@ -26,8 +26,8 @@ namespace eShop.Data.ViewModels.ProductsViewModels.ProductsVMServer
         [MaxLength(100, ErrorMessage = "{0} نمیتواند بیشتر از {1} باید")]
         public string EnTitle { get; set; }
 
-        //[Display(Name = "دسته بندی")]
-        //[Required(ErrorMessage = "انتخاب {0} الزامیست.")]
+        [Display(Name = "دسته بندی")]
+        [Required(ErrorMessage = "انتخاب {0} الزامیست.")]
         public int CategoryId { get; set; }
 
         //[Display(Name = "برند")]
