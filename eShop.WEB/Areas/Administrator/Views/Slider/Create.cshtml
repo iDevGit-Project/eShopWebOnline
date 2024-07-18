@@ -32,6 +32,31 @@
 						</a>
 					</div>
 					<!--begin:Form-->
+					<!--begin::Ribbon wrapper 1-->
+					<div class="overflow-hidden position-relative card-rounded mb-7">
+						<!--begin::Ribbon-->
+						<div class="ribbon ribbon-triangle ribbon-top-start border-success">
+							<!--begin::Ribbon icon-->
+							<div class="ribbon-icon mt-n5 ms-n6">
+								<i class="ki-duotone ki-information-4 fs-2 text-white"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+							</div>
+							<!--end::Ribbon icon-->
+						</div>
+						<!--end::Ribbon-->
+						<!--begin::Card-->
+						<div class="card card-bordered bg-light-success">
+							<!--begin::Body-->
+							<div class="card-body">
+								<!--begin::Title-->
+								<h2 class="mb-1 text-dark">راهنمای کاربر</h2>
+								<!--end::Title-->
+								<span class="text-dark fs-5">تصویر اسلایدر، حداکثر در اندازه <span class="badge badge-success"> 780 * 1920 پیکسل</span> باشد.</span>
+							</div>
+							<!--end::Body-->
+						</div>
+						<!--end::Card-->
+					</div>
+					<!--end::Ribbon wrapper 1-->
 					<form asp-controller="Slider" asp-action="Create"
 						  method="post"
 						  data-ajax="true"
@@ -45,8 +70,8 @@
 								<!--begin::Row-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="Link" class="col-lg-4 fw-semibold fw-bold">
-										یک پیوند یا لینک برای اسلایدر خود وارد نمایید
+									<label asp-for="Link" class="col-lg-6 fw-semibold fw-bold">
+										آدرس پیوند یا لینک اسلایدر.
 										<span class="ms-1" data-bs-toggle="tooltip" title="مثال: http://www.mysite.com/slider">
 											<i class="ki-outline ki-information fs-7"></i>
 										</span>
@@ -54,8 +79,8 @@
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
-									<div class="col-lg-8">
-										<input type="text" asp-for="Link" id="kt_docs_maxlength_custom_text" maxlength="64 " class="form-control border-primary FEN" autocomplete="off" placeholder="به طور مثال: http://www.mysite.com/slider">
+									<div class="col-lg-6">
+										<input type="text" asp-for="Link" id="kt_docs_maxlength_custom_text" maxlength="512 " class="form-control border-primary FEN" autocomplete="off" placeholder="به طور مثال: http://www.mysite.com/slider">
 									</div>
 									<!--end::Col-->
 								</div>
@@ -63,19 +88,19 @@
 								<!--begin::Input group-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="IsActive" class="col-lg-4 fw-semibold fw-bold">
+									<label asp-for="IsActive" class="col-lg-6 fw-semibold fw-bold">
 										فعال یا غیرفعاسازی محصول.
 										<span asp-validation-for="IsActive" class="badge badge-light-danger"></span>
 									</label>
 									<!--end::Tags-->
-									<div class="col-lg-8">
+									<div class="col-lg-6">
 										<div class="d-flex align-items-center border border-dashed border-gray-300 rounded px-7 py-3">
 											<!--begin::آیتم-->
-											<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
+											<div class="d-flex flex-aligns-center pe-10 pe-lg-30">
 												<div class="form-check form-switch form-check-custom form-check-solid me-10">
 													<input asp-for="IsActive" class="form-check-input h-30px w-50px" onclick="confirmdSwitchSliderCommand()" type="checkbox" id="flexSwitch30x50" style="cursor: pointer;" />
 													<label class="form-check-label fw-bold text-dark" for="flexSwitch30x50">
-														آیا تصویر اسلایدردر صفحه اصلی سایت فعال شود؟
+														آیا تصویر اسلایدر در سایت فعال شود؟
 														<span asp-validation-for="IsActive" class="badge badge-light-danger mb-1"></span>
 													</label>
 												</div>
@@ -84,17 +109,17 @@
 										</div>
 									</div>
 								</div>
-								<div class="row mb-7">
+								<div class="row">
 									<!--begin::Tags-->
-									<label asp-for="ImgName" class="col-lg-4 fw-semibold fw-bold">
+									<label asp-for="ImgName" class="col-lg-6 fw-semibold fw-bold">
 										بارگزاری تصویر اسلایدر
 										<span asp-validation-for="ImgName" class="badge badge-light-danger"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
-									<div class="col-lg-8">
-										<label for="files" class="btn fw-bold btn-light-danger">انتخاب و بارگزاری تصویر اسلایدر...</label>
-										<span class="badge badge-light-danger fs-5 FEN fw-bold text-dark">png, jpg, jpeg: پسوند های مجاز</span>
+									<div class="col-lg-6">
+										<label for="files" class="btn fw-bold btn-light-primary">انتخاب کنید...</label>
+										<span class="badge badge-light-primary fs-5 FEN text-dark">Data types: (png, jpg, jpeg)</span>
 										<input asp-for="ImgName" style="display:none;" type="file" id="files" class="form-control FEN input_container">
 										<span asp-validation-for="ImgName" class="badge bg-red-thunderbird bg-font-red-thunderbird"></span>
 									</div>
@@ -147,7 +172,7 @@
 			warningClass: "badge badge-danger",
 			limitReachedClass: "badge badge-primary",
 			separator: ' از ',
-			preText: ' حداکثر ',
+			preText: ' تعداد ',
 			postText: 'کاراکتر استفاده شده است.',
 			validate: true
 		});

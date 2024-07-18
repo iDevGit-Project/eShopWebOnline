@@ -12,22 +12,13 @@ namespace eShop.Data.ViewModels.BrandsViewModels.BrandsVMServer
     {
 		public IFormFile? ImgName { get; set; }
 
-		[Display(Name = "نام برند -فارسی")]
+		[Display(Name = "نام برند به فارسی")]
 		[Required(ErrorMessage = " {0} الزامیست.")]
-		[MinLength(3, ErrorMessage = "{0} نمیتواند کمتر از {1} باشد")]
-		[MaxLength(100, ErrorMessage = "{0} نمیتواند بیشتر از {1} باید")]
 		public string FaTitle { get; set; }
 
-		[Display(Name = "نام برند-انگلیسی")]
+		[Display(Name = "نام برند به انگلیسی")]
 		[Required(ErrorMessage = " {0} الزامیست.")]
-		[MinLength(3, ErrorMessage = "{0} نمیتواند کمتر از {1} باشد")]
-		[MaxLength(100, ErrorMessage = "{0} نمیتواند بیشتر از {1} باید")]
 		public string EnTitle { get; set; }
-
-		[Display(Name = "توضیحات")]
-		[Required(ErrorMessage = " {0} الزامیست.")]
-		[MinLength(3, ErrorMessage = "{0} نمیتواند کمتر از {1} باشد")]
-		[MaxLength(100, ErrorMessage = "{0} نمیتواند بیشتر از {1} باید")]
 		public string? DesCripton { get; set; }
 	}
 }

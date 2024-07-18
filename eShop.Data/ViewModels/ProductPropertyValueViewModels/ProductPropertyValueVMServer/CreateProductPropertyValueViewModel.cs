@@ -10,7 +10,7 @@ namespace eShop.Data.ViewModels.ProductPropertyValueViewModels.ProductPropertyVa
 	public class CreateProductPropertyValueViewModel
 	{
 		[Display(Name = "مقدار ویژه گی")]
-		[Required(ErrorMessage = "درج {0} الزامیست.")]
+		[Required(ErrorMessage = "{0} الزامیست.")]
 		public string Value { get; set; }
 		public int PropertyNameId { get; set; }
 	}

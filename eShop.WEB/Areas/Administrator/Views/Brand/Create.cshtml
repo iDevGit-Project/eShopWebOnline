@@ -31,6 +31,31 @@
 							بازگشت به لیست برندها
 						</a>
 					</div>
+					<!--begin::Ribbon wrapper 1-->
+					<div class="overflow-hidden position-relative card-rounded mb-7">
+						<!--begin::Ribbon-->
+						<div class="ribbon ribbon-triangle ribbon-top-start border-success">
+							<!--begin::Ribbon icon-->
+							<div class="ribbon-icon mt-n5 ms-n6">
+								<i class="ki-duotone ki-information-4 fs-2 text-white"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+							</div>
+							<!--end::Ribbon icon-->
+						</div>
+						<!--end::Ribbon-->
+						<!--begin::Card-->
+						<div class="card card-bordered bg-light-success">
+							<!--begin::Body-->
+							<div class="card-body">
+								<!--begin::Title-->
+								<h2 class="mb-1 text-dark">راهنمای کاربر</h2>
+								<!--end::Title-->
+								<span class="text-dark fs-5">تصویر آیکن برند، حداکثر در اندازه <span class="badge badge-success"> 512 * 512 پیکسل</span> باشد.</span>
+							</div>
+							<!--end::Body-->
+						</div>
+						<!--end::Card-->
+					</div>
+					<!--end::Ribbon wrapper 1-->
                     <!--begin:Form-->
 					<form asp-controller="Brand" asp-action="Create" 
 						method="post"
@@ -45,12 +70,12 @@
 								<!--begin::Row-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="FaTitle" class="col-lg-4 fw-semibold fw-bold">نام برند (فارسی)
+									<label asp-for="FaTitle" class="col-lg-5 fw-semibold fw-bold">نام برند (فارسی)
 										<span asp-validation-for="FaTitle" class="badge badge-light-danger"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
-									<div class="col-lg-8">
+									<div class="col-lg-7">
 										<input type="text" asp-for="FaTitle" id="kt_docs_maxlength_custom_text" maxlength="48 " class="form-control border-primary text-dark" autocomplete="off" placeholder="نام برند را به فارسی وارد نمایید.">
 									</div>
 									<!--end::Col-->
@@ -59,16 +84,16 @@
 								<!--begin::Input group-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="EnTitle" class="col-lg-4 fw-semibold fw-bold">
-										نام برند (انگلیسی)
-										<span asp-validation-for="EnTitle" class="badge badge-light-danger"></span>
+									<label asp-for="EnTitle" class="col-lg-5 fw-semibold fw-bold">
+										نام برند (انگلیسی).
 										<span class="ms-1" data-bs-toggle="tooltip" title="کاربرگرامی: نام برند میبایست به صورت لاتین نوشته شود">
 											<i class="ki-outline ki-information fs-7"></i>
 										</span>
+										<span asp-validation-for="EnTitle" class="badge badge-light-danger"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
-									<div class="col-lg-8">
+									<div class="col-lg-7">
 										<input type="text" asp-for="EnTitle" id="kt_docs_maxlength_custom_Entext" maxlength="48 " class="form-control text-dark FEN text-end" autocomplete="off" placeholder="Enter the brand name in English">
 									</div>
 									<!--end::Col-->
@@ -78,28 +103,27 @@
 								<!--begin::Row-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="DesCripton" class="col-lg-4 fw-semibold fw-bold">توضیحات برند
-										<span asp-validation-for="DesCripton" class="badge badge-light-danger"></span>
+									<label asp-for="DesCripton" class="col-lg-5 fw-semibold fw-bold">توضیحات برند.
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
-									<div class="col-lg-8">
+									<div class="col-lg-7">
 										<input type="text" asp-for="DesCripton" class="form-control text-dark" autocomplete="off" placeholder="شما می توانید برای برند خود توضیحاتی را به فارسی وارد نمایید.">
 									</div>
 									<!--end::Col-->
 								</div>
 								<!--end::Row-->
-								<div class="row mb-7">
+								<div class="row">
 									<!--begin::Tags-->
-									<label asp-for="ImgName" class="col-lg-4 fw-semibold fw-bold">
-										بارگزاری تصویر برند
+									<label asp-for="ImgName" class="col-lg-5 fw-semibold fw-bold">
+										بارگزاری تصویر برند.
 										<span asp-validation-for="ImgName" class="badge badge-light-danger"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
-									<div class="col-lg-8">
-										<label for="files" class="btn fw-bold btn-light-danger">انتخاب و بارگزاری تصویر برند...</label>
-										<span class="badge badge-light-danger fs-5 FEN fw-bold text-dark">png, jpg, jpeg: پسوند های مجاز</span>
+									<div class="col-lg-7">
+										<label for="files" class="btn fw-bold btn-light-primary">انتخاب کنید...</label>
+										<span class="badge badge-light-primary fs-5 FEN text-dark">Data types: (png, jpg, jpeg)</span>
 										<input asp-for="ImgName" style="display:none;" type="file" id="files" class="form-control FEN input_container">
 										<span asp-validation-for="ImgName" class="badge bg-red-thunderbird bg-font-red-thunderbird"></span>
 									</div>

@@ -192,6 +192,14 @@
     font-weight: normal;
 }
 @font-face {
+    font-family: "IRANSansWeb_Bold";
+    src: url("../fonts/IRANSansWeb_Bold.eot"); /* IE */
+    src: url("../fonts/IRANSansWeb_Bold.eot?#iefix") format("embedded-opentype"), /* IE */
+    url("../fonts/IRANSansWeb_Bold.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/IRANSansWeb_Bold.ttf") format("truetype"); /* Safari, Android, iOS */
+    font-weight: normal;
+}
+@font-face {
     font-family: "SFProDisplayLight";
     src: url("../fonts/en-ft/eot/SFProDisplay-Light.eot"); /* IE */
     src: url("../fonts/en-ft/SFProDisplay-Light.eot?#iefix") format("embedded-opentype"), /* IE */
@@ -48055,6 +48063,11 @@ body,
     font-family: SFProDisplayRegular, 'IRANSansWeb';
     direction: ltr;
 }
+
+.FFA_BOLD {
+    font-family: IRANSansWeb_Bold;
+}
+
 .image-align-avatar {
     display: flex;
     flex-direction: row-reverse;
@@ -48114,7 +48127,7 @@ input[type=file]::file-selector-button {
 
 .item-Parent {
     display: inline-flex;
-    background-color: #060D15;
+    background-color: #50cd89;
     align-items: center;
     padding: .4rem .4rem;
     display: inline-flex;

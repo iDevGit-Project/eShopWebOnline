@@ -45,7 +45,7 @@
 									@switch (Model.propertyNameForProduct[i].type)
 									{
 										case PropertyType.Single_Choice:
-											<div class="row mb-5 fw-bold col-lg-12">
+											<div class="row mb-5 fw-bold col-lg-6">
 												<input class="form-control border-primary fw-semibold fw-bold" type="hidden" name="nameid" value="@Model.propertyNameForProduct[i].NameId" />
 												<!--begin::Tags-->
 												<label class="col-lg-5 fw-semibold fw-bold">@Model.propertyNameForProduct[i].PropertyNameTitle</label>
@@ -64,7 +64,7 @@
 											break;
 									//=========================================================
 										case PropertyType.Multiple_Choice:
-											<div class="row mb-5 fw-bold col-lg-12 selectList">
+											<div class="row mb-5 fw-bold col-lg-6 selectList">
 												<!--begin::Tags-->
 												<label class="col-lg-5 fw-semibold fw-bold">@Model.propertyNameForProduct[i].PropertyNameTitle</label>
 												<!--begin::Option-->
@@ -100,7 +100,7 @@
 											break;
 									//=========================================================
 										case PropertyType.Linear:
-											<div class="row mb-5 fw-bold col-lg-12">
+											<div class="row mb-5 fw-bold col-lg-6">
 												<!--begin::Col-->
 												<input class="form-control border-primary fw-semibold fw-bold" type="hidden" name="nameid" value="@Model.propertyNameForProduct[i].NameId" />
 												<!--begin::Tags-->
@@ -120,7 +120,7 @@
 											break;
 									//=========================================================
 										case PropertyType.Written:
-											<div class="row mb-5 fw-bold col-lg-12">
+											<div class="row mb-5 fw-bold col-lg-6">
 												<!--begin::Col-->
 												<input class="form-control border-primary fw-semibold fw-bold" type="hidden" name="nameid" value="@Model.propertyNameForProduct[i].NameId" />
 												<!--begin::Tags-->

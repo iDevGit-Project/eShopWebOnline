@@ -59,7 +59,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				Title = "موفق...",
 				PositionClass = ToastPositions.TopFullWidth,
 			});
-			return RedirectToAction(nameof(Create));
+			return RedirectToAction(nameof(Index));
 		}
 		#endregion
 

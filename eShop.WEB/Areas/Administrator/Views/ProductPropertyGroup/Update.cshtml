@@ -26,7 +26,7 @@
 							<span class="text-muted mt-1 fw-semibold fs-7">ویرایش اطلاعات مربوط به گروه بندی محصولات یا کالاهای موجود در فروشگاه</span>
 						</h3>
 						<a asp-action="Index" asp-controller="ProductPropertyGroup" class="btn btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به لیست گروه بندی محصولات یا کالاها">
-							<i class="ki-duotone ki-home fs-3">
+							<i class="ki-outline ki-basket fs-3">
 							</i>
 							بازگشت به لیست گروه بندی محصولات یا کالا ها
 						</a>
@@ -44,15 +44,15 @@
 							<!--begin::کارت body-->
 							<div class="card-body p-9">
 								<!--begin::Row-->
-								<div class="row mb-7">
+								<div class="row">
 									<!--begin::Tags-->
-									<label asp-for="Title" class="col-lg-4 fw-semibold fw-bold" for="Title">
+									<label asp-for="Title" class="col-lg-6 fw-semibold fw-bold" for="Title">
 										نام گروه بندی (فارسی)
 										<span asp-validation-for="Title" class="badge badge-light-danger mb-1"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
-									<div class="col-lg-8">
+									<div class="col-lg-6">
 										<input type="text" asp-for="Title" id="kt_docs_maxlength_custom_text" maxlength="64 " class="form-control border-warning bg-light-warning text-dark" autocomplete="off" placeholder="نام گروه بندی محصولات یا کالا را به فارسی وارد نمایید.">
 									</div>
 									<!--end::Col-->

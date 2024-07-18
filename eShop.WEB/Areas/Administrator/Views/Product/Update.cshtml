@@ -22,7 +22,7 @@
 					<!--begin::heading-->
 					<div class="card-header align-items-start px-0 border-0 pt-50">
 						<h3 class="card-title align-items-start flex-column">
-							<span class="card-label fw-bold text-dark">شما در حال ویرایش کالا یا محصول: <span class="badge badge-light-warning pulse pulse-warning fw-normal FEN"><span class="pulse-ring"></span>@Model.EnTitle</span> هستید.</span>
+							<span class="card-label fw-bold text-dark">شما در حال ویرایش کالا یا محصول: <span class="badge badge-light-warning pulse pulse-warning fw-normal FEN"><span class="pulse-ring"></span>@Model.FaTitle</span> هستید.</span>
 							<span class="text-muted mt-1 fw-semibold fs-7">ویرایش اطلاعات کالا یا محصولات در فروشگاه</span>
 						</h3>
 						<a asp-action="Index" asp-controller="Product" class="btn  btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
@@ -168,8 +168,8 @@
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-6">
-										<label for="files" class="btn fw-bold btn-light-danger">انتخاب و بارگزاری تصویر برند...</label>
-										<span class="badge badge-light-danger fs-5 FEN fw-bold text-dark">png, jpg, jpeg: پسوند های مجاز</span>
+										<label for="files" class="btn fw-bold btn-light-warning">انتخاب کنید...</label>
+										<span class="badge badge-light-warning fs-5 FEN text-dark">Data types: (png, jpg, jpeg)</span>
 										<input asp-for="ImgName" style="display:none;" type="file" id="files" class="form-control FEN input_container">
 										<span asp-validation-for="ImgName" class="badge bg-red-thunderbird bg-font-red-thunderbird"></span>
 									</div>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,13 @@ namespace eShop.Data.Entities
 	public class TBL_Product : TBLMASTER_BaseEntity
 	{
 		public string ImgName { get; set; }
+
+		[Display(Name = "نام کالا (فارسی)")]
+		[Required(ErrorMessage = "وارد کردن {0} الزامیست.")]
 		public string FaTitle { get; set; }
+
+		[Display(Name = "نام کالا (انگلیسی)")]
+		[Required(ErrorMessage = "وارد کردن {0} الزامیست.")]
 		public string EnTitle { get; set; }
 		public int CategoryId { get; set; }
 		public int BrandId { get; set; }

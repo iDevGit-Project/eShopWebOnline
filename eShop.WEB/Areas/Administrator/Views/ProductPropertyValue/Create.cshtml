@@ -50,30 +50,31 @@
 								<!--begin::Row-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="Value" class="col-lg-5 fw-semibold fw-bold">
-										نام مقدار جدید برای ویژه گی های کالا یا محصولات.
+									<label asp-for="Value" class="col-lg-6 fw-semibold fw-bold">
+										نام مقدار برای ویژه گی های کالا یا محصولات.
 										<span asp-validation-for="Value" class="badge badge-light-danger mb-1"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
-									<div class="col-lg-7">
-										<input type="text" asp-for="Value" id="kt_docs_maxlength_custom_text" maxlength="128 " class="form-control border-primary text-dark" autocomplete="off" placeholder="نام مقدار جدید برای ویژه گی های کالا یا محصولات را به فارسی وارد نمایید.">
+									<div class="col-lg-6">
+										<input type="text" asp-for="Value" id="kt_docs_maxlength_custom_text" maxlength="128 " class="form-control border-primary text-dark" autocomplete="off" placeholder="نام مقدار جدید برای ویژه گی های کالا را به فارسی وارد نمایید.">
 									</div>
 									<!--end::Col-->
 								</div>
 								<!--end::Row-->
 								<!--begin::Row-->
-								<div class="row mb-7">
+								<div class="row">
 									<!--begin::Tags-->
-									<label asp-for="PropertyNameId" class="col-lg-5 fw-semibold fw-bold">
-										انتخاب لیست ویژه گی های کالا یا محصولات.
+									<label asp-for="PropertyNameId" class="col-lg-6 fw-semibold fw-bold">
+										انتخاب لیست ویژه گی های کالا.
 										<span asp-validation-for="PropertyNameId" class="badge badge-light-danger mb-1"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::آیتم-->
-									<div class="col-lg-7">
+									<div class="col-lg-6">
 										<!--begin::Option-->
-										<select asp-for="PropertyNameId" class="form-select" data-control="select2" data-hide-search="false" placeholder="لیست گروه بندی لیست ویژه گی های کالا یا محصولات را انتخاب کنید">
+										<select asp-for="PropertyNameId" class="form-select" data-control="select2" data-hide-search="false" placeholder="لیست ویژه گی های کالا یا محصولات را انتخاب کنید">
+											<option>لیست ویژه گی های کالا یا محصولات را انتخاب کنید...</option>
 											@foreach (var item in Names)
 											{
 												if (item.type == PropertyType.Single_Choice

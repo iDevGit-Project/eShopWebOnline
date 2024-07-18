@@ -32,7 +32,7 @@
 							<span class="text-muted mt-1 fw-semibold fs-7">ثبت اطلاعات مربوط به نام ویژه گی های کالا یا محصولات در فروشگاه</span>
 						</h3>
 						<a asp-action="Index" asp-controller="ProductPropertyName" class="btn btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به نام ویژه گی های کالا یا محصولات">
-							<i class="ki-duotone ki-home fs-3">
+							<i class="ki-outline ki-basket fs-3">
 							</i>
 							بازگشت به لیست نام ویژه گی های کالا یا محصولات
 						</a>
@@ -51,14 +51,14 @@
 								<!--begin::Row-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="PropertyNameTitle" class="col-lg-5 fw-semibold fw-bold">
+									<label asp-for="PropertyNameTitle" class="col-lg-6 fw-semibold fw-bold">
 										نام ویژه گی جدید برای کالا یا محصول.
 										<span asp-validation-for="PropertyNameTitle" class="badge badge-light-danger mb-1"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
-									<div class="col-lg-7">
-										<input type="text" asp-for="PropertyNameTitle" id="kt_docs_maxlength_custom_text" maxlength="128 " class="form-control border-primary" autocomplete="off" placeholder="نام کالا یا محصول را به فارسی وارد نمایید.">
+									<div class="col-lg-6">
+										<input type="text" asp-for="PropertyNameTitle" id="kt_docs_maxlength_custom_text" maxlength="128 " class="form-control border-primary" autocomplete="off" placeholder="نام ویژه گی جدید برای کالا یا محصول را به فارسی وارد نمایید.">
 									</div>
 									<!--end::Col-->
 								</div>
@@ -66,15 +66,16 @@
 								<!--begin::Row-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="PropertyGroupId" class="col-lg-5 fw-semibold fw-bold">
+									<label asp-for="PropertyGroupId" class="col-lg-6 fw-semibold fw-bold">
 										گروه بندی ویژه گی را انتخاب کنید.
 										<span asp-validation-for="PropertyGroupId" class="badge badge-light-danger mb-1"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::آیتم-->
-									<div class="col-lg-7">
+									<div class="col-lg-6">
 										<!--begin::Option-->
 										<select asp-for="PropertyGroupId" class="form-select" data-control="select2" data-hide-search="false" placeholder="گروه بندی ویژه گی را انتخاب کنید">
+											<option>گروه بندی ویژه گی را انتخاب کنید...</option>
 											@foreach (var item in PPGroups)
 											{
 												<option value="@item.PropertyGroupId">@item.GroupTitle</option>
@@ -87,7 +88,7 @@
 								<!--end::Row-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="PropertyGroupId" class="col-lg-5 fw-semibold fw-bold">
+									<label asp-for="PropertyGroupId" class="col-lg-6 fw-semibold fw-bold">
 										نوع ورودی جهت ثبت مقدار ویژه گی.
 										<span asp-validation-for="PropertyGroupId" class="badge badge-light-danger mb-1"></span>
 										<span class="ms-1" data-bs-toggle="tooltip" title="راهنمایی: ثبت مقادیر در یک یا چند خط نوشته می شود.">
@@ -96,7 +97,7 @@
 									</label>
 									<!--end::Tags-->
 									<!--begin::آیتم-->
-									<div class="col-lg-7">
+									<div class="col-lg-6">
 										<!--begin::Option-->
 										<select asp-for="type" class="form-select" data-control="select2" data-hide-search="false" placeholder="انتخاب ورودی جهت ثبت مقدار ویژه گی ها">
 											<option value="@PropertyType.Single_Choice">تک انتخابی</option>
@@ -109,25 +110,19 @@
 									<!--end::آیتم-->
 								</div>
 								<!--end::Row-->
-								<!--begin::Row-->
-								<div class="overflow-auto">
-									<div class="d-flex align-items-center border border-dashed border-gray-300 rounded px-7 py-3">
-										<!--begin::Option-->
+								<div class="row">
+									<!--begin::Tags-->
+									<label class="col-lg-6 fw-semibold fw-bold">
+										انتخاب مقادیر ویژه گی ها برای دسته بندی.
+									</label>
+									<!--end::Tags-->
+									<!--begin::Col-->
+									<div class="col-lg-6">
 										<!--begin::آیتم-->
-										<div class="col-lg-5">
-											<!--begin::Tags-->
-											<label class="col-lg-6 fw-semibold fw-bold">
-												 انتخاب مقادیر ویژه گی ها برای دسته بندی.
-											</label>
-											<!--end::Tags-->
-										</div>
-										<!--end::آیتم-->
-										<button type="button" class="btn btn-sm btn-light-primary me-3 min-w-200px add-parent" data-name="Categories">
-											<i class="ki-duotone ki-abstract-26 fs-2"><span class="path1"></span><span class="path2"></span></i>انتخاب
-										</button>
-										<!--end::Option-->
-										<!--begin::آیتم-->
-										<div class="col-lg-4 d-flex align-items-center me-1 min-w-200px">
+										<div class="d-flex align-items-center">
+											<!--begin::Option-->
+											<button type="button" class="btn btn-light-primary fw-bold me-2 add-parent" data-name="Categories">انتخاب</button>
+											<!--end::Option-->
 											<!--begin::Option-->
 											<select id="ParentList" class="form-select" data-control="select2" data-hide-search="false" data-placeholder="چه دسته بندی انتخاب شود؟">
 												@foreach (var item in GetCategories)
@@ -139,12 +134,11 @@
 										</div>
 										<!--end::آیتم-->
 									</div>
-									<!--begin::Col-->
+									<!--end::Col-->
 									<!--begin::Option-->
 									<span class="ParentListSelected"></span>
 									<!--end::Option-->
 								</div>
-								<!--begin::Row-->
 							</div>
 							<!--end::کارت body-->
 						</div>
