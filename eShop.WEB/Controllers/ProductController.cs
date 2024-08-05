@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace eShop.WEB.Controllers
 {
 	// این کنترلر برای پیکربندی کلیه محصولات سمت کاربر می باشد
-	public class ProductController : BaseClientController
+	public class ProductController : BaseController
 	{
 		#region متد های پیکربندی اطلاعات کالاها یا محصولات سمت کاربر
 

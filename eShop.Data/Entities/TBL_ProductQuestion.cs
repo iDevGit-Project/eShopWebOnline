@@ -15,12 +15,14 @@ namespace eShop.Data.Entities
 		public bool IsConfirm { get; set; }
 
 		#region Relations
-		//[ForeignKey(nameof(UserId))]
-		//public User User { get; set; }
+		[ForeignKey(nameof(UserId))]
+		public TBL_User TBLUsers { get; set; }
 
 		[ForeignKey(nameof(ProductId))]
-		public TBL_Product TBLProduct { get; set; }
-		//public List<FAQAnswer> FAQAnswers { get; set; }
+		public TBL_Product TBLProducts { get; set; }
+
+		public List<TBL_FAQAnswer> TBLFAQAnswers { get; set; }
+
 		#endregion
 	}
 }

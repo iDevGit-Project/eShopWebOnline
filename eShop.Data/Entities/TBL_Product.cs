@@ -34,7 +34,7 @@ namespace eShop.Data.Entities
 		//=========================================================
 		public List<TBL_ProductGallery> TBLProductGalleries { get; set; }
 		public List<TBL_ProductReview> TBLProductReviews { get; set; }
-		public List<TBL_ProductProperty> TBLProductsProperty { get; set; }
+		public List<TBL_ProductProperty> TBLProductsProperties { get; set; }
 		public List<TBL_ProductPrice> TBLProductPrices { get; set; }
 		public List<TBL_ProductQuestion> TBLProductQuestions { get; set; }
 		#endregion

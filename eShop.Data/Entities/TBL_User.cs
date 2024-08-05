@@ -17,5 +17,8 @@ namespace eShop.Data.Entities
 		public string? NationalCode { get; set; }
 		public byte type { get; set; }
 		public string? ActiveCode { get; set; }
+
+		public List<TBL_ProductQuestion> TBLProductQuestions { get; set; }
+		public List<TBL_FAQAnswer> TBLFAQAnswers { get; set; }
 	}
 }

@@ -31,6 +31,7 @@ namespace eShop.Data.Context
 		public DbSet<TBL_ProductPrice> TBL_ProductPrices { get; set; }
 		public DbSet<TBL_ProductSeler> TBL_ProductSelers { get; set; }
 		public DbSet<TBL_ProductQuestion> TBL_ProductQuestions { get; set; }
+		public DbSet<TBL_FAQAnswer> TBL_FAQAnswers{ get; set; }
 		public DbSet<TBL_ProductReview> TBL_ProductReviews { get; set; }
 		public DbSet<TBL_ProductProperty> TBL_ProductProperties { get; set; }
 		public DbSet<TBL_ProductPropertyGroup> TBL_ProductPropertyGroups { get; set; }
@@ -42,7 +43,6 @@ namespace eShop.Data.Context
 		public DbSet<TBL_DisCount> TBL_DisCounts { get; set; }
 		public DbSet<TBL_PaymentDetail> TBL_PaymentDetails { get; set; }
 		public DbSet<TBL_User> TBL_Users { get; set; }
-		public DbSet<TBL_FAQAnswer> TBL_FAQAnswers { get; set; }
 		#endregion
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)

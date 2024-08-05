@@ -2,7 +2,7 @@
 
 namespace eShop.WEB.Controllers
 {
-	public class BaseClientController : Controller
+	public class BaseController : Controller
 	{
 		public const string ProductEn = "ProductEn";
 	}

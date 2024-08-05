@@ -2,6 +2,8 @@
 using eShop.Service.BrandsService.BrandsForServer;
 using eShop.Service.CategoryService.CategoryForServer;
 using eShop.Service.ColorService.ColorForServer;
+using eShop.Service.Comment_FAQ.CommentFAQForClient;
+using eShop.Service.Comment_FAQ.CommentFAQForServer;
 using eShop.Service.DisCountService.DisCountForServer;
 using eShop.Service.ProductGalleryService.ProductGalleryForServer;
 using eShop.Service.ProductPropertyGroupService.ProductPropertyGroupForServer;
@@ -44,12 +46,14 @@ builder.Services.AddTransient<IProductPropertyGroupServiceForServer, ProductProp
 builder.Services.AddTransient<IProductPropertyNameServiceForServer, ProductPropertyNameServiceForServer>();
 builder.Services.AddTransient<IProductPropertyValueServiceForServer, ProductPropertyValueServiceForServer>();
 builder.Services.AddTransient<IDisCountServiceForServer, DisCountServiceForServer>();
+builder.Services.AddTransient<ICommentFAQServiceForServer, CommentFAQServiceForServer>();
 
 #endregion
 
 #region متصل کردن کلیه سرویس های پروژه در سمت کلاینت
 builder.Services.AddTransient<ISliderServiceForClient,  SliderServiceForClient>();
 builder.Services.AddTransient<IProductServiceForClient,  ProductServiceForClient>();
+builder.Services.AddTransient<ICommentFAQServiceForClient, CommentFAQServiceForClient>();
 #endregion
 
 #region عملیات نمایش پیغام های گرافیکی

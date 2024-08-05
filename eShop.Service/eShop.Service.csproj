@@ -12,7 +12,6 @@
 	  <Folder Include="CartService\" />
 	  <Folder Include="CategoryService\CategoryForClient\" />
 	  <Folder Include="ColorService\ColorForClient\" />
-	  <Folder Include="Comment-FAQ\" />
 	  <Folder Include="DisCountService\DisCountForClient\" />
 	  <Folder Include="ProductGalleryService\ProductGalleryForClient\" />
 	  <Folder Include="ProductPropertyGroupService\ProductPropertyGroupForClient\" />
