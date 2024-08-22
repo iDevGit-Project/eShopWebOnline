@@ -62,7 +62,7 @@ builder.Services.AddMvc().AddNToastNotifyToastr(new ToastrOptions
 	ProgressBar = true,
     CloseButton = true,
     NewestOnTop = true,
-	PositionClass = ToastPositions.TopFullWidth,
+	PositionClass = ToastPositions.TopCenter,
 });
 #endregion
 

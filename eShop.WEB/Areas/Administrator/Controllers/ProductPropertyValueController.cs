@@ -1,4 +1,5 @@
 ﻿using eShop.Core.ExtentionMethods;
+using eShop.Data.ViewModels.ProductPropertyNameViewModels.ProductPropertyNameVMServer;
 using eShop.Data.ViewModels.ProductPropertyValueViewModels.ProductPropertyValueVMServer;
 using eShop.Service.ProductPropertyNameService.ProductPropertyNameForServer;
 using eShop.Service.ProductPropertyValueService.ProductPropertyValueServer;
@@ -101,6 +102,36 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 			return RedirectToAction(nameof(Index));
 		}
 
+		#endregion
+
+		#region متد بروزرسانی مقادیر ویژه گی های محصولات یا کالاهای سایت برای مدیر سایت
+		[HttpGet]
+		public IActionResult Update(int Id)
+		{
+			var FindPPVT = _propertyValueService.FindProductPropertyValuesByIdForUpdate(Id);
+
+			if (FindPPVT == null)
+				return NotFound();
+
+			return View(FindPPVT);
+		}
+
+		[HttpPost]
+		public IActionResult Update(UpdateProductPropertyValueTitleViewModel UpdateValueTitle)
+		{
+			var Result = _propertyValueService.UpdateProductPropertyValueTitle(UpdateValueTitle);
+			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
+			_toastNotification.AddInfoToastMessage("ویرایش اطلاعات با موفقیت انجام شد.", new ToastrOptions()
+			{
+				ProgressBar = true,
+				CloseButton = false,
+				NewestOnTop = true,
+				TimeOut = 2000,
+				Title = "بروزرسانی...",
+				PositionClass = ToastPositions.TopFullWidth,
+			});
+			return RedirectToAction(nameof(Index));
+		}
 		#endregion
 	}
 }

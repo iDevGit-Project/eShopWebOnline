@@ -1,4 +1,5 @@
 ﻿using eShop.Core.ExtentionMethods;
+using eShop.Data.ViewModels.ProductPropertyGroupViewModels.ProductPropertyGroupVMServer;
 using eShop.Data.ViewModels.ProductPropertyNameViewModels.ProductPropertyNameVMServer;
 using eShop.Service.CategoryService.CategoryForServer;
 using eShop.Service.ProductPropertyGroupService.ProductPropertyGroupForServer;
@@ -64,7 +65,33 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		#endregion
 
 		#region متد های بروزرسانی نام ویژه گی های کالاها یا محصولات در سمت سرور یا مدیرسایت
+		[HttpGet]
+		public IActionResult Update(int Id)
+		{
+			var FindPPN = _productPropertyNameService.FindProductPropertyNamesByIdForUpdate(Id);
 
+			if (FindPPN == null)
+				return NotFound();
+
+			return View(FindPPN);
+		}
+
+		[HttpPost]
+		public IActionResult Update(UpdateProductPropertyNamesViewModel UpdateNameTitle)
+		{
+			var Result = _productPropertyNameService.UpdateProductPropertyName(UpdateNameTitle);
+			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
+			_toastNotification.AddInfoToastMessage("ویرایش اطلاعات با موفقیت انجام شد.", new ToastrOptions()
+			{
+				ProgressBar = true,
+				CloseButton = false,
+				NewestOnTop = true,
+				TimeOut = 2000,
+				Title = "بروزرسانی...",
+				PositionClass = ToastPositions.TopFullWidth,
+			});
+			return RedirectToAction(nameof(Index));
+		}
 		#endregion
 
 		#region متد های حذف نام ویژه گی های کالاها یا محصولات در سمت سرور یا مدیرسایت

@@ -146,8 +146,12 @@
 									<td class="text-center">
 										<span class="badge @(item.IsActive?"badge-light-primary":"badge-light-danger")">@(item.IsActive ? "فعال" : "غیرفعال")</span>
 									</td>
-									<td class="text-start fs-6">@item.StartDisCount.MiladiToShamsi()</td>
-									<td class="text-start fs-6">@item.EndDisCount.MiladiToShamsi()</td>
+									<td class="text-start fs-6">
+										<span class="badge badge-light-success fw-bold">@item.StartDisCount.MiladiToShamsi()</span>
+									</td>
+									<td class="text-start fs-6">
+										<span class="badge badge-light-danger fw-bold">@item.EndDisCount.MiladiToShamsi()</span>
+									</td>
 									<td class="text-end justify-content-start flex-shrink-0">
 										<!--begin::Icon-->
 										<div>

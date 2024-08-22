@@ -1,4 +1,5 @@
 ﻿using eShop.Common.Operations;
+using eShop.Data.ViewModels.ProductPropertyNameViewModels.ProductPropertyNameVMServer;
 using eShop.Data.ViewModels.ProductPropertyValueViewModels.ProductPropertyValueVMServer;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,10 @@ namespace eShop.Service.ProductPropertyValueService.ProductPropertyValueServer
 	{
 		List<GetProductPropertyValuesViewModel> GetProductPropertyValues();
 		OperationResult<int> CreateProductPropertyValue(CreateProductPropertyValueViewModel propertyValue);
-
+		
+		//  مقادیر در جدول Title متد های بروزرسانی عنوان یا 
+		UpdateProductPropertyValueTitleViewModel FindProductPropertyValuesByIdForUpdate(int ValueTitleId);
+		OperationResult UpdateProductPropertyValueTitle(UpdateProductPropertyValueTitleViewModel UpdateValueTitle);
 
 		#region متد های مربوط به جدول ویژه گی های محصولات یا کالاها
 		List<AddProductPropertyNameForProductViewModel> GetProductPropertyNameForProductByCategoryId(int CategoryId);

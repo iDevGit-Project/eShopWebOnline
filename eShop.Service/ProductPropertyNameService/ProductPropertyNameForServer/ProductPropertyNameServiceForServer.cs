@@ -1,6 +1,7 @@
 ﻿using eShop.Common.Operations;
 using eShop.Data.Context;
 using eShop.Data.Entities;
+using eShop.Data.ViewModels.ProductPropertyGroupViewModels.ProductPropertyGroupVMServer;
 using eShop.Data.ViewModels.ProductPropertyNameViewModels.ProductPropertyNameVMServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -124,6 +125,66 @@ namespace eShop.Service.ProductPropertyNameService.ProductPropertyNameForServer
 				IsSuccess = true,
 				Message = OperationResultMessage.Create,
 			};
+		}
+		#endregion
+
+		#region متد عملیاتی ویرایش نام ویژه گی های کالاها یا محصولات
+		public OperationResult UpdateProductPropertyName(UpdateProductPropertyNamesViewModel UpdateNameTitle)
+		{
+			var FindPPN = FindPropertyNameById(UpdateNameTitle.PropertyNameTitleId);
+
+			if (FindPPN == null)
+				return new OperationResult
+				{
+					Code = OperationCode.Failed,
+					IsSuccess = false,
+					Message = OperationResultMessage.NotFound,
+				};
+
+			bool existPPN = ExistPPN(UpdateNameTitle.PropertyNameTitle, UpdateNameTitle.PropertyNameTitleId);
+			if (existPPN)
+				return new OperationResult
+				{
+					Code = OperationCode.duplicate,
+					IsSuccess = false,
+					Message = OperationResultMessage.Duplicate,
+				};
+
+			FindPPN.Title = UpdateNameTitle.PropertyNameTitle;
+			FindPPN.LastModified = DateTime.Now;
+
+			_context.TBL_ProductPropertyNames.Update(FindPPN);
+			_context.SaveChanges();
+
+			return new OperationResult
+			{
+				Code = OperationCode.Success,
+				IsSuccess = true,
+				Message = OperationResultMessage.Create
+			};
+		}
+		#endregion
+
+		#region متد بروزرسانی اطلاعات ویژه گی های کالاها یا محصولات
+
+		public UpdateProductPropertyNamesViewModel FindProductPropertyNamesByIdForUpdate(int NameTitleId)
+		{
+			return _context.TBL_ProductPropertyNames
+				.Where(p => p.Id == NameTitleId)
+				.Select(p => new UpdateProductPropertyNamesViewModel
+				{
+					PropertyNameTitleId = p.Id,
+					PropertyNameTitle = p.Title,
+				})
+				.SingleOrDefault();
+		}
+		#endregion
+
+		#region متد موجود بودن نام ویژه گی های کالاها یا محصولات و عملیات بر روی آن
+		public bool ExistPPN(string titlePropertyName, int titlePropertyId)
+		{
+			return _context.TBL_ProductPropertyNames.Any(x => x.Title == titlePropertyName.Trim().ToLower() && x.Id != titlePropertyId
+			);
 		}
 		#endregion
 

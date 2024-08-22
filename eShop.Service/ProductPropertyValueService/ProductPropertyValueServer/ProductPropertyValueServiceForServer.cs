@@ -2,6 +2,7 @@
 using eShop.Core.ExtentionMethods;
 using eShop.Data.Context;
 using eShop.Data.Entities;
+using eShop.Data.ViewModels.ProductPropertyNameViewModels.ProductPropertyNameVMServer;
 using eShop.Data.ViewModels.ProductPropertyValueViewModels.ProductPropertyValueVMServer;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -350,5 +351,81 @@ namespace eShop.Service.ProductPropertyValueService.ProductPropertyValueServer
 			};
 		}
 		#endregion
+
+		//=====================
+		// در جدول مربوطه Title متد های بروزرسانی مقدار یا عنوان 
+
+		#region ID متد جستجوی موجود بودن اطلاعات ویژه گی های کالاها یا محصولات بر اساس 
+
+		public TBL_ProductPropertyValue FindProductPropertyValuesTitleById(int PropertyValuesTitleId)
+		{
+			return _context.TBL_ProductPropertyValues
+				.Where(x => x.Id == PropertyValuesTitleId)
+				.AsNoTracking()
+				.SingleOrDefault();
+		}
+		#endregion
+
+		#region مقادیر Title متد بروزرسانی عنوان 
+
+		public UpdateProductPropertyValueTitleViewModel FindProductPropertyValuesByIdForUpdate(int ValueTitleId)
+		{
+			return _context.TBL_ProductPropertyValues
+				.Where(p => p.Id == ValueTitleId)
+				.Select(p => new UpdateProductPropertyValueTitleViewModel
+				{
+					PropertyValueTitleId = p.Id,
+					PropertyValueTitle = p.Value,
+				})
+				.SingleOrDefault();
+		}
+		#endregion
+
+		#region مقادیر Title متد عملیاتی جهت بروزرسانی عنوان
+
+		public OperationResult UpdateProductPropertyValueTitle(UpdateProductPropertyValueTitleViewModel UpdateValueTitle)
+		{
+			var FindPPVT = FindProductPropertyValuesTitleById(UpdateValueTitle.PropertyValueTitleId);
+
+			if (FindPPVT == null)
+				return new OperationResult
+				{
+					Code = OperationCode.Failed,
+					IsSuccess = false,
+					Message = OperationResultMessage.NotFound,
+				};
+
+			bool existPPVT = ExistPPVT(UpdateValueTitle.PropertyValueTitle, UpdateValueTitle.PropertyValueTitleId);
+			if (existPPVT)
+				return new OperationResult
+				{
+					Code = OperationCode.duplicate,
+					IsSuccess = false,
+					Message = OperationResultMessage.Duplicate,
+				};
+
+			FindPPVT.Value = UpdateValueTitle.PropertyValueTitle;
+			FindPPVT.LastModified = DateTime.Now;
+
+			_context.TBL_ProductPropertyValues.Update(FindPPVT);
+			_context.SaveChanges();
+
+			return new OperationResult
+			{
+				Code = OperationCode.Success,
+				IsSuccess = true,
+				Message = OperationResultMessage.Create
+			};
+		}
+		#endregion
+
+		#region متد موجود بودن نام ویژه گی های کالاها یا محصولات و عملیات بر روی آن
+		public bool ExistPPVT(string titlePropertyValue, int titlePropertyValueId)
+		{
+			return _context.TBL_ProductPropertyValues.Any(x => x.Value == titlePropertyValue.Trim().ToLower() && x.Id != titlePropertyValueId);
+		}
+		#endregion
+
+		//=====================
 	}
 }
