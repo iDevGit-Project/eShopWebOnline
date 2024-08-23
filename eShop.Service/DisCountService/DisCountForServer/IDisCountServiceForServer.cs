@@ -1,5 +1,6 @@
 ﻿using eShop.Common.Operations;
 using eShop.Data.ViewModels.DisCountsViewModels.DisCountsVMServer;
+using eShop.Data.ViewModels.WarrantiesViewModels.WarrantiesVMServer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,9 @@ namespace eShop.Service.DisCountService.DisCountForServer
 	{
 		List<GetDisCountsViewModel> GetDisCounts();
 		OperationResult CreateDisCount(CreateDisCountViewModel createDisCount);
+		UpdateDisCountViewModel FindWarrantyByIdForUpdate(int DiscountId);
+		OperationResult UpdateDisCount(UpdateDisCountViewModel UpdateDisCount);
+		RemoveDisCountViewModel FindDisCountByIdForRemove(int DiscountId);
+		OperationResult RemoveDisCount(RemoveDisCountViewModel RemoveDisCount);
 	}
 }

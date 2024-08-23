@@ -1,5 +1,6 @@
 ﻿using eShop.Core.ExtentionMethods;
 using eShop.Data.ViewModels.DisCountsViewModels.DisCountsVMServer;
+using eShop.Data.ViewModels.WarrantiesViewModels.WarrantiesVMServer;
 using eShop.Service.DisCountService.DisCountForServer;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -48,6 +49,41 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				NewestOnTop = true,
 				TimeOut = 2000,
 				Title = "موفق...",
+				PositionClass = ToastPositions.TopFullWidth,
+			});
+			return RedirectToAction(nameof(Index));
+		}
+		#endregion
+
+		#region متد حذف کد های تخفیف در فروشگاه
+		[HttpGet]
+		public IActionResult Remove(int Id)
+		{
+			var FindDisCount = _disCountService.FindDisCountByIdForRemove(Id);
+
+			if (FindDisCount == null)
+				return NotFound();
+
+			return View(FindDisCount);
+		}
+
+		[HttpPost]
+		public IActionResult Remove(RemoveDisCountViewModel RemoveDisCount)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View(RemoveDisCount);
+			}
+
+			var Result = _disCountService.RemoveDisCount(RemoveDisCount);
+			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
+			_toastNotification.AddErrorToastMessage("حذف اطلاعات با موفقیت انجام شد.", new ToastrOptions()
+			{
+				ProgressBar = true,
+				CloseButton = false,
+				NewestOnTop = true,
+				TimeOut = 2000,
+				Title = "حذف...",
 				PositionClass = ToastPositions.TopFullWidth,
 			});
 			return RedirectToAction(nameof(Index));

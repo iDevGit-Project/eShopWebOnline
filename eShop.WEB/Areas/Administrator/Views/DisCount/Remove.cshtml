@@ -1,0 +1,134 @@
+﻿@model RemoveDisCountViewModel
+
+@{
+	ViewData["Title:"] = "پنل مدیریت | حذف لیست کد های تخفیف سمت مدیر";
+}
+
+
+<!--begin::content container-->
+<div id="kt_app_content_container" class="app-container container-xxl">
+	<!--begin::row-->
+	<div class="row gy-5 g-xl-10">
+		<!--begin::col-->
+		<div class="col-xl-12 mb-xl-12">
+			<!--begin::engage widget 1-->
+			<div class="card h-md-100" dir="rtl">
+				<!--begin::body-->
+				<div class="card-body align-items-start flex-column">
+					<!--begin::heading-->
+					<div class="card-header align-items-start px-0 border-0 pt-50">
+						<h3 class="card-title align-items-start flex-column">
+							<span class="card-label fw-bold text-dark">حذف کد تخفیف</span>
+							<span class="text-muted mt-1 fw-semibold fs-7">حذف اطلاعات مربوط به کد تخفیف جاری در فروشگاه</span>
+						</h3>
+						<a asp-action="Index" asp-controller="DisCount" class="btn btn-sm btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+							<i class="ki-duotone ki-home fs-3">
+							</i>
+							بازگشت به لیست کدهای تخفیف
+						</a>
+					</div>
+					<!--begin:Form-->
+					<form asp-controller="DisCount" asp-action="Remove"
+						  method="post"
+						  data-ajax="true"
+						  data-callback=""
+						  data-action="Refresh">
+						<input type="hidden" asp-for="DisCountId" />
+						<!--begin::details نمایش-->
+						<div class="card mb-5 d-flex flex-column nav-group nav-group-outline mx-auto" id="myForm">
+							<!--begin::کارت body-->
+							<div class="card-body p-9">
+								<!--begin::Row-->
+								<div class="row">
+									<!--begin::Tags-->
+									<label asp-for="Code" class="col-lg-5 fw-semibold fw-bold" for="Code">
+										نام کد تخفیف ( به فارسی ).
+										<span asp-validation-for="Code" class="badge badge-light-danger mb-1"></span>
+									</label>
+									<!--end::Tags-->
+									<!--begin::Col-->
+									<div class="col-lg-7">
+										<input type="text" asp-for="Code" id="kt_docs_maxlength_custom_text" maxlength="64 " disabled class="form-control border-danger bg-light-danger FEN text-dark" autocomplete="off" placeholder="نام کد تخفیف را به فارسی وارد نمایید.">
+									</div>
+									<!--end::Col-->
+								</div>
+								<!--end::Row-->
+								<!--end::Input group-->
+							</div>
+							<!--end::کارت body-->
+						</div>
+						<!--end::details نمایش-->
+						<!--begin::Actions-->
+						<div class="text-start">
+							<button type="submit" class="btn btn-light-danger fw-bold me-3"><i class="ki-outline ki-trash fs-3"><span class="path1"></span><span class="path2"></span></i><span class="indicator-label">حذف اطلاعات</span></button>
+							<a asp-action="Index" asp-controller="AdminDashboard" class="btn btn-light-dark" data-bs-toggle="tooltip" title="بازگشت به صفحه اصلی">
+								<i class="ki-duotone ki-home fs-3">
+								</i>
+								انصراف و بازگشت
+							</a>
+						</div>
+						<!--end::Actions-->
+					</form>
+					<!--end:Form-->
+				</div>
+				<!--end::body-->
+			</div>
+			<!--end::engage widget 1-->
+		</div>
+		<!--end::col-->
+	</div>
+	<!--end::row-->
+</div>
+<!--end::content container-->
+@section js {
+	<partial name="_MultiSelectJsPartial" />
+}
+
+@section AdminScripts {
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
+
+	<!-- Refresh Data in Tables -->
+	<script>
+		$('#kt_refresh_datatable').on('click', function () {
+			// نمایش فرم انیمیشن در زمان ثبت اطلاعات
+			const loadingEl = document.createElement("div");
+			document.body.prepend(loadingEl);
+			loadingEl.classList.add("page-loader");
+			loadingEl.classList.add("flex-column");
+			loadingEl.classList.add("bg-dark");
+			loadingEl.classList.add("bg-opacity-75");
+			loadingEl.innerHTML = `
+					<span class="spinner-border text-primary" role="status"></span>
+					<span class="text-gray-100 fs-5 mt-5">سیستم در حال بروزرسانی اطلاعات ...</span>`;
+			KTApp.showPageLoading();
+			setTimeout(function () {
+				KTApp.hidePageLoading();
+				loadingEl.remove();
+				window.location.reload();
+			}, 2200);
+			setTimeout(function () {
+				toastr.options = {
+					"debug": false,
+					"closeButton": false,
+					"newestOnTop": false,
+					"progressBar": false,
+					"positionClass": "toastr-top-center",
+					"preventDuplicates": false,
+					"showDuration": "600",
+					"hideDuration": "2200",
+					"timeOut": "2200",
+					"extendedTimeOut": "2200",
+					"showEasing": "swing",
+					"hideEasing": "linear",
+					"showMethod": "fadeIn",
+					"hideMethod": "fadeOut"
+				};
+				toastr.success("بروزرسانی انجام شد.");
+			}, 800);
+			//$('#frmEditProduct')[0].reset();
+			//document.getElementById("frmEditProduct").reset(); //or $('#form2')[0].reset();
+		})
+	</script>
+	<!--===================================================================-->
+}

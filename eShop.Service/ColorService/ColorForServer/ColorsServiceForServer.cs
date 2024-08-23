@@ -40,7 +40,6 @@ namespace eShop.Service.ColorService.ColorForServer
 		#endregion
 
 		#region جدید Color متد ثبت 
-
 		public OperationResult CreateColor(CreateColorViewModel createColor)
 		{
 			bool existColor = ExistColor(0, createColor.ColorName, createColor.ColorCode);
@@ -148,22 +147,6 @@ namespace eShop.Service.ColorService.ColorForServer
 		{
 			return _context.TBL_Colors.Where(x => x.Id == ColorId).FirstOrDefault();
 		}
-		#endregion
-
-		#region جهت عملیات حذف اطلاعات ID متد جستجوی گارانتی بر اساس
-		public RemoveWarrantyViewModel FindWarrantyByIdForRemove(int WarrantyId)
-		{
-			return _context.TBL_Warranties
-
-				.Where(w => w.Id == WarrantyId)
-				.Select(w => new RemoveWarrantyViewModel
-				{
-					WarrantyId = w.Id,
-					WarrantyName = w.WarrantyName,
-				})
-				.SingleOrDefault();
-		}
-
 		#endregion
 
 		#region متد عملیاتی حذف اطلاعات رنگ
