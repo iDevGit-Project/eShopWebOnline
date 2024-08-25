@@ -89,5 +89,35 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 			return RedirectToAction(nameof(Index));
 		}
 		#endregion
+
+		#region متد بروزرسانی کدهای تخفیف در فروشگاه
+		[HttpGet]
+		public IActionResult Update(int Id)
+		{
+			var FindBrand = _disCountService.FindDiscountByIdForUpdate(Id);
+
+			if (FindBrand == null)
+				return NotFound();
+
+			return View(FindBrand);
+		}
+
+		[HttpPost]
+		public IActionResult Update(UpdateDisCountViewModel UpdateDisCount)
+		{
+			var Result = _disCountService.UpdateDisCount(UpdateDisCount);
+			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
+			_toastNotification.AddInfoToastMessage("ویرایش اطلاعات با موفقیت انجام شد.", new ToastrOptions()
+			{
+				ProgressBar = true,
+				CloseButton = false,
+				NewestOnTop = true,
+				TimeOut = 2000,
+				Title = "بروزرسانی...",
+				PositionClass = ToastPositions.TopFullWidth,
+			});
+			return RedirectToAction(nameof(Index));
+		}
+		#endregion
 	}
 }

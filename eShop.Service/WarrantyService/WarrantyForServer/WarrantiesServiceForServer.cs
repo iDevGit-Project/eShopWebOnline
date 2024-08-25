@@ -127,7 +127,6 @@ namespace eShop.Service.WarrantyService.WarrantyForServer
 				Message = OperationResultMessage.Create
 			};
 		}
-
 		#endregion
 
 		#region ID متد جستجوی گارانتی بر اساس مقدار 

@@ -27,6 +27,31 @@
 							بازگشت به لیست کدهای تخفیف
 						</a>
 					</div>
+					<!--begin::Ribbon wrapper 1-->
+					<div class="overflow-hidden position-relative card-rounded">
+						<!--begin::Ribbon-->
+						<div class="ribbon ribbon-triangle ribbon-top-start border-danger">
+							<!--begin::Ribbon icon-->
+							<div class="ribbon-icon mt-n5 ms-n6">
+								<i class="ki-outline ki-trash fs-2 text-white"></i>
+							</div>
+							<!--end::Ribbon icon-->
+						</div>
+						<!--end::Ribbon-->
+						<!--begin::Card-->
+						<div class="card card-bordered bg-light-danger mb-2">
+							<!--begin::Body-->
+							<div class="card-body">
+								<!--begin::Title-->
+								<h2 class="mb-1 text-danger">هشدار...!</h2>
+								<!--end::Title-->
+								<div class="fs-6 text-dark"> کاربرگرامی: توجه داشته باشید در صورت حذف اطلاعات کد تخفیف، دیگر قادر به استفاده از آن در فروشگاه خواهید بود.</div>
+							</div>
+							<!--end::Body-->
+						</div>
+						<!--end::Card-->
+					</div>
+					<!--end::Ribbon wrapper 1-->
 					<!--begin:Form-->
 					<form asp-controller="DisCount" asp-action="Remove"
 						  method="post"

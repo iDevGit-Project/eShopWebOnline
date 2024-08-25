@@ -8,6 +8,11 @@ namespace eShop.Data.ViewModels.DisCountsViewModels.DisCountsVMServer
 {
 	public class UpdateDisCountViewModel
 	{
-		
+		public int DiscountId { get; set; }
+		public string Code { get; set; }
+		public int? UserCount { get; set; }
+		public bool IsActive { get; set; }
+		public DateTime? StartDisCount { get; set; }
+		public DateTime? EndDisCount { get; set; }
 	}
 }

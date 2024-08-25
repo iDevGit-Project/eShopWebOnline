@@ -55,6 +55,8 @@ namespace eShop.Data.Context
 			modelBuilder.Entity<TBL_Slider>().HasQueryFilter(s => s.IsRemove == false);
 			// عملیات حذف برای جدول دسته بندی ها
 			modelBuilder.Entity<TBL_Category>().HasQueryFilter(c => c.IsRemove == false);
+			// عملیات حذف برای جدول کدهای تخفیف
+			modelBuilder.Entity<TBL_DisCount>().HasQueryFilter(c => c.IsRemove == false);
 
 			//================================================================================
 

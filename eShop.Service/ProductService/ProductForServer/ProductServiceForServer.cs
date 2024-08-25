@@ -157,7 +157,7 @@ namespace eShop.Service.ProductService.ProductForServer
 		}
 		#endregion
 
-		#region  جهت بروزرسانی ID متد جستجوی توضیحات کالا بر اساس 
+		#region  جهت ثبت داده یا بروزرسانی ID متد جستجوی توضیحات کالا بر اساس 
 		public AddOrUpdateProductReviewViewModel FindProductReviewById(int ProductId)
 		{
 			return _context.TBL_ProductReviews

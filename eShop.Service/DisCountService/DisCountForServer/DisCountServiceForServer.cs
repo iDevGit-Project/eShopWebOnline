@@ -99,29 +99,72 @@ namespace eShop.Service.DisCountService.DisCountForServer
 		}
 		#endregion
 
-		#region ID متد جستجوی کد تخفیف بر اساس مقدار 
-		public TBL_DisCount FindDisCountById(int discountId)
+		#region جهت بروزرسانی کد تخفیف ID متد جستجوی کد های تخفیف بر اساس
+		public UpdateDisCountViewModel FindDiscountByIdForUpdate(int DiscountId)
 		{
 			return _context.TBL_DisCounts
-				.Where(w => w.Id == discountId)
+				.Where(d => d.Id == DiscountId)
+				.Select(d => new UpdateDisCountViewModel
+				{
+					DiscountId = d.Id,
+					Code = d.Code,
+					IsActive = d.IsActive,
+					UserCount = d.UserCount,
+					StartDisCount = d.StartDisCount,
+					EndDisCount = d.EndDisCount,
+				})
 				.AsNoTracking()
-				.FirstOrDefault();
-		}
-		#endregion
-
-		#region جهت بروزرسانی کد تخفیف ID متد جستجوی کد های تخفیف بر اساس
-
-		public UpdateDisCountViewModel FindWarrantyByIdForUpdate(int DisCountId)
-		{
-			throw new NotImplementedException();
+				.SingleOrDefault();
 		}
 		#endregion
 
 		#region متد عملیاتی جهت بروزرسانی کد تخفیف
 
-		public OperationResult UpdateDisCount(UpdateDisCountViewModel UpdateDisCount)
+		public OperationResult UpdateDisCount(UpdateDisCountViewModel UpdateDiscount)
 		{
-			throw new NotImplementedException();
+			var FindDiscountCode = FindDisCountById(UpdateDiscount.DiscountId);
+
+			if (FindDiscountCode == null)
+				return new OperationResult
+				{
+					Code = OperationCode.Failed,
+					IsSuccess = false,
+					Message = OperationResultMessage.NotFound,
+				};
+
+			bool existDiscount = ExistDiscountCode(UpdateDiscount.Code, UpdateDiscount.DiscountId);
+			if (existDiscount)
+				return new OperationResult
+				{
+					Code = OperationCode.duplicate,
+					IsSuccess = false,
+					Message = OperationResultMessage.Duplicate,
+				};
+
+			FindDiscountCode.Code = UpdateDiscount.Code;
+			FindDiscountCode.UserCount = UpdateDiscount.UserCount;
+			FindDiscountCode.IsActive = UpdateDiscount.IsActive;
+			//FindDiscountCode.StartDisCount = UpdateDiscount.StartDisCount;
+			//FindDiscountCode.EndDisCount = UpdateDiscount.EndDisCount;
+			FindDiscountCode.LastModified = DateTime.Now;
+
+			_context.TBL_DisCounts.Update(FindDiscountCode);
+			_context.SaveChanges();
+
+			return new OperationResult
+			{
+				Code = OperationCode.Success,
+				IsSuccess = true,
+				Message = OperationResultMessage.Create
+			};
+		}
+		#endregion
+
+		#region متد موجود بودن کد تخفیف در سمت سرور و عملیات بر روی آن
+		public bool ExistDiscountCode(string discountCodeName, int discountId)
+		{
+			return _context.TBL_DisCounts.Any(x => x.Code == discountCodeName.Trim().ToLower() && x.Id != discountId
+			);
 		}
 		#endregion
 
@@ -135,8 +178,23 @@ namespace eShop.Service.DisCountService.DisCountForServer
 				{
 					DisCountId = d.Id,
 					Code = d.Code,
+					EndDisCount = d.EndDisCount,
+					StartDisCount = d.StartDisCount,
+					IsActive = d.IsActive,
+					UserCount = d.UserCount,
 				})
+				.AsNoTracking()
 				.SingleOrDefault();
+		}
+		#endregion
+
+		#region ID متد جستجوی کد تخفیف بر اساس مقدار 
+		public TBL_DisCount FindDisCountById(int discountId)
+		{
+			return _context.TBL_DisCounts
+				.Where(w => w.Id == discountId)
+				.AsNoTracking()
+				.FirstOrDefault();
 		}
 		#endregion
 
@@ -153,10 +211,10 @@ namespace eShop.Service.DisCountService.DisCountForServer
 					Message = OperationResultMessage.NotFound,
 				};
 
-			FindDiscounts.RemoveDate = DateTime.Now;
-			FindDiscounts.IsRemove = true;
+				//FindDiscounts.RemoveDate = DateTime.Now;
+				//FindDiscounts.IsRemove = true;
 
-			_context.TBL_DisCounts.Update(FindDiscounts);
+			_context.TBL_DisCounts.Remove(FindDiscounts);
 			_context.SaveChanges();
 
 			return new OperationResult

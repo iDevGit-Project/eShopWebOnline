@@ -13,8 +13,8 @@ namespace eShop.Service.DisCountService.DisCountForServer
 	{
 		List<GetDisCountsViewModel> GetDisCounts();
 		OperationResult CreateDisCount(CreateDisCountViewModel createDisCount);
-		UpdateDisCountViewModel FindWarrantyByIdForUpdate(int DiscountId);
-		OperationResult UpdateDisCount(UpdateDisCountViewModel UpdateDisCount);
+		UpdateDisCountViewModel FindDiscountByIdForUpdate(int DiscountId);
+		OperationResult UpdateDisCount(UpdateDisCountViewModel UpdateDiscount);
 		RemoveDisCountViewModel FindDisCountByIdForRemove(int DiscountId);
 		OperationResult RemoveDisCount(RemoveDisCountViewModel RemoveDisCount);
 	}
