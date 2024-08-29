@@ -26,7 +26,7 @@ namespace eShop.Data.Context
 		//START - TBL ALL Products
 		public DbSet<TBL_Product> TBL_Products { get; set; }
 		public DbSet<TBL_ProductCart> TBL_ProductCarts { get; set; }
-		//public DbSet<TBL_ProductCartDetail> TBL_ProductCartDetails { get; set; }
+		public DbSet<TBL_ProductCartDetail> TBL_ProductCartDetails { get; set; }
 		public DbSet<TBL_ProductGallery> TBL_ProductGalleries { get; set; }
 		public DbSet<TBL_ProductPrice> TBL_ProductPrices { get; set; }
 		public DbSet<TBL_ProductSeler> TBL_ProductSelers { get; set; }

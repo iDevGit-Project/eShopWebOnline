@@ -16,10 +16,10 @@ namespace eShop.Data.Entities
 
 		#region جدول ارتباطات
 		[ForeignKey(nameof(CartId))]
-		public TBL_ProductCart TBLProductCart { get; set; }
+		public TBL_ProductCart TBLProductCarts { get; set; }
 
 		[ForeignKey(nameof(ProductPriceId))]
-		public TBL_ProductPrice TBLProductPrice { get; set; }
+		public TBL_ProductPrice TBLProductPrices { get; set; }
 		#endregion
 	}
 }

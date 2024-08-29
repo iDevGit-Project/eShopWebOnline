@@ -19,6 +19,7 @@ namespace eShop.Data.Entities
 		public string? ActiveCode { get; set; }
 
 		public List<TBL_ProductQuestion> TBLProductQuestions { get; set; }
+		public List<TBL_ProductCart> TBLProductCarts { get; set; }
 		public List<TBL_FAQAnswer> TBLFAQAnswers { get; set; }
 	}
 }

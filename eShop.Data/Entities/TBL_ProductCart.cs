@@ -14,12 +14,14 @@ namespace eShop.Data.Entities
 		public string? FullAddress { get; set; }
 		public int UserId { get; set; }
 		public int SumOrder { get; set; }
+
+		// مشخص کردن اینکه کاربر در چه مرحله ای از پرداخت قرار دارد
 		public byte OrderType { get; set; }
 
 		#region جدول ارتباطات
 		[ForeignKey(nameof(UserId))]
 		public TBL_User TBLUsers { get; set; }
-		//public List<TBL_ProductCartDetail> TBLProductCartDetails { get; set; }
+		public List<TBL_ProductCartDetail> TBLProductCartDetails { get; set; }
 		public List<TBL_PaymentDetail> TBLPaymentDetails { get; set; }
 		#endregion
 	}

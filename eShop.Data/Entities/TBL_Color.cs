@@ -11,5 +11,10 @@ namespace eShop.Data.Entities
 		public string ColorName { get; set; }
 		public string Code { get; set; }
 		public bool IsActive { get; set; }
+
+		#region جدول ارتباطات
+		public List<TBL_ProductPrice> TBLProductPrice { get; set; }
+		#endregion
 	}
+
 }
