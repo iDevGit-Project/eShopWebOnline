@@ -2914,7 +2914,8 @@ textarea.form-control-lg {
 .input-group-text {
   display: flex;
   align-items: center;
-  padding: 0.775rem 1rem;
+  /*padding: 0.775rem 1rem;*/
+  padding: 0.655rem 1rem;
   font-size: 1.1rem;
   font-weight: 500;
   line-height: 1.5;
