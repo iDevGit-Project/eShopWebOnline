@@ -48181,3 +48181,6 @@ input[type=file]::file-selector-button {
     color: green !important;
     background-color: blue !important;
 }*/
+.tempus-dominus-widget-styled {
+    width: 420px !important;
+}

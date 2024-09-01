@@ -96,8 +96,8 @@
 									<div class="col-lg-3">
 										<!--کد های مربوط به تاریخ نگار شمسی توسط مترونیک به صورت کاملاً فارسی-->
 										<div class="position-relative d-flex align-items-center input-group" id="kt_td_picker_localization_A" data-td-target-input="nearest" data-td-target-toggle="nearest">
-											<input type="text" class="form-control" id="StartDisCount" name="StartDisCount" data-td-target="#kt_td_picker_localization" placeholder="شروع کد تخفیف" />
-											<span class="input-group-text" data-td-target="#kt_td_picker_localization" data-td-toggle="datetimepicker" style="cursor: pointer;">
+											<input type="text" class="form-control" id="StartDisCount" name="StartDisCount" data-td-target="#kt_td_picker_localization_A" placeholder="شروع کد تخفیف"/>
+											<span class="input-group-text" data-td-target="#kt_td_picker_localization_A" data-td-toggle="datetimepicker" style="cursor: pointer;">
 												<i class="ki-duotone ki-calendar fs-2"><span class="path1"></span><span class="path2"></span></i>
 											</span>
 										</div>
@@ -115,8 +115,8 @@
 									<!--begin::Col-->
 									<div class="col-lg-3">
 										<div class="position-relative d-flex align-items-center input-group" id="kt_td_picker_localization_B" data-td-target-input="nearest" data-td-target-toggle="nearest">
-											<input type="text" class="form-control" id="EndDisCount" name="EndDisCount" data-td-target="#kt_td_picker_localization" placeholder="پایان کد تخفیف" />
-											<span class="input-group-text" data-td-target="#kt_td_picker_localization" data-td-toggle="datetimepicker" style="cursor: pointer;">
+											<input type="text" class="form-control" id="EndDisCount" name="EndDisCount" data-td-target="#kt_td_picker_localization_B" placeholder="پایان کد تخفیف" />
+											<span class="input-group-text" data-td-target="#kt_td_picker_localization_B" data-td-toggle="datetimepicker" style="cursor: pointer;">
 												<i class="ki-duotone ki-calendar fs-2"><span class="path1"></span><span class="path2"></span></i>
 											</span>
 										</div>
@@ -183,8 +183,8 @@
 	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script> *@
 
 	<!-- فایل های جاوااسکریپت مربوط به تاریخ شمسی -->
-	<script src="/assets/plugins/persiandate/persian-date.js" asp-append-version="true"></script>
-	<script src="/assets/plugins/persiandate/persian-datepicker.js" asp-append-version="true"></script>
+@* 	<script src="/assets/plugins/persiandate/persian-date.js" asp-append-version="true"></script>
+	<script src="/assets/plugins/persiandate/persian-datepicker.js" asp-append-version="true"></script> *@
 	<script>
 		$(".persianDateTime").persianDatepicker({
 			format: 'YYYY/MM/DD'
@@ -326,13 +326,13 @@
 		}
 	</script>
 	<!--===================================================================-->
-	<!--اسکریپت تاریخ سمسی بدون هیچگونه اضافه کردن کامپوننت-->
+	<!--اسکریپت تاریخ شمسی بدون هیچگونه اضافه کردن کامپوننت-->
 	<script>
 		new tempusDominus.TempusDominus(document.getElementById("kt_td_picker_localization_A"), {
 			display: {
 				viewMode: "calendar",
 				sideBySide: false,
-				calendarWeeks: true,
+				calendarWeeks: false,
 				toolbarPlacement: 'bottom',
 				keepOpen: false,
 				buttons: {
@@ -341,7 +341,9 @@
 					close: true
 				},
 				components: {
-					decades: false,
+					// نمایش فقط ماه، هفته و ...
+					decades: true,
+					calendar: true,
 					year: true,
 					month: true,
 					date: true,
@@ -354,6 +356,7 @@
 			localization: {
 				locale: "fa",
 				format: "yyyy/MM/dd HH:mm",
+				//dayViewHeaderFormat: { month: 'long', year: '2-digit'},
 				startOfTheWeek: 1,
 				clear: 'پاک کردن تاریخ',
 				close: 'بستن تقویم',
@@ -373,7 +376,7 @@
 			display: {
 				viewMode: "calendar",
 				sideBySide: false,
-				calendarWeeks: true,
+				calendarWeeks: false,
 				toolbarPlacement: 'bottom',
 				keepOpen: false,
 				buttons: {
@@ -382,7 +385,9 @@
 					close: true
 				},
 				components: {
-					decades: false,
+					// نمایش فقط ماه، هفته و ...
+					decades: true,
+					calendar: true,
 					year: true,
 					month: true,
 					date: true,
@@ -395,6 +400,7 @@
 			localization: {
 				locale: "fa",
 				format: "yyyy/MM/dd HH:mm",
+				//dayViewHeaderFormat: { month: 'long', year: '2-digit'},
 				startOfTheWeek: 1,
 				clear: 'پاک کردن تاریخ',
 				close: 'بستن تقویم',
