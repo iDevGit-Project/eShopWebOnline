@@ -5,7 +5,7 @@
 }
 
 <!-- آدرس مربوط به فایل سی اس اس تاریخ شمسی -->
-@* <link href="/assets/plugins/persiandate/persian-datepicker.css" rel="stylesheet" asp-append-version="true" /> *@
+<link href="/assets/plugins/persiandate/persian-datepicker.css" rel="stylesheet" asp-append-version="true" />
 <!--======================================================================================-->
 @section scripts
 {
@@ -47,16 +47,16 @@
 								<!--begin::Row-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="Code" class="col-lg-4 fw-semibold fw-bold">
+									<label asp-for="Code" class="col-lg-5 fw-semibold fw-bold">
 										 نام کد تخفیف جدید به انگلیسی.
 										<span class="ms-1 FEN" data-bs-toggle="tooltip" title="نمونه کد تخفیف: bahar_1403">
 											<i class="ki-outline ki-information fs-7"></i>
 										</span>
-										<span asp-validation-for="Code" class="badge badge-light-danger mb-1"></span>
+										<span asp-validation-for="Code" class="badge badge-light-danger"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
-									<div class="col-lg-8">
+									<div class="col-lg-7">
 										<input type="text" asp-for="Code" id="kt_docs_maxlength_custom_text" maxlength="512 " class="form-control border-primary text-dark FEN" autocomplete="off" placeholder="Enter the name of the discount code in English or a combination of characters.">
 									</div>
 									<!--end::Col-->
@@ -65,16 +65,17 @@
 								<!--begin::Input group-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="UserCount" class="col-lg-4 fw-semibold fw-bold">
+									<label asp-for="UserCount" class="col-lg-5 fw-semibold fw-bold">
 										تعداد کد تخفیف.
-										<span class="ms-1" data-bs-toggle="tooltip" title="راهنمایی: چه تعداد مشتری از این کد میتوانند استفاده کنند؟">
+										<span class="ms-1" data-bs-toggle="tooltip" title="راهنمایی: فقط تعداد نفر مشتری را به عدد وارد کنید.">
 											<i class="ki-outline ki-information fs-7"></i>
 										</span>
+										<span asp-validation-for="UserCount" class="badge badge-light-danger"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Col-->
-									<div class="col-lg-8">
-										<input type="text" asp-for="UserCount" id="kt_docs_maxlength_custom_text" maxlength="512 " class="form-control border-primary" autocomplete="off" placeholder="چه تعداد مشتری از این کد میتوانند استفاده کنند؟">
+									<div class="col-lg-7">
+										<input type="text" asp-for="UserCount" id="kt_docs_maxlength_custom_text" maxlength="512 " class="form-control border-primary" autocomplete="off" placeholder="تعداد مشتریان را بدون حرف اضافه و فقط به عدد وارد نمایید.">
 									</div>
 									<!--end::Col-->
 								</div>
@@ -82,8 +83,9 @@
 								<!--begin::Input group-->
 								<div class="row mb-7">
 									<!--begin::Tags-->
-									<label asp-for="StartDisCount" class="col-lg-4 position-relative d-flex align-items-center fw-semibold fw-bold">
+									<label asp-for="StartDisCount" class="col-lg-5 position-relative d-flex align-items-center fw-semibold fw-bold">
 										تاریخ شروع و پایان کد تخفیف.
+										<span asp-validation-for="StartDisCount" class="badge badge-light-danger"></span>
 									</label>
 									<!--end::Tags-->
 									<!--begin::Tags-->
@@ -93,18 +95,18 @@
 									<!--end::Tags-->
 									<!--begin::Col-->
 
-									<div class="col-lg-3">
+									<div class="col-lg-2">
 										<!--کد های مربوط به تاریخ نگار شمسی توسط مترونیک به صورت کاملاً فارسی-->
-										<div class="position-relative d-flex align-items-center input-group" id="kt_td_picker_localization_A" data-td-target-input="nearest" data-td-target-toggle="nearest">
+@* 										<div class="position-relative d-flex align-items-center input-group" id="kt_td_picker_localization_A" data-td-target-input="nearest" data-td-target-toggle="nearest">
 											<input type="text" class="form-control" id="StartDisCount" name="StartDisCount" data-td-target="#kt_td_picker_localization_A" placeholder="شروع کد تخفیف"/>
 											<span class="input-group-text" data-td-target="#kt_td_picker_localization_A" data-td-toggle="datetimepicker" style="cursor: pointer;">
 												<i class="ki-duotone ki-calendar fs-2"><span class="path1"></span><span class="path2"></span></i>
 											</span>
-										</div>
-@* 										<div class="position-relative d-flex align-items-center">
-											<i class="ki-outline ki-calendar-8 fs-2 position-absolute mx-4"></i>
-											<input type="text" id="StartDisCount" name="StartDisCount" class="form-control text-center persianDateTime form-control-solid ps-12 fw-semibold fw-bold pwt-datepicker-input-element" autocomplete="off" style="cursor: pointer;">
 										</div> *@
+										<div class="position-relative d-flex align-items-center">
+											<i class="ki-outline ki-calendar-8 fs-2 position-absolute mx-4" data-bs-toggle="tooltip" title="تاریخ شروع کد تخفیف"></i>
+											<input type="text" id="StartDisCount" name="StartDisCount" class="form-control border-primary text-center persianDateTime form-control-solid ps-12 fw-semibold fw-bold pwt-datepicker-input-element" autocomplete="off" style="cursor: pointer;">
+										</div>
 									</div>
 									<!--end::Col-->
 									<!--begin::Tags-->
@@ -114,28 +116,29 @@
 									<!--end::Tags-->
 									<!--begin::Col-->
 									<div class="col-lg-3">
-										<div class="position-relative d-flex align-items-center input-group" id="kt_td_picker_localization_B" data-td-target-input="nearest" data-td-target-toggle="nearest">
+										<!--کد های مربوط به تاریخ نگار شمسی توسط مترونیک به صورت کاملاً فارسی-->
+@* 										<div class="position-relative d-flex align-items-center input-group" id="kt_td_picker_localization_B" data-td-target-input="nearest" data-td-target-toggle="nearest">
 											<input type="text" class="form-control" id="EndDisCount" name="EndDisCount" data-td-target="#kt_td_picker_localization_B" placeholder="پایان کد تخفیف" />
 											<span class="input-group-text" data-td-target="#kt_td_picker_localization_B" data-td-toggle="datetimepicker" style="cursor: pointer;">
 												<i class="ki-duotone ki-calendar fs-2"><span class="path1"></span><span class="path2"></span></i>
 											</span>
-										</div>
-@* 										<div class="position-relative d-flex align-items-center">
-											<i class="ki-outline ki-calendar-8 fs-2 position-absolute mx-4"></i>
-											<input type="text" id="EndDisCount" name="EndDisCount" class="form-control text-center persianDateTime form-control-solid ps-12 fw-semibold fw-bold pwt-datepicker-input-element" autocomplete="off" style="cursor: pointer;">
 										</div> *@
+										<div class="position-relative d-flex align-items-center">
+											<i class="ki-outline ki-calendar-8 fs-2 position-absolute mx-4" data-bs-toggle="tooltip" title="تاریخ پایان کد تخفیف"></i>
+											<input type="text" id="EndDisCount" name="EndDisCount" class="form-control border-primary text-center persianDateTime form-control-solid ps-12 fw-semibold fw-bold pwt-datepicker-input-element" autocomplete="off" style="cursor: pointer;">
+										</div>
 									</div>
 									<!--end::Col-->
 								</div>
 								<!--end::Input group-->
-								<div class="row mb-7">
+								<div class="row">
 									<!--begin::Tags-->
-									<label asp-for="IsActive" class="col-lg-4 fw-semibold fw-bold">
+									<label asp-for="IsActive" class="col-lg-5 fw-semibold fw-bold">
 										فعال یا غیرفعالسازی کد تخفیف.
 										<span asp-validation-for="IsActive" class="badge badge-light-danger"></span>
 									</label>
 									<!--end::Tags-->
-									<div class="col-lg-8">
+									<div class="col-lg-7">
 										<div class="d-flex align-items-center border border-dashed border-gray-300 rounded px-7 py-3">
 											<!--begin::آیتم-->
 											<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
@@ -143,7 +146,6 @@
 													<input asp-for="IsActive" class="form-check-input h-30px w-50px" onclick="confirmdSwitchDiscountCommand()" type="checkbox" id="flexSwitch30x50" style="cursor: pointer;" />
 													<label class="form-check-label text-dark fw-bold" for="flexSwitch30x50">
 														آیا کد تخفیف جدید بر روی سایت فعال شود؟
-														<span asp-validation-for="IsActive" class="badge badge-light-danger mb-1"></span>
 													</label>
 												</div>
 											</div>
@@ -179,12 +181,12 @@
 </div>
 <!--end::content container-->
 @section AdminScripts {
-@* 	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
-	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script> *@
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
 
 	<!-- فایل های جاوااسکریپت مربوط به تاریخ شمسی -->
-@* 	<script src="/assets/plugins/persiandate/persian-date.js" asp-append-version="true"></script>
-	<script src="/assets/plugins/persiandate/persian-datepicker.js" asp-append-version="true"></script> *@
+	<script src="/assets/plugins/persiandate/persian-date.js" asp-append-version="true"></script>
+	<script src="/assets/plugins/persiandate/persian-datepicker.js" asp-append-version="true"></script>
 	<script>
 		$(".persianDateTime").persianDatepicker({
 			format: 'YYYY/MM/DD'
@@ -326,7 +328,7 @@
 		}
 	</script>
 	<!--===================================================================-->
-	<!--اسکریپت تاریخ شمسی بدون هیچگونه اضافه کردن کامپوننت-->
+	<!--اسکریپت تاریخ شمسی مترونیک-->
 	<script>
 		new tempusDominus.TempusDominus(document.getElementById("kt_td_picker_localization_A"), {
 			display: {
@@ -371,6 +373,7 @@
 		});
 	</script>
 	<!--==================================================================-->
+	<!--اسکریپت تاریخ شمسی مترونیک-->
 	<script>
 		new tempusDominus.TempusDominus(document.getElementById("kt_td_picker_localization_B"), {
 			display: {

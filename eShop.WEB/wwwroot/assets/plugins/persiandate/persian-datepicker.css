@@ -40,7 +40,8 @@
   border-radius: 0; }
 
 .datepicker-plot-area {
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0px 0px 50px 0px rgba(82, 63, 105, 0.15);
+}
 
 .datepicker-plot-area .datepicker-day-view .table-days td span, .datepicker-plot-area .datepicker-year-view .year-item,
 .datepicker-plot-area .datepicker-month-view .month-item, .datepicker-plot-area .datepicker-day-view .table-days td.disabled span, .datepicker-plot-area .datepicker-year-view .year-item-disable,
@@ -69,28 +70,30 @@
   cursor: default; }
 
 .datepicker-plot-area .datepicker-day-view .table-days td.today span {
-  background-color: #333;
-  color: #fff;
-  border: 0;
-  text-shadow: none; }
+    background-color: #ff0000;
+    border-radius: 0.475rem;
+    color: #ffffff;
+    border: 0;
+    text-shadow: none;
+}
 
 .datepicker-plot-area .datepicker-day-view .table-days td span.other-month {
-  background-color: "";
-  color: #ccc;
+  color: #d4d6df;
   border: none;
   text-shadow: none; }
 
 .datepicker-plot-area .datepicker-day-view .table-days td.selected span, .datepicker-plot-area .datepicker-year-view .year-item.selected,
 .datepicker-plot-area .datepicker-month-view .month-item.selected {
-    background-color: #73d7a1;
-    color: #181c32;
+    background-color: #50cd89;
+    color: #ffffff;
     border-radius: 0.475rem;
+    /* font-weight: bold; */
     border: none;
 }
 
 .datepicker-plot-area .datepicker-day-view .table-days td.selected span .datepicker-plot-area .datepicker-day-view .table-days td:hover, .datepicker-plot-area .datepicker-day-view .table-days td span:hover, .datepicker-plot-area .datepicker-year-view .year-item:hover,
 .datepicker-plot-area .datepicker-month-view .month-item:hover {
-    background-color: #73d7a16b;
+    background-color: #f4f4f4;
     color: #181c32;
     border-radius: 0.475rem;
     border: none;
@@ -340,6 +343,7 @@
     .datepicker-plot-area .toolbox .pwt-btn-calendar:hover,
     .datepicker-plot-area .toolbox .pwt-btn-today:hover {
         background-color: #73d7a1;
+        border-radius: 0.475rem;
     }
 
 .datepicker-plot-area .datepicker-navigator {
@@ -354,7 +358,7 @@
     height: 28px;
     line-height: 28px;
     font-weight: bold;
-background-color: #73d7a16b;
+    background-color: #f4f4f4;
     border-radius: 0.475rem;
     color: #000;
   }

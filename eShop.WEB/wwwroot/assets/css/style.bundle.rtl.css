@@ -42421,7 +42421,7 @@ code:not([class*=language-]) {
 .badge {
     display: inline-flex;
     align-items: center;
-    margin-top: 7px;
+    margin-top: 3px;
     flex-direction: row-reverse;
     justify-content: center;
 }
