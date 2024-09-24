@@ -93,8 +93,12 @@
 
 .datepicker-plot-area .datepicker-day-view .table-days td.selected span .datepicker-plot-area .datepicker-day-view .table-days td:hover, .datepicker-plot-area .datepicker-day-view .table-days td span:hover, .datepicker-plot-area .datepicker-year-view .year-item:hover,
 .datepicker-plot-area .datepicker-month-view .month-item:hover {
-    background-color: #f4f4f4;
+/*    background-color: #f4f4f4;
     color: #181c32;
+    border-radius: 0.475rem;
+    border: none;*/
+    background-color: #6a74c9;
+    color: #eff2f9;
     border-radius: 0.475rem;
     border: none;
 }
@@ -365,7 +369,7 @@
     .datepicker-plot-area .datepicker-navigator .pwt-btn-next:hover,
     .datepicker-plot-area .datepicker-navigator .pwt-btn-switch:hover,
     .datepicker-plot-area .datepicker-navigator .pwt-btn-prev:hover {
-    background-color: #73d7a1; }
+    background-color: #cad4eb; }
   .datepicker-plot-area .datepicker-navigator .pwt-btn-next {
     display: block;
     width: 15%;
