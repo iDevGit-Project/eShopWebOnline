@@ -22,7 +22,8 @@
     --bs-gray-dark: #3F4254;
     --bs-gray-100: #F9F9F9;
     --bs-gray-200: #F4F4F4;
-    --bs-gray-300: #E1E3EA;
+    /*--bs-gray-300: #E1E3EA;*/
+    --bs-gray-300: #e2e8f5;
     --bs-gray-400: #B5B5C3;
     --bs-gray-500: #A1A5B7;
     --bs-gray-600: #7E8299;
@@ -32,7 +33,8 @@
     --bs-light: #F6F6F6;
     --bs-primary: #0f42ef;
     --bs-secondary: #E1E3EA;
-    --bs-success: #2C9AFF;
+    /*--bs-success: #2C9AFF;*/
+    --bs-success: #4CAF50;
     --bs-info: #7239EA;
     --bs-warning: #E78B2F;
     --bs-danger: #F14C41;
@@ -28241,7 +28243,7 @@ textarea.form-control-lg {
     --bs-danger-active: #DD4339;
     --bs-dark-active: #131628;
     /*--bs-primary-light: #e8fff3;*/
-    --bs-primary-light: #cad4eb40;
+    --bs-primary-light: #cad4eb17;
     --bs-secondary-light: #F9F9F9;
     --bs-success-light: #F1F4FF;
     --bs-info-light: #F8F5FF;
@@ -28279,7 +28281,8 @@ textarea.form-control-lg {
     --bs-text-gray-300: #E1E3EA;
     --bs-text-gray-400: #B5B5C3;
     --bs-text-gray-500: #A1A5B7;
-    --bs-text-gray-600: #7E8299;
+    /*--bs-text-gray-600: #7E8299;*/
+    --bs-text-gray-600: #a1a5bb;
     --bs-text-gray-700: #5E6278;
     --bs-text-gray-800: #3F4254;
     --bs-text-gray-900: #181C32;
@@ -31018,7 +31021,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 }
 
 .menu-title-gray-600 .menu-item .menu-link {
-  color: var(--bs-text-gray-600);
+  color: var(--bs-text-gray-800);
 }
 .menu-title-gray-600 .menu-item .menu-link .menu-title {
   color: var(--bs-text-gray-600);
@@ -48014,7 +48017,8 @@ body,
 .app-sidebar-primary .app-sidebar-menu .menu > .menu-item > .menu-link .menu-icon,
 .app-sidebar-primary .app-sidebar-menu .menu > .menu-item > .menu-link .menu-icon .svg-icon,
 .app-sidebar-primary .app-sidebar-menu .menu > .menu-item > .menu-link .menu-icon i {
-  color: #7F8892;
+  /*color: #7F8892;*/
+  color: #6f7395;
 }
 .app-sidebar-primary .app-sidebar-menu .menu > .menu-item.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here), .app-sidebar-primary .app-sidebar-menu .menu > .menu-item:not(.here) > .menu-link:hover:not(.disabled):not(.active):not(.here) {
   transition: color 0.2s ease;
@@ -48024,6 +48028,7 @@ body,
 .app-sidebar-primary .app-sidebar-menu .menu > .menu-item.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here) .menu-icon i, .app-sidebar-primary .app-sidebar-menu .menu > .menu-item:not(.here) > .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-icon,
 .app-sidebar-primary .app-sidebar-menu .menu > .menu-item:not(.here) > .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-icon .svg-icon,
 .app-sidebar-primary .app-sidebar-menu .menu > .menu-item:not(.here) > .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-icon i {
+  /*color: #ffffff;*/
   color: #ffffff;
 }
 .app-sidebar-primary .app-sidebar-menu .menu > .menu-item.show > .menu-link {
