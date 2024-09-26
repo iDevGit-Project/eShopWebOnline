@@ -86,7 +86,7 @@
 							<!--begin::Toolbar-->
 							<div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
 								<!--begin::Menu 1-->
-								<button type="button" id="kt_refresh_datatable" class="btn  h-40px btn-sm btn-light-success me-3" data-bs-toggle="tooltip" title="بروزرسانی لیست دسته بندی ها">
+								<button type="button" id="kt_refresh_datatable" class="btn  h-40px btn-sm btn-light-primary me-3" data-bs-toggle="tooltip" title="بروزرسانی لیست دسته بندی ها">
 									<!--begin::Indicator label-->
 									<span class="indicator-label">بروزرسانی اطلاعات</span>
 									<!--end::Indicator label-->
@@ -99,7 +99,7 @@
 								<!--end::Menu 1-->
 								<!--end::فیلتر-->
 								<!--begin::خروجی-->
-								<button type="button" class="btn h-40px  btn-sm btn-light-success" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-bs-toggle="tooltip" title="دریافت خروجی از اطلاعات جدول">
+								<button type="button" class="btn h-40px  btn-sm btn-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-bs-toggle="tooltip" title="دریافت خروجی از اطلاعات جدول">
 									<i class="ki-duotone ki-exit-down fs-2"><span class="path1"></span><span class="path2"></span></i>
 									دریافت خروجی
 								</button>
@@ -126,7 +126,7 @@
 					<!--begin::TABELS-->
 					<table id="datatable_categories" class="table table-rounded table-striped border table-row-bordered gy-5 gs-7">
 						<thead>
-							<tr class="bg-light-success text-success fw-semibold fs-6 text-dark">
+							<tr class="bg-light-primary text-success fw-semibold fs-6 text-dark">
 								<th class="fw-semibold fw-bolder text-start fs-6">ردیف</th>
 								<th class="fw-semibold fw-bolder text-center fs-6">تصویر/ آیکن</th>
 								<th class="fw-semibold fw-bolder text-start fs-6">نام دسته بندی</th>
@@ -147,10 +147,10 @@
 									<td class="text-start fs-6">@item.FaTitle</td>
 									<td class="text-end FEN fs-6">@item.EnTitle</td>
 									<td class="text-center">
-										<span class="badge @(item.IsActive?"badge-light-primary":"badge-light-danger")">@(item.IsActive ? "فعال" : "غیرفعال")</span>
+										<span class="badge @(item.IsActive?"badge-light-success":"badge-light-danger")">@(item.IsActive ? "فعال" : "غیرفعال")</span>
 									</td>
 									<td class="text-center">
-										<span class="badge @(item.IsMain?"badge-light-primary":"badge-light-success")">@(item.IsMain ? "منوی اصلی" : "زیرمنو")</span>
+										<span class="badge @(item.IsMain?"badge-light-primary":"badge-light-primary")">@(item.IsMain ? "منوی اصلی" : "زیرمنو")</span>
 									</td>
 									<td class="text-end justify-content-start flex-shrink-0">
 										<!--begin::Icon-->
