@@ -1,6 +1,7 @@
 ﻿using eShop.Core.ExtentionMethods;
 using eShop.Data.ViewModels.ColorsViewModels.ColorsVMServer;
-using eShop.Service.ColorService.ColorForServer;
+using eShop.Service.ColorService.Command;
+using eShop.Service.ColorService.Query;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using NToastNotify;
@@ -11,12 +12,14 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 	public class ColorController : BaseAdminController
 	{
 		#region Color متد سرویس های 
+		private readonly IColorServiceQuery _colorServiceQuery;
+		private readonly IColorServiceCommand _colorServiceCommand;
 		private readonly IToastNotification _toastNotification;
-		private readonly IColorsServiceForServer _colorsServiceForServer;
-        public ColorController(IToastNotification toastNotification, IColorsServiceForServer colorsServiceForServer)
+		public ColorController(IToastNotification toastNotification, IColorServiceQuery colorServiceQuery, IColorServiceCommand colorServiceCommand)
         {
 			_toastNotification = toastNotification;
-			_colorsServiceForServer = colorsServiceForServer;
+			_colorServiceQuery = colorServiceQuery;
+			_colorServiceCommand = colorServiceCommand;
         }
 		#endregion
 
@@ -25,7 +28,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		[HttpGet]
         public IActionResult Index()
 		{
-			return View(_colorsServiceForServer.GetColors());
+			return View(_colorServiceQuery.GetColors());
 		}
 
 		#endregion
@@ -45,7 +48,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				return View(createColor);
 			}
 
-			var Result = _colorsServiceForServer.CreateColor(createColor);
+			var Result = _colorServiceCommand.CreateColor(createColor);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
 			_toastNotification.AddSuccessToastMessage("ثبت اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{
@@ -65,7 +68,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		[HttpGet]
 		public IActionResult Update(int Id)
 		{
-			var FindColor = _colorsServiceForServer.FindColorByIdForUpdate(Id);
+			var FindColor = _colorServiceQuery.FindColorByIdForUpdate(Id);
 
 			if (FindColor == null)
 				return NotFound();
@@ -81,7 +84,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				return View(UpdateColor);
 			}
 
-			var Result = _colorsServiceForServer.UpdateColor(UpdateColor);
+			var Result = _colorServiceCommand.UpdateColor(UpdateColor);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
 			_toastNotification.AddInfoToastMessage(".ویرایش اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{
@@ -101,7 +104,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		[HttpGet]
 		public IActionResult Remove(int Id)
 		{
-			var FindColor = _colorsServiceForServer.FindColorByIdForRemove(Id);
+			var FindColor = _colorServiceQuery.FindColorByIdForRemove(Id);
 
 			if (FindColor == null)
 				return NotFound();
@@ -117,7 +120,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				return View(RemoveColor);
 			}
 
-			var Result = _colorsServiceForServer.RemoveColor(RemoveColor);
+			var Result = _colorServiceCommand.RemoveColor(RemoveColor);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
 			_toastNotification.AddErrorToastMessage("حذف اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{

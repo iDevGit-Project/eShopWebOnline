@@ -2,47 +2,33 @@
 using eShop.Data.Context;
 using eShop.Data.Entities;
 using eShop.Data.ViewModels.ColorsViewModels.ColorsVMServer;
-using eShop.Data.ViewModels.WarrantiesViewModels.WarrantiesVMServer;
+using eShop.Service.ColorService.Query;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eShop.Service.ColorService.ColorForServer
+namespace eShop.Service.ColorService.Command
 {
-    public class ColorsServiceForServer : IColorsServiceForServer
+	public class ColorServiceCommand : IColorServiceCommand
 	{
 		#region در سمت مدیرسایت یا سرور Color متد های پیکربندی اطلاعات
 
 		private readonly ApplicationDbContext _context;
-        public ColorsServiceForServer(ApplicationDbContext context)
-        {
-			_context = context;
-        }
-		#endregion
-
-		#region Color متد نمایش لیست اطلاعات 
-		public List<GetColorsViewModel> GetColors()
+		private readonly IColorServiceQuery _colorServiceQuery;
+		public ColorServiceCommand(ApplicationDbContext context, IColorServiceQuery colorServiceQuery)
 		{
-			return _context.TBL_Colors
-				.Select(x => new GetColorsViewModel
-				{
-					ColorCode = x.Code,
-					ColorId = x.Id,
-					ColorName = x.ColorName,
-				})
-				.AsNoTracking()
-				.ToList();
+			_context = context;
+			_colorServiceQuery = colorServiceQuery;
 		}
 		#endregion
 
-		#region جدید Color متد ثبت 
+		#region جدید Color متد عملیاتی ثبت 
 		public OperationResult CreateColor(CreateColorViewModel createColor)
 		{
-			bool existColor = ExistColor(0, createColor.ColorName, createColor.ColorCode);
+			bool existColor = _colorServiceQuery.ExistColor(0, createColor.ColorName, createColor.ColorCode);
 
 			if (existColor)
 			{
@@ -77,7 +63,7 @@ namespace eShop.Service.ColorService.ColorForServer
 		#region Color متد عملیاتی ویرایش اطلاعات 
 		public OperationResult UpdateColor(UpdateColorViewModel updateColor)
 		{
-			var FindColor = FindColorById(updateColor.ColorId);
+			var FindColor = _colorServiceQuery.FindColorById(updateColor.ColorId);
 
 			if (FindColor == null)
 			{
@@ -89,7 +75,7 @@ namespace eShop.Service.ColorService.ColorForServer
 				};
 			}
 
-			bool exist = ExistColor(updateColor.ColorId, updateColor.ColorName, updateColor.ColorCode);
+			bool exist = _colorServiceQuery.ExistColor(updateColor.ColorId, updateColor.ColorName, updateColor.ColorCode);
 			if (exist)
 			{
 				return new OperationResult
@@ -116,56 +102,12 @@ namespace eShop.Service.ColorService.ColorForServer
 
 			};
 		}
-
-		#endregion
-
-		#region Color متد ویرایش اطلاعات
-		public UpdateColorViewModel FindColorByIdForUpdate(int ColorId)
-		{
-			return _context.TBL_Colors
-				.Where(x => x.Id == ColorId)
-				.Select(x => new UpdateColorViewModel
-				{
-					ColorCode = x.Code,
-					ColorName = x.ColorName,
-					IsActive = x.IsActive,
-					ColorId = x.Id,
-				})
-				.FirstOrDefault();
-		}
-		#endregion
-
-		#region در بانک اطلاعاتی Color متد موجود بودن 
-		public bool ExistColor(int ColorId, string ColorName, string ColorCode)
-		{
-			return _context.TBL_Colors.Any(x => (x.ColorName == ColorName || x.Code == ColorCode) && x.Id != ColorId);
-		}
-		#endregion
-
-		#region ID بر اساس  Color متد جستجوی 
-		public TBL_Color FindColorById(int ColorId)
-		{
-			return _context.TBL_Colors.Where(x => x.Id == ColorId).FirstOrDefault();
-		}
 		#endregion
 
 		#region متد عملیاتی حذف اطلاعات رنگ
-		public RemoveColorViewModel FindColorByIdForRemove(int ColorId)
-		{
-			return _context.TBL_Colors
-
-				.Where(w => w.Id == ColorId)
-				.Select(w => new RemoveColorViewModel
-				{
-					ColorId = w.Id,
-					ColorName = w.ColorName,
-				})
-				.SingleOrDefault();
-		}
-
 		public OperationResult RemoveColor(RemoveColorViewModel RemoveColor)
 		{
-			var FindColor = FindColorById(RemoveColor.ColorId);
+			var FindColor = _colorServiceQuery.FindColorById(RemoveColor.ColorId);
 
 			if (FindColor == null)
 				return new OperationResult
@@ -188,7 +130,6 @@ namespace eShop.Service.ColorService.ColorForServer
 				Message = OperationResultMessage.Remove
 			};
 		}
-
 		#endregion
 	}
 }

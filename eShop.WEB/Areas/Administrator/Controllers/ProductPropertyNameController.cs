@@ -1,7 +1,6 @@
 ﻿using eShop.Core.ExtentionMethods;
-using eShop.Data.ViewModels.ProductPropertyGroupViewModels.ProductPropertyGroupVMServer;
 using eShop.Data.ViewModels.ProductPropertyNameViewModels.ProductPropertyNameVMServer;
-using eShop.Service.CategoryService.CategoryForServer;
+using eShop.Service.CategoryService.Query;
 using eShop.Service.ProductPropertyGroupService.ProductPropertyGroupForServer;
 using eShop.Service.ProductPropertyNameService.ProductPropertyNameForServer;
 using Microsoft.AspNetCore.Mvc;
@@ -17,14 +16,14 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 
 		private readonly IProductPropertyNameServiceForServer _productPropertyNameService;
 		private readonly IProductPropertyGroupServiceForServer _productPropertyGroupService;
-		private readonly ICategoriesServiceForServer _categoryService;
+		private readonly ICategoryServiceQuery _categoryServiceQuery;
 		private readonly IToastNotification _toastNotification;
 		public ProductPropertyNameController(IProductPropertyNameServiceForServer propertyNameService,
-			IProductPropertyGroupServiceForServer propertyGroupService, ICategoriesServiceForServer categoryService, IToastNotification toastNotification)
+			IProductPropertyGroupServiceForServer propertyGroupService, ICategoryServiceQuery categoryServiceQuery, IToastNotification toastNotification)
 		{
 			_productPropertyNameService = propertyNameService;
 			_productPropertyGroupService = propertyGroupService;
-			_categoryService = categoryService;
+			_categoryServiceQuery = categoryServiceQuery;
 			_toastNotification = toastNotification;
 		}
 		#endregion
@@ -42,7 +41,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		public IActionResult Create()
 		{
 			ViewBag.ProductPropertyGroups = _productPropertyGroupService.GetProductPropertyGroups();
-			ViewBag.GetCategories = _categoryService.GetCategories();
+			ViewBag.GetCategories = _categoryServiceQuery.GetCategories();
 			return View();
 		}
 

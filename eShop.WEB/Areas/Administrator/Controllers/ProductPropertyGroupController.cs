@@ -1,10 +1,6 @@
 ﻿using eShop.Core.ExtentionMethods;
 using eShop.Data.ViewModels.ProductPropertyGroupViewModels.ProductPropertyGroupVMServer;
-using eShop.Data.ViewModels.WarrantiesViewModels.WarrantiesVMServer;
-using eShop.Service.BrandsService.BrandsForServer;
-using eShop.Service.CategoryService.CategoryForServer;
 using eShop.Service.ProductPropertyGroupService.ProductPropertyGroupForServer;
-using eShop.Service.ProductService.ProductForServer;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using NToastNotify;

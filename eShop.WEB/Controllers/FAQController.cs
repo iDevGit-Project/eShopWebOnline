@@ -1,8 +1,4 @@
-﻿using eShop.Service.BrandsService.BrandsForServer;
-using eShop.Service.CategoryService.CategoryForServer;
-using eShop.Service.Comment_FAQ.CommentFAQForClient;
-using eShop.Service.ProductService.ProductForServer;
-using eShop.WEB.Areas.Administrator.Controllers;
+﻿using eShop.Service.Comment_FAQ.CommentFAQForClient;
 using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
 

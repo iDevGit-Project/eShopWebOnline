@@ -1,6 +1,7 @@
 ﻿using eShop.Core.ExtentionMethods;
 using eShop.Data.ViewModels.CategoriesViewModels.CategoriesVMServer;
-using eShop.Service.CategoryService.CategoryForServer;
+using eShop.Service.CategoryService.Command;
+using eShop.Service.CategoryService.Query;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using NToastNotify;
@@ -12,11 +13,15 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 	{
 		#region متد سرویس های دسته بندی ها و زیردسته ها
 
-		private readonly ICategoriesServiceForServer _categoryService;
+		private readonly ICategoryServiceQuery _categoryServiceQuery;
+		private readonly ICategoryServiceCommand _categoryServiceCommand;
 		private readonly IToastNotification _toastNotification;
-		public CategoryController(ICategoriesServiceForServer categoryService, IToastNotification toastNotification)
+
+		public CategoryController(ICategoryServiceQuery categoryServiceQuery,
+			ICategoryServiceCommand categoryServiceCommand, IToastNotification toastNotification)
 		{
-			_categoryService = categoryService;
+			_categoryServiceQuery = categoryServiceQuery;
+			_categoryServiceCommand = categoryServiceCommand;
 			_toastNotification = toastNotification;
 		}
 		#endregion
@@ -26,7 +31,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		[HttpGet]
 		public IActionResult Index()
 		{
-			return View(_categoryService.GetCategories());
+			return View(_categoryServiceQuery.GetCategories());
 		}
 		#endregion
 
@@ -34,7 +39,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		[HttpGet]
 		public IActionResult Create()
 		{
-			ViewBag.ParentList = _categoryService.GetCategoriesForParentList(0);
+			ViewBag.ParentList = _categoryServiceQuery.GetCategoriesForParentList(0);
 			return View();
 		}
 
@@ -43,17 +48,17 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				ViewBag.ParentList = _categoryService.GetCategoriesForParentList(0);
+				ViewBag.ParentList = _categoryServiceQuery.GetCategoriesForParentList(0);
 				return View();
 			}
 
 
-			var Result = _categoryService.CreateCategory(createCategory);
+			var Result = _categoryServiceCommand.CreateCategory(createCategory);
 
 			if (Result.IsSuccess && createCategory.addOrUpdateParent != null)
 			{
 				createCategory.addOrUpdateParent.SubId = Result.Data;
-				var ResultParent = _categoryService.AddOrUpdateParentCategory(createCategory.addOrUpdateParent);
+				var ResultParent = _categoryServiceCommand.AddOrUpdateParentCategory(createCategory.addOrUpdateParent);
 				TempData[TempDataName.ResultParentTempdata] = JsonConvert.SerializeObject(ResultParent);
 			}
 
@@ -76,26 +81,26 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		[HttpGet]
 		public IActionResult Update(int Id)
 		{
-			var FindCategory = _categoryService.FindCategoryByIdForUpdate(Id);
+			var FindCategory = _categoryServiceQuery.FindCategoryByIdForUpdate(Id);
 
 			if (FindCategory == null)
 				return NotFound();
 
-			ViewBag.Parents = _categoryService.GetParentCategoryForAddOrRemoveSub(Id);
-			ViewBag.ParentList = _categoryService.GetCategoriesForParentList(Id);
+			ViewBag.Parents = _categoryServiceQuery.GetParentCategoryForAddOrRemoveSub(Id);
+			ViewBag.ParentList = _categoryServiceQuery.GetCategoriesForParentList(Id);
 			return View(FindCategory);
 		}
 
 		[HttpPost]
 		public IActionResult Update(UpdateCategoryViewModel UpdateCategory)
 		{
-			var Result = _categoryService.UpdateCategory(UpdateCategory);
+			var Result = _categoryServiceCommand.UpdateCategory(UpdateCategory);
 
 			if (Result.IsSuccess)
 			{
 				UpdateCategory.addOrUpdateParent = UpdateCategory.addOrUpdateParent ?? new AddOrUpdateParentCategoryViewModel();
 				UpdateCategory.addOrUpdateParent.SubId = Result.Data;
-				var ResultParent = _categoryService.AddOrUpdateParentCategory(UpdateCategory.addOrUpdateParent);
+				var ResultParent = _categoryServiceCommand.AddOrUpdateParentCategory(UpdateCategory.addOrUpdateParent);
 				TempData[TempDataName.ResultParentTempdata] = JsonConvert.SerializeObject(ResultParent);
 			}
 
@@ -118,7 +123,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		[HttpGet]
 		public IActionResult Remove(int Id)
 		{
-			var FindCategory = _categoryService.FindCategoryByIdForRemove(Id);
+			var FindCategory = _categoryServiceQuery.FindCategoryByIdForRemove(Id);
 
 			if (FindCategory == null)
 				return NotFound();
@@ -129,7 +134,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		[HttpPost]
 		public IActionResult Remove(RemoveCategoryViewModel RemoveCategory)
 		{
-			var Result = _categoryService.RemoveCategory(RemoveCategory);
+			var Result = _categoryServiceCommand.RemoveCategory(RemoveCategory);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
 			_toastNotification.AddErrorToastMessage("حذف اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{

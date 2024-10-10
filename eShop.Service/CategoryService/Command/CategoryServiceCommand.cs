@@ -3,6 +3,7 @@ using eShop.Core.ExtentionMethods;
 using eShop.Data.Context;
 using eShop.Data.Entities;
 using eShop.Data.ViewModels.CategoriesViewModels.CategoriesVMServer;
+using eShop.Service.CategoryService.Query;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,45 +11,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eShop.Service.CategoryService.CategoryForServer
+namespace eShop.Service.CategoryService.Command
 {
-	public class CategoriesServiceForServer : ICategoriesServiceForServer
+	public class CategoryServiceCommand : ICategoryServiceCommand
 	{
+
 		#region متد های پیکربندی اطلاعات دسته بندی در سمت سرور یا مدیرسایت
 
 		private readonly ApplicationDbContext _context;
-		public CategoriesServiceForServer(ApplicationDbContext context)
-		{
-			this._context = context;
-		}
-		#endregion
+		private readonly ICategoryServiceQuery _categoryServiceQuery;
 
-		#region متد نمایش تمام دسته بندی ها در سمت سرور یا مدیرسایت
-
-		public List<GetCategoriesViewModel> GetCategories()
+		public CategoryServiceCommand(ApplicationDbContext context, ICategoryServiceQuery categoryServiceQuery)
 		{
-			return _context.TBL_Categories
-							.Select(x => new GetCategoriesViewModel
-							{
-								CategoryId = x.Id,
-								EnTitle = x.EnTitle,
-								FaTitle = x.FaTitle,
-								ImgName = x.ImgName,
-								IsActive = x.IsActive,
-								IsMain = x.IsMain
-							})
-							.AsNoTracking()
-							.ToList();
+			_context = context;
+			_categoryServiceQuery = categoryServiceQuery;
 		}
 		#endregion
 
 		#region متد عملیات اضافه یا بروزرسانی دسته بندی پدر بر اساس اطلاعات زیردسته ها
-
 		public OperationResult AddOrUpdateParentCategory(AddOrUpdateParentCategoryViewModel addOrUpdate)
 		{
 			List<TBL_SubCategory> AddParent = new List<TBL_SubCategory>();
 			List<TBL_SubCategory> RemoveParent = new List<TBL_SubCategory>();
-			List<TBL_SubCategory> OldParent = GetAllParentBySubId(addOrUpdate.SubId);
+			List<TBL_SubCategory> OldParent = _categoryServiceQuery.GetAllParentBySubId(addOrUpdate.SubId);
 
 			if (OldParent.Count() > 0)
 			{
@@ -115,7 +100,7 @@ namespace eShop.Service.CategoryService.CategoryForServer
 		#region متد عملیات ثبت دسته بندی جدید
 		public OperationResult<int> CreateCategory(CreateCategoryViewModel createCategory)
 		{
-			bool existCategory = ExistCategory(0, createCategory.FaTitle, createCategory.EnTitle);
+			bool existCategory = _categoryServiceQuery.ExistCategory(0, createCategory.FaTitle, createCategory.EnTitle);
 			if (existCategory)
 			{
 				return new OperationResult<int>
@@ -153,10 +138,9 @@ namespace eShop.Service.CategoryService.CategoryForServer
 		#endregion
 
 		#region متد عملیات حذف دسته بندی
-
 		public OperationResult RemoveCategory(RemoveCategoryViewModel RemoveCategory)
 		{
-			var FindCategory = FindCategoryById(RemoveCategory.CategoryId);
+			var FindCategory = _categoryServiceQuery.FindCategoryById(RemoveCategory.CategoryId);
 
 			if (FindCategory == null)
 			{
@@ -186,7 +170,7 @@ namespace eShop.Service.CategoryService.CategoryForServer
 		#region متد عملیات بروزرسانی دسته بندی
 		public OperationResult<int> UpdateCategory(UpdateCategoryViewModel updateCategory)
 		{
-			var FindCategory = FindCategoryById(updateCategory.CategoryId);
+			var FindCategory = _categoryServiceQuery.FindCategoryById(updateCategory.CategoryId);
 
 			if (FindCategory == null)
 			{
@@ -199,7 +183,7 @@ namespace eShop.Service.CategoryService.CategoryForServer
 				};
 			}
 
-			bool existCategory = ExistCategory(updateCategory.CategoryId, updateCategory.FaTitle, updateCategory.EnTitle);
+			bool existCategory = _categoryServiceQuery.ExistCategory(updateCategory.CategoryId, updateCategory.FaTitle, updateCategory.EnTitle);
 			if (existCategory)
 			{
 				return new OperationResult<int>
@@ -235,116 +219,6 @@ namespace eShop.Service.CategoryService.CategoryForServer
 				IsSuccess = true,
 				Message = OperationResultMessage.Create,
 			};
-		}
-
-		#endregion
-
-		#region دسته بندی جهت حذف ID متد جستجوی دسته بندی بر اساس 
-
-		public RemoveCategoryViewModel FindCategoryByIdForRemove(int CategoryId)
-		{
-			return _context.TBL_Categories
-				.Where(x => x.Id == CategoryId)
-				.Select(x => new RemoveCategoryViewModel
-				{
-					CategoryId = x.Id,
-					Description = x.Description,
-					EnTitle = x.EnTitle,
-					FaTitle = x.FaTitle,
-					Icon = x.Icon,
-					IsActive = x.IsActive,
-					IsMain = x.IsMain,
-					OldImage = x.ImgName,
-
-				})
-				.FirstOrDefault();
-		}
-		#endregion
-
-		#region آن جهت بروزرسانی ID متد جستجوی دسته بندی بر اساس 
-
-		public UpdateCategoryViewModel FindCategoryByIdForUpdate(int CategoryId)
-		{
-			return _context.TBL_Categories
-				.Where(x => x.Id == CategoryId)
-				.Select(x => new UpdateCategoryViewModel
-				{
-					CategoryId = x.Id,
-					Description = x.Description,
-					EnTitle = x.EnTitle,
-					FaTitle = x.FaTitle,
-					Icon = x.Icon,
-					IsActive = x.IsActive,
-					IsMain = x.IsMain,
-					OldImage = x.ImgName,
-
-				})
-				.FirstOrDefault();
-		}
-		#endregion
-
-		#region متد نمایش دسته بندی های لیست پدر
-		public List<GetCategoriesForParentListViewModel> GetCategoriesForParentList(int SubId)
-		{
-			return _context.TBL_Categories
-				.Where(x => x.Id != SubId)
-					.Select(x => new GetCategoriesForParentListViewModel
-					{
-						CategoryId = x.Id,
-						EnTitle = x.EnTitle,
-						FaTitle = x.FaTitle,
-						ImgName = x.ImgName,
-						IsActive = x.IsActive,
-						IsMain = x.IsMain
-					})
-					.AsNoTracking()
-					.ToList();
-		}
-		#endregion
-
-		#region متد لیست نمایش دسته بندی ها جهت اضافه یا حذف رکدن زیردسته ها
-		public List<GetParentCategoryForAddOrRemoveSubViewModel> GetParentCategoryForAddOrRemoveSub(int SubId)
-		{
-			var q = (from c in _context.TBL_Categories
-					 join s in _context.TBL_SubCategories on c.Id equals s.ParentId
-
-					 where s.SubId == SubId
-
-					 select new GetParentCategoryForAddOrRemoveSubViewModel
-					 {
-						 CategoryId = c.Id,
-						 FaTitle = c.FaTitle,
-					 })
-					.AsNoTracking()
-					.ToList();
-			return q;
-		}
-		#endregion
-
-		#region متد موجود بودن دسته بندی و عملیات آن
-		public bool ExistCategory(int CategoryId, string FaTitle, string EnTitle)
-		{
-			return _context.TBL_Categories.Any(x => (x.FaTitle == FaTitle.ToLower().Trim() ||
-			x.EnTitle == EnTitle.ToLower().Trim()) &&
-			x.Id != CategoryId);
-		}
-		#endregion
-
-		#region متد نمایش همه دسته بندی های پدر بر اساس زیردسته ها
-		public List<TBL_SubCategory> GetAllParentBySubId(int SubId)
-		{
-			return _context.TBL_SubCategories
-				.Where(x => x.SubId == SubId)
-				.AsNoTracking()
-				.ToList();
-		}
-		#endregion
-
-		#region ID متد جستجوی دسته بندی بر اساس 
-		public TBL_Category FindCategoryById(int CategoryId)
-		{
-			return _context.TBL_Categories.Where(x => x.Id == CategoryId)
-				.SingleOrDefault();
 		}
 		#endregion
 	}

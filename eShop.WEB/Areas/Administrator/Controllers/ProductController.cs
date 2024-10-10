@@ -1,7 +1,7 @@
 ﻿using eShop.Core.ExtentionMethods;
 using eShop.Data.ViewModels.ProductsViewModels.ProductsVMServer;
 using eShop.Service.BrandsService.BrandsForServer;
-using eShop.Service.CategoryService.CategoryForServer;
+using eShop.Service.CategoryService.Query;
 using eShop.Service.ProductService.ProductForServer;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -15,15 +15,15 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		#region متد های سرویس های کالاها یا محصولات، برندها و دسته بندی ها
 		private readonly IProductServiceForServer _productService;
 		private readonly IBrandsServiceForServer _brandService;
-		private readonly ICategoriesServiceForServer _categoryService;
+		private readonly ICategoryServiceQuery _categoryServiceQuery;
 		private readonly IToastNotification _toastNotification;
 
 		public ProductController(IProductServiceForServer productService, IBrandsServiceForServer brandService,
-			ICategoriesServiceForServer categoryService, IToastNotification toastNotification)
+			ICategoryServiceQuery categoryServiceQuery, IToastNotification toastNotification)
 		{
 			_productService = productService;
 			_brandService = brandService;
-			_categoryService = categoryService;
+			_categoryServiceQuery = categoryServiceQuery;
 			_toastNotification = toastNotification;
 		}
 		#endregion
@@ -41,7 +41,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		public IActionResult Create()
 		{
 			CreateProductViewModel createProduct = new CreateProductViewModel();
-			createProduct.GetCategories = _categoryService.GetCategories();
+			createProduct.GetCategories = _categoryServiceQuery.GetCategories();
 			createProduct.Brands = _brandService.getBrands();
 			return View(createProduct);
 		}
@@ -50,7 +50,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				createProduct.GetCategories = _categoryService.GetCategories();
+				createProduct.GetCategories = _categoryServiceQuery.GetCategories();
 				createProduct.Brands = _brandService.getBrands();
 				return View(createProduct);
 			}
@@ -79,7 +79,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 			if (FindProduct == null)
 				return NotFound();
 
-			FindProduct.GetCategories = _categoryService.GetCategories();
+			FindProduct.GetCategories = _categoryServiceQuery.GetCategories();
 			FindProduct.Brands = _brandService.getBrands();
 			return View(FindProduct);
 		}
@@ -88,7 +88,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				UpdateProduct.GetCategories = _categoryService.GetCategories();
+				UpdateProduct.GetCategories = _categoryServiceQuery.GetCategories();
 				UpdateProduct.Brands = _brandService.getBrands();
 				return View(UpdateProduct);
 			}

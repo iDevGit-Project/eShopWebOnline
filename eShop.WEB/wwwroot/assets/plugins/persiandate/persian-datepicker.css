@@ -84,7 +84,7 @@
 
 .datepicker-plot-area .datepicker-day-view .table-days td.selected span, .datepicker-plot-area .datepicker-year-view .year-item.selected,
 .datepicker-plot-area .datepicker-month-view .month-item.selected {
-    background-color: #50cd89;
+    background-color: #44CCAF;
     color: #ffffff;
     border-radius: 0.475rem;
     /* font-weight: bold; */

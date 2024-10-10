@@ -12,7 +12,15 @@
   </ItemGroup>
 
   <ItemGroup>
+	  <!--سامانه پیامکی کاوه نگار -->
+    <PackageReference Include="KavenegarDotNetCore" Version="1.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+	<PackageReference Include="Microsoft.AspNetCore.Authorization" Version="8.0.8" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="8.0.8" />
+	<PackageReference Include="RestSharp" Version="112.1.0" />
+	  
+	<!--آزمایش درگاه پرداخت زرین پال -->
+	<PackageReference Include="ZarinpalSandbox" Version="2.0.4" />	  
   </ItemGroup>
 
 </Project>

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eShop.Service.Comment_FAQ.CommentFAQForClient
+namespace eShop.Service.Comment_FAQ.Query.FAQ
 {
-	public interface ICommentFAQServiceForClient
+	public interface IFAQServiceQuery
 	{
 		List<GetFAQQuestionsViewModel> GetQuestionsForClient(int ProductId);
 	}

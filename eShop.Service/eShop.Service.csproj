@@ -10,9 +10,6 @@
 	  <Folder Include="AddressService\" />
 	  <Folder Include="BrandsService\BrandsForClient\" />
 	  <Folder Include="CartService\" />
-	  <Folder Include="CategoryService\CategoryForClient\" />
-	  <Folder Include="ColorService\ColorForClient\" />
-	  <Folder Include="DisCountService\DisCountForClient\" />
 	  <Folder Include="ProductGalleryService\ProductGalleryForClient\" />
 	  <Folder Include="ProductPropertyGroupService\ProductPropertyGroupForClient\" />
 	  <Folder Include="ProductPropertyNameService\ProductPropertyNameClient\" />

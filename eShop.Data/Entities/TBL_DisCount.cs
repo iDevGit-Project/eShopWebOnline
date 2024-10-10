@@ -20,9 +20,14 @@ namespace eShop.Data.Entities
 
 		// تاریخ انقضاء از کد تخفیف که میتواند دارای تاریح هم نباشد
 		public DateTime? EndDisCount { get; set; }
+		public bool IsPercentage { get; set; }
+		public bool FreeShipping { get; set; }
+		public bool FirstOrder { get; set; }
+		public int Value { get; set; }
 
 		#region جدول ارتباطات
 		public List<TBL_PaymentDetail> TBLPaymentDetails { get; set; }
+		public List<TBL_ProductCart> TBLProductCarts { get; set; }
 		#endregion
 	}
 }
