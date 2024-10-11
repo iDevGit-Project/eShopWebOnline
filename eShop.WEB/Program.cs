@@ -5,10 +5,9 @@ using eShop.Service.CategoryService.Query;
 using eShop.Service.ColorService.Command;
 using eShop.Service.ColorService.Query;
 using eShop.Service.Comment_FAQ.Command.FAQ;
-using eShop.Service.Comment_FAQ.CommentFAQForClient;
-using eShop.Service.Comment_FAQ.CommentFAQForServer;
 using eShop.Service.Comment_FAQ.Query.FAQ;
-using eShop.Service.DisCountService.DisCountForServer;
+using eShop.Service.DisCountService.Command;
+using eShop.Service.DisCountService.Query;
 using eShop.Service.ProductGalleryService.ProductGalleryForServer;
 using eShop.Service.ProductPropertyGroupService.ProductPropertyGroupForServer;
 using eShop.Service.ProductPropertyNameService.ProductPropertyNameForServer;
@@ -42,12 +41,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 builder.Services.AddTransient<ICategoryServiceCommand, CategoryServiceCommand>();
 builder.Services.AddTransient<IColorServiceCommand, ColorServiceCommand>();
 builder.Services.AddScoped<IFAQServiceCommand, FAQServiceCommand>();
+builder.Services.AddScoped<IDisCountServiceCommand, DisCountServiceCommand>();
 #endregion
 
 #region Query سرویس های مربوط به 
 builder.Services.AddTransient<ICategoryServiceQuery, CategoryServiceQuery>();
 builder.Services.AddTransient<IColorServiceQuery, ColorServiceQuery>();
 builder.Services.AddScoped<IFAQServiceQuery, FAQServiceQuery>();
+builder.Services.AddScoped<IDisCountServiceQuery, DisCountServiceQuery>();
 #endregion
 
 //#region متصل کردن کلیه سرویس های پروژه در سمت سرور

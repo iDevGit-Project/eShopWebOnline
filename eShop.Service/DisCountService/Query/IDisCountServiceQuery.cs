@@ -14,6 +14,9 @@ namespace eShop.Service.DisCountService.Query
 		List<GetDisCountsViewModel> GetDisCounts();
 		TBL_DisCount FindDisCountById(int discountId);
 		bool ExistDisCount(int DisCountId, string Code);
+		bool ExistDiscountCode(string discountCodeName, int discountId);
 		DiscountCalculationViewModel DiscountCalculation(string disCount, int UserId);
+		//UpdateDisCountViewModel FindDiscountByIdForUpdate(int DiscountId);
+		//RemoveDisCountViewModel FindDisCountByIdForRemove(int DiscountId);
 	}
 }

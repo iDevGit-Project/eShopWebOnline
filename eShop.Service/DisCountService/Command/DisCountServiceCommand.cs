@@ -1,8 +1,10 @@
 ﻿using eShop.Common.Operations;
+using eShop.Core.ExtentionMethods;
 using eShop.Data.Context;
 using eShop.Data.Entities;
 using eShop.Data.ViewModels.DisCountsViewModels.DisCountsVMServer;
 using eShop.Service.DisCountService.Query;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,6 +48,10 @@ namespace eShop.Service.DisCountService.Command
 				UserCount = createDisCount.UserCount,
 				StartDisCount = createDisCount.StartDisCount.ShamsiToMiladi(),
 				EndDisCount = createDisCount.EndDisCount.ShamsiToMiladi(),
+				FirstOrder = createDisCount.FirstOrder,
+				FreeShipping = createDisCount.FreeShipping,
+				IsPercentage = createDisCount.IsPercentage,
+				Value = createDisCount.Value,
 			};
 
 			_context.TBL_DisCounts.Add(disCount);
@@ -128,5 +134,6 @@ namespace eShop.Service.DisCountService.Command
 			};
 		}
 		#endregion
+
 	}
 }

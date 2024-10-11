@@ -1,7 +1,7 @@
 ﻿using eShop.Core.ExtentionMethods;
 using eShop.Data.ViewModels.DisCountsViewModels.DisCountsVMServer;
-using eShop.Data.ViewModels.WarrantiesViewModels.WarrantiesVMServer;
-using eShop.Service.DisCountService.DisCountForServer;
+using eShop.Service.DisCountService.Command;
+using eShop.Service.DisCountService.Query;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using NToastNotify;
@@ -12,11 +12,13 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 	public class DisCountController : Controller
 	{
 		#region متدهای پیکربندی سیستم تخفیفات در فروشگاه
-		private readonly IDisCountServiceForServer _disCountService;
+		private readonly IDisCountServiceQuery _disCountServiceQuery;
+		private readonly IDisCountServiceCommand _disCountServiceCommand;
 		private readonly IToastNotification _toastNotification;
-		public DisCountController(IDisCountServiceForServer disCountService, IToastNotification toastNotification)
+		public DisCountController(IDisCountServiceQuery disCountServiceQuery, IDisCountServiceCommand disCountServiceCommand, IToastNotification toastNotification)
 		{
-			_disCountService = disCountService;
+			_disCountServiceQuery = disCountServiceQuery;
+			_disCountServiceCommand = disCountServiceCommand;
 			_toastNotification = toastNotification;
 		}
 		#endregion
@@ -25,7 +27,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		[HttpGet]
 		public IActionResult Index()
 		{
-			return View(_disCountService.GetDisCounts());
+			return View(_disCountServiceQuery.GetDisCounts());
 		}
 
 		#endregion
@@ -40,7 +42,14 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		[HttpPost]
 		public IActionResult Create(CreateDisCountViewModel createDisCount)
 		{
-			var Result = _disCountService.CreateDisCount(createDisCount);
+			if (ModelState.IsValid == false)
+				return View(createDisCount);
+			if (createDisCount.IsPercentage && (createDisCount.Value < 1 || createDisCount.Value > 100))
+			{
+				ModelState.AddModelError("Value", "در صورت درصدی بودن تخفیف مقدار باید بین عدد 1 تا 100 باشد");
+				return View(createDisCount);
+			}
+			var Result = _disCountServiceCommand.CreateDisCount(createDisCount);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
 			_toastNotification.AddSuccessToastMessage("ثبت اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{
@@ -59,7 +68,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		[HttpGet]
 		public IActionResult Remove(int Id)
 		{
-			var FindDisCount = _disCountService.FindDisCountByIdForRemove(Id);
+			var FindDisCount = _disCountServiceQuery.FindDisCountByIdForRemove(Id);
 
 			if (FindDisCount == null)
 				return NotFound();
@@ -75,7 +84,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 				return View(RemoveDisCount);
 			}
 
-			var Result = _disCountService.RemoveDisCount(RemoveDisCount);
+			var Result = _disCountServiceCommand.RemoveDisCount(RemoveDisCount);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
 			_toastNotification.AddErrorToastMessage("حذف اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{
@@ -94,7 +103,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		[HttpGet]
 		public IActionResult Update(int Id)
 		{
-			var FindBrand = _disCountService.FindDiscountByIdForUpdate(Id);
+			var FindBrand = _disCountServiceQuery.FindDiscountByIdForUpdate(Id);
 
 			if (FindBrand == null)
 				return NotFound();
@@ -105,7 +114,7 @@ namespace eShop.WEB.Areas.Administrator.Controllers
 		[HttpPost]
 		public IActionResult Update(UpdateDisCountViewModel UpdateDisCount)
 		{
-			var Result = _disCountService.UpdateDisCount(UpdateDisCount);
+			var Result = _disCountServiceCommand.UpdateDisCount(UpdateDisCount);
 			TempData[TempDataName.ResultTempdata] = JsonConvert.SerializeObject(Result);
 			_toastNotification.AddInfoToastMessage("ویرایش اطلاعات با موفقیت انجام شد.", new ToastrOptions()
 			{

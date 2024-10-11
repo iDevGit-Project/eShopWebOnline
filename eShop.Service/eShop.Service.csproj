@@ -7,10 +7,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="ProductGalleryService\ProductGalleryForClient\**" />
+	  <EmbeddedResource Remove="ProductGalleryService\ProductGalleryForClient\**" />
+	  <None Remove="ProductGalleryService\ProductGalleryForClient\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Folder Include="AddressService\" />
 	  <Folder Include="BrandsService\BrandsForClient\" />
 	  <Folder Include="CartService\" />
-	  <Folder Include="ProductGalleryService\ProductGalleryForClient\" />
 	  <Folder Include="ProductPropertyGroupService\ProductPropertyGroupForClient\" />
 	  <Folder Include="ProductPropertyNameService\ProductPropertyNameClient\" />
 	  <Folder Include="ProductPropertyValueService\ProductPropertyValueForClient\" />

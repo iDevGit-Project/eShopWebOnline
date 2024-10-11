@@ -14,5 +14,9 @@ namespace eShop.Data.ViewModels.DisCountsViewModels.DisCountsVMServer
 		public bool IsActive { get; set; }
 		public DateTime? StartDisCount { get; set; }
 		public DateTime? EndDisCount { get; set; }
+		public bool IsPercentage { get; set; }
+		public bool FreeShipping { get; set; }
+		public bool FirstOrder { get; set; }
+		public int Value { get; set; }
 	}
 }

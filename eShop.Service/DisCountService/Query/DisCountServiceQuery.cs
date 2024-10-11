@@ -130,5 +130,50 @@ namespace eShop.Service.DisCountService.Query
 			return FindDisCount;
 		}
 		#endregion
+
+		#region جهت بروزرسانی کد تخفیف ID متد جستجوی کد های تخفیف بر اساس
+		public UpdateDisCountViewModel FindDiscountByIdForUpdate(int DiscountId)
+		{
+			return _context.TBL_DisCounts
+				.Where(d => d.Id == DiscountId)
+				.Select(d => new UpdateDisCountViewModel
+				{
+					DiscountId = d.Id,
+					Code = d.Code,
+					IsActive = d.IsActive,
+					UserCount = d.UserCount,
+					StartDisCount = d.StartDisCount,
+					EndDisCount = d.EndDisCount,
+				})
+				.AsNoTracking()
+				.SingleOrDefault();
+		}
+		#endregion
+
+		#region جهت حذف کد تخفیف ID متد جستجوی کد های تخفیف بر اساس
+		public RemoveDisCountViewModel FindDisCountByIdForRemove(int DiscountId)
+		{
+			return _context.TBL_DisCounts
+
+				.Where(d => d.Id == DiscountId)
+				.Select(d => new RemoveDisCountViewModel
+				{
+					DisCountId = d.Id,
+					Code = d.Code,
+					EndDisCount = d.EndDisCount,
+					StartDisCount = d.StartDisCount,
+					IsActive = d.IsActive,
+					UserCount = d.UserCount,
+				})
+				.AsNoTracking()
+				.SingleOrDefault();
+		}
+
+		public bool ExistDiscountCode(string discountCodeName, int discountId)
+		{
+			return _context.TBL_DisCounts
+				.Any(x => x.Code == discountCodeName.Trim().ToLower() && x.Id != discountId);
+		}
+		#endregion
 	}
 }

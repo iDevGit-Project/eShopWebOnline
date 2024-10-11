@@ -30,5 +30,10 @@ namespace eShop.Data.ViewModels.DisCountsViewModels.DisCountsVMServer
 		[Display(Name = "تاریخ پایان")]
 		[Required(ErrorMessage = "{0} الزامیست.")]
 		public string? EndDisCount { get; set; }
+
+		public bool IsPercentage { get; set; }
+		public bool FreeShipping { get; set; }
+		public bool FirstOrder { get; set; }
+		public int Value { get; set; }
 	}
 }
